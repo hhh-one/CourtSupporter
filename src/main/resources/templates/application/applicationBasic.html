@@ -1,8 +1,9 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<!--<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">-->
+
 <link rel="stylesheet" th:href="@{/css/application.css}">
 <link rel="stylesheet" th:href="@{/css/applicationStateBar.css}">
 <script src="https://code.jquery.com/jquery.min.js"></script>
@@ -107,33 +108,33 @@
 									</th>
 									<td>
 										<select id="demo" multiple="multiple" class="selC" name="court_proper_num_list" title="희망법원 선택">
-											<option value="100">대법원</option>
-											<option value="200">서울고등법원</option>
-											<option value="300">대구고등법원</option>
-											<option value="400">부산고등법원</option>
-											<option value="500">광주고등법원</option>
-											<option value="600">대전고등법원</option>
-											<option value="700">특허법원</option>
-											<option value="220">서울행정법원</option>
-											<option value="230">서울가정법원</option>
-											<option value="210">서울중앙지방법원</option>
-											<option value="211">서울동부지방법원</option>
-											<option value="212">서울남부지방법원</option>
-											<option value="213">서울북부지방법원</option>
-											<option value="215">서울서부지방법원</option>
-											<option value="214">의정부지방법원</option>
-											<option value="240">인천지방법원</option>
-											<option value="250">수원지방법원</option>
-											<option value="260">춘천지방법원</option>
-											<option value="270">청주지방법원</option>
-											<option value="280">대전지방법원</option>
-											<option value="310">대구지방법원</option>
-											<option value="410">부산지방법원</option>
-											<option value="411">울산지방법원</option>
-											<option value="420">창원지방법원</option>
-											<option value="510">광주지방법원</option>
-											<option value="520">전주지방법원</option>
-											<option value="530">제주지방법원</option>
+											<option id="100" value="100">대법원</option>
+											<option id="200" value="200">서울고등법원</option>
+											<option id="300" value="300">대구고등법원</option>
+											<option id="400" value="400">부산고등법원</option>
+											<option id="500" value="500">광주고등법원</option>
+											<option id="600" value="600">대전고등법원</option>
+											<option id="700" value="700">특허법원</option>
+											<option id="220" value="220">서울행정법원</option>
+											<option id="230" value="230">서울가정법원</option>
+											<option id="210" value="210">서울중앙지방법원</option>
+											<option id="211" value="211">서울동부지방법원</option>
+											<option id="212" value="212">서울남부지방법원</option>
+											<option id="213" value="213">서울북부지방법원</option>
+											<option id="215" value="215">서울서부지방법원</option>
+											<option id="214" value="214">의정부지방법원</option>
+											<option id="240" value="240">인천지방법원</option>
+											<option id="250" value="250">수원지방법원</option>
+											<option id="260" value="260">춘천지방법원</option>
+											<option id="270" value="270">청주지방법원</option>
+											<option id="280" value="280">대전지방법원</option>
+											<option id="310" value="310">대구지방법원</option>
+											<option id="410" value="410">부산지방법원</option>
+											<option id="411" value="411">울산지방법원</option>
+											<option id="420" value="420">창원지방법원</option>
+											<option id="510" value="510">광주지방법원</option>
+											<option id="520" value="520">전주지방법원</option>
+											<option id="530" value="530">제주지방법원</option>
 										</select>
 										<div id="multiSelectMsg" style="color: red;"></div>
 									</td>

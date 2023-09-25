@@ -1,9 +1,4 @@
-@font-face {
-  font-family: 'Noto Sans KR';
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;700;800;900&display=swap'); 
-  font-weight: normal; /* 폰트의 기본 굵기 (일반적으로는 normal로 설정) */
-  font-style: normal; /* 폰트의 기본 스타일 (일반적으로는 normal로 설정) */
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
 
 *{ padding: 0; margin: 0; }
 ul, li { list-style: none; } 
@@ -35,7 +30,7 @@ a{
 
 .announceTitle{
   font-size: x-large;
-  font-weight: 500;
+  font-weight: 600;
 /*  padding: 20px;*/
   padding-left: 5px;
   padding-bottom: 15px;
@@ -147,7 +142,7 @@ a{
   color: #5e5e5e;
 /*  border-top: 0.3px solid #BDBDBD;*/
   border-bottom: 0.3px solid #dbdbe4;   /* #BDBDBD; */  
-  background-color: #f3f4fb; /* #f3f3fb;  */  /* #F2F2F2; #E8E8E9; #E0E0E0 ;*/
+  background-color: #F0F2FE; /* f5f6f9 #f3f3fb;  */  /* #F2F2F2; #E8E8E9; #E0E0E0 ;*/
 }
 .modifyDate{
   width: 180px;
@@ -198,7 +193,7 @@ td .left{
 	font-size: 16px;
 	font-weight: 800px;
 	/*border-bottom: 0.5px solid #A4A4A4;  #BDBDBD;*/
-	background-color: #f3f4fb;
+	background-color: #F0F2FE;
 }
 .left{
 	display: inline-block;
@@ -241,7 +236,7 @@ td .left{
   padding-bottom: 20px ;
   width: 100px;
   font-weight: 700;  
-  background-color: #f3f4fb;  /*  #f3f3fb; */
+  background-color: #F0F2FE; /* #f5f6f9; */ /*  #f3f3fb; */
 }
 .nextTable tr td {
   padding-top: 20px;
@@ -272,7 +267,7 @@ td .left{
   padding-bottom: 20px; 
   width: 100px;
   font-weight: 700; 
-  background-color:   #f3f4fb;  
+  background-color: #F0F2FE; /* #f5f6f9;  *//*f3f4fb*/
 }
 .prevTable tr td {
   padding-top: 20px;
@@ -321,31 +316,35 @@ td .left{
 }
 
 /***********************************************/
+
 .btn {
-  display: flex;
+  display: block;
   float: right;
   margin-top: 10px;
   margin-right: 5px;
   margin-bottom: 80px;
-  padding-left: 22px; 
+  font-size: 14px;  
+  font-weight: 400;
+  border: none;
   width: 70px;
   height: 30px;
   line-height: 29.5px;
   
-  font-size: 14px;  
-  font-weight: 300;
-  border: none;
-  background-color:  rgb(11, 38, 110);
-    
+  text-align: center;
   vertical-align: middle;
-  font-family:"ngB" !important;
+  color: white;  
 }
 .btn > a{
-  font-family: "Noto Sans KR", sans-serif;
-  color: white;
+  font-family: "Noto Sans KR", sans-serif; 
 }
 .btn > a:hover{
   text-decoration: none;
+}
+.listBtn {
+	background-color:  rgb(11, 38, 110);
+}
+.modifyBtn {
+	background-color:  rgb(11, 38, 110);
 }
 .delBtn {	
 	text-decoration: none;  

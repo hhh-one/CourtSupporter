@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<!-- <script th:src="@{/js/announceModify.js}"></script>-->
-
-  <link rel="stylesheet" th:href="@{/css/announceModify.css}">
-  <link rel="stylesheet" th:href="@{/css/layout-announceList-side.css}">
+<link rel="stylesheet" th:href="@{/css/announceModify.css}">
+<link rel="stylesheet" th:href="@{/css/layout-announceList-side.css}">
   
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
@@ -18,7 +13,6 @@
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <script src=" https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-ko-KR.min.js"></script>
-
 <script src="/js/summernote/summernote-lite.js"></script>
 <script src="/js/summernote/lang/summernote-ko-KR.js"></script>
 <!-- Summernote 스타일 -->
@@ -100,16 +94,9 @@
                   <th class="announceFile">첨부파일</th>
                   <td>
 					  <div class="file" id="fileList">
-						  <div>
-						<!--<p>[[${file}]]</p> 기존 파일 이름 +  삭제하는부분 추가해야 함 
-							<div id="fileNames">
-								<ul>
-									<li th:each="vo : ${file}" >
-										<a class="downloadLinks" th:href="@{'https://court-supporter-project-t4.s3.ap-northeast-2.amazonaws.com/' + ${vo.key.file_path} + ${vo.key.notice_file_uuid} + '_' + ${vo.key.original_file_name}}">[[${vo.value}]]</a>
-									</li>
-								</ul>
-							</div>--> 
-						  </div>
+						<!--  <div>
+						<p>[[${file}]]</p> 기존 파일 이름 +  삭제하는부분 추가해야 함--> 						
+						  <!---</div>-->
 						  <a href="#this" onclick="addFile()" class="add" >파일추가</a>
 						  
 					 	  <div class="file">
@@ -146,88 +133,22 @@
                  <button class="listBtn btn" id="listBtn">
 		            <a th:href="@{/announce/announceList}">취소</a>
 		        </button>       
-               <!-- <input type="button" class="listBtn btn" value="취소">     -->     
+               <!-- <input type="button" class="listBtn btn" value="취소">-->     
             </div>
-          </div>        
+            
+          </div><!--modifyBox end-->     
           
         
         </form>
        
 	 </div>
 
-    </div>
+    </div> <!--announceModify-wrap end-->
 
-  </div>
+  </div> <!--announceModify end-->
 
 </th:block>
 
 <script th:src="@{/js/announceModify.js}"></script>
-
-<script th:inline="javascript">
-	
-	//등록 전 확인
-	let modifyBtn = document.getElementById("modifyBtn");  
-	  modifyBtn.onclick = () => {
-		  
-	    if(modifyForm.announce_title.value == ""){
-	      alert("제목을 입력하세요.");
-	      modifyForm.announce_title.focus();    
-	      return false;      
-		} else if(modifyForm.announce_start_date.value == "") {
-	      alert("모집 시작일을 선택하세요.");
-	      modifyForm.announce_start_date.focus();      
-	      return false;
-	    } else if(modifyForm.announce_end_date.value == "") {
-	      alert("모집 종료일을 선택하세요.");
-	      modifyForm.announce_end_date.focus();      
-	      return false;
-	    } else if(modifyForm.trial_fcltt_proper_num.value == "") {
-	      alert("조력자 선택은 필수입니다.");
-	      modifyForm.trial_fcltt_proper_num.focus();
-	      return false;    
-	    } else if(modifyForm.announce_recruit_num.value == "") {
-	      alert("모집 인원을 입력하세요.");
-	      modifyForm.announce_recruit_num.focus();
-	      return false;
-	    } else if(modifyForm.announce_content.value == "") {
-	      alert("내용을 입력하세요.");
-	      modifyForm.announce_content.focus();      
-	      return false;
-	    } else {
-	      alert("정상적으로 등록되었습니다.");     
-	      return true;
-	    }
-	  }    
-  
-	
-	//파일 첨부
-	var contentDetail = document.getElementById("contentDetail");
-	contentDetail.innerHTML = contentDetail.innerHTML.replace(/\n/g, "<br>");
-	
-	//파일 첨부 및 삭제
-	$(document).ready(function() {
-		$("a[name='file-delete']").on("click", function(e) {
-			e.preventDefault();
-			deleteFile($(this));
-		})
-	});
-		  
-	function addFile(){ // id='fileList'
-		
-		 var str = "<div><input type='file' name='file' class='sel' multiple >";
-		    str += "<a href='#this' name='file-delete' class='delete'>삭제</a></div>";
-		   
-		$("#fileList").append(str);
-		$("a[name='file-delete']").on("click", function(e) {
-			e.preventDefault();
-			deleteFile($(this));
-		});
-	}
-	
-	function deleteFile(obj) {
-		obj.parent().remove();		
-	}
-	
-</script>
 
 </html>

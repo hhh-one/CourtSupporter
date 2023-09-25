@@ -27,12 +27,16 @@ public interface ApplicationMapper {
 	public TB_001VO getUserInfo(TB_001VO tb_001vo);
 	//기본 정보 페이지 - tb_005vo 데이터 가져오기
 	public TB_005VO getApplicationBasicInfo(TB_005VO tb_005vo);
+	// 기본 정보 페이지 - 희망법원 데이터 가져오기
+	public ArrayList<TB_005VO> getCourtList(TB_005VO tb_005vo);
 	//기본 정보 페이지 - 주민번호 조회
 	public String getUserRrn(@Param("user_proper_num") String user_proper_num, 
 							 @Param("user_name") String user_name, 
 							 @Param("user_rrn") String user_rrn);
 	//기본 정보 페이지 - user_id 불러오기
 	public String getuser_id(String user_proper_num);
+	//기본 정보 수정
+	public void basicDelete(TB_005VO tb_005vo);
 	//기본 정보 - 조력자 분류 코드, 조력자 추가 정보, 희망 법원 등록
 	public int detailRegist(TB_005VO tb_005vo);
 	//기본 정보 페이지 신청인 기본 정보 수정
@@ -42,7 +46,6 @@ public interface ApplicationMapper {
 	//학력 정보 페이지 - 입력한 학력 정보 불러오기
 	public ArrayList<TB_006VO> getEducationList(TB_006VO tb_006vo);
 	//학력 정보 수정 팝업 - 학력 정보 데이터 불러오기
-
 	public TB_006VO getEducationInfo(TB_006VO tb_006vo);
 	//학력 정보 페이지 - 학력 정보 수정
 	public void educationModify(TB_006VO tb_006vo);

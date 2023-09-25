@@ -24,10 +24,14 @@ public interface ApplicationService {
 	public TB_001VO getUserInfo(TB_001VO tb_001vo);
 	//기본 정보 페이지 - tb_005vo 데이터 가져오기
 	public TB_005VO getApplicationBasicInfo(TB_005VO tb_005vo);
+	// 기본 정보 페이지 - 희망법원 데이터 가져오기
+	public ArrayList<TB_005VO> getCourtList(TB_005VO tb_005vo);
 	//기본 정보 페이지 - 주민번호 조회
 	public boolean getUserRrn(String user_proper_num, String user_name, String user_rrn);
 	//기본 정보 페이지 - user_id 가져오기
 	public String getuser_id(String user_proper_num);
+	//기본 정보 수정
+	public void basicDelete(TB_005VO tb_005vo);
 	//기본 정보 등록
 	public void basicRegist(TB_001VO tb_001vo, TB_005VO tb_005vo, TB_010VO tb_010vo);
 	//학력 정보 등록

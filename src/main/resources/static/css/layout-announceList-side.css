@@ -1,9 +1,4 @@
-@font-face {
-  font-family: 'Noto Sans KR';
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;700;800;900&display=swap'); 
-  font-weight: normal; /* 폰트의 기본 굵기 (일반적으로는 normal로 설정) */
-  font-style: normal; /* 폰트의 기본 스타일 (일반적으로는 normal로 설정) */
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
 
 .notice-sidemenu-wrap {
    position: absolute;
@@ -16,7 +11,7 @@
 
 .mainTitle {
    font-size: 25px;
-   font-weight: 700;
+   font-weight: 600;
    padding-bottom: 15px;
    padding-left: 2px;
    color: #2E2E2E;
@@ -30,7 +25,7 @@
 .notice-title {
    border-bottom: 1px solid #08125E; /* #777*/
    font-size: 18px;
-   font-weight: 500;
+   font-weight: 600;
    color: #424242;
    padding: 10px 0;
    padding-left: 3px;
@@ -44,7 +39,7 @@
 }
 
 notice-content {
-   background-color: #f3f4fb;/*  #F2F2F2;#EAEBF8; *//* rgb(232, 232, 232);*/ 
+   background-color: #F0F2FE;  /* f3f4fb #EAEBF8; *//* rgb(232, 232, 232);*/ 
 }
 
 .notice-content li {
@@ -53,11 +48,11 @@ notice-content {
    font-size: 13px;
    color: #585858;
    border-bottom: 1px solid white;
-   background-color: #f3f4fb;
+   background-color: #F0F2FE; /* #f5f6f9;*/  /*f3f4fb*/
 }
 
 .notice-content li:hover {
-   background-color:#FD2B2A; /* rgb(227, 0, 0);*/
+   background-color : #1f3579; /*#FD2B2A;*/ /* rgb(227, 0, 0);*/
    color: white;
 }
 .notice-content a:hover {
@@ -80,5 +75,5 @@ notice-content {
 }
 
 .myapplication-content li:hover {
-   background-color:#FD2B2A; /* rgb(227, 0, 0);*/
+   background-color:#1f3579; /* rgb(227, 0, 0);*/
 }

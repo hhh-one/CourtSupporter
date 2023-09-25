@@ -49,6 +49,12 @@ public class ApplicationServiceImpl implements ApplicationService {
 		return applicationMapper.getApplicationBasicInfo(tb_005vo);
 	}
 	
+	// 기본 정보 페이지 - 희망법원 데이터 가져오기
+	@Override
+	public ArrayList<TB_005VO> getCourtList(TB_005VO tb_005vo) {
+		return applicationMapper.getCourtList(tb_005vo);
+	}
+	
 	//기본 정보 페이지 - 주민번호 조회
 	@Override
 	public boolean getUserRrn(String user_proper_num, String user_name, String user_rrn) {
@@ -63,6 +69,12 @@ public class ApplicationServiceImpl implements ApplicationService {
 	@Override
 	public String getuser_id(String user_proper_num) {
 		return applicationMapper.getuser_id(user_proper_num);
+	}
+	
+	// 기본 정보 수정
+	@Override
+	public void basicDelete(TB_005VO tb_005vo) {
+		applicationMapper.basicDelete(tb_005vo);
 	}
 	
 	// 기본 정보 등록

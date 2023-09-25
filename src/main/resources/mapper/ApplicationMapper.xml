@@ -22,6 +22,21 @@
   	 FROM TB_005
   	 WHERE announce_proper_num = #{announce_proper_num} and user_id = #{user_id})
   </select>
+  
+  <!-- 기본 정보 페이지 - 희망법원 데이터 가져오기 -->
+  <select id="getCourtList">
+  	select 
+		t5.*,
+        t11.court_name
+		
+		from TB_005 as t5
+		left join TB_011 as t11
+		on t5.court_proper_num = t11.court_proper_num
+		
+		where user_id = #{user_id}
+		and announce_proper_num = #{announce_proper_num}
+  </select>
+  
   <!-- 기본 정보 페이지 - 주민번호 조회 -->
   <select id="getUserRrn" resultType="String">
   	select user_rrn from TB_001 where user_proper_num = #{user_proper_num} and user_name = #{user_name} and user_rrn = #{user_rrn}
@@ -33,6 +48,11 @@
   	from TB_001
   	where user_proper_num = #{user_proper_num}
   </select>
+  
+  <!-- 기본 정보 수정 -->
+  <delete id="basicDelete">
+  	delete from TB_005 where user_id = #{user_id} and announce_proper_num = #{announce_proper_num}
+  </delete>
   
   <!-- 기본 정보 - 조력자 분류 코드, 조력자 추가 정보, 희망 법원 등록 -->
   <insert id="detailRegist" parameterType="TB_005VO">

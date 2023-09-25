@@ -204,13 +204,13 @@ window.onload = function() {
 		});
 
 		if ($('#businesslicenseFile').children().length === 0 && (values.length === 0 || allEmpty)) {
-		  $("#msg1").text("사업자 등록증 첨부는 필수입니다");
+		  $("#msg1").text("사업자 등록증 첨부는 필수입니다").focus();
 			return false;
 		} else if ($('#businessreportFile').children().length === 0 && (values2.length === 0 || allEmpty2)) {
-		  $("#msg2").text("업무관련 등록 신고현황 첨부는 필수입니다");
+		  $("#msg2").text("업무관련 등록 신고현황 첨부는 필수입니다").focus();
 			return false;
 		} else if ($('#taxconfirmFile').children().length === 0 && (values3.length === 0 || allEmpty3)) {
-		  $("#msg3").text("납세증명확인서 첨부는 필수입니다");
+		  $("#msg3").text("납세증명확인서 첨부는 필수입니다").focus();
 			return false;
 		}
 		

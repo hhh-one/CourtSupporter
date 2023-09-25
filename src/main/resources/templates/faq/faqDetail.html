@@ -1,8 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap">
+
 <link rel="stylesheet" th:href="@{/css/noticeDetail.css}">
 <link rel="stylesheet" th:href="@{/css/layout-announceList-side.css}">
 
@@ -33,7 +31,7 @@
 								</colgroup>
 								<tbody>
 
-									<tr class="firstTh">
+									<tr class="firstTh tablethline">
 										<th class scope="row">질문</th>
 										<td class="left" colspan="5">[[${vo.faq_ask_content}]]</td>
 									</tr>
@@ -49,7 +47,7 @@
 							<div th:if="${nextPost != null}">
 								<table class="nextTable">
 									<tbody>
-										<tr>
+										<tr class="nexttrline">
 											<td class="nextContent">다음글</td>
 											<td colspan="3">
 												<a id="nextLink" class="nextTitle"
@@ -64,7 +62,7 @@
 							<div th:unless="${nextPost != null}"> <!-- 다음 글 없을 때 -->
 								<table class="nextInfo">
 									<tbody>
-										<tr>
+										<tr class="nexttrline">
 											<td colspan="4" class="nextTxt">다음 글이 없습니다.</td>
 										</tr>
 									</tbody>
@@ -74,7 +72,7 @@
 							<div th:if="${previousPost != null}">
 								<table class="prevTable">
 									<tbody>
-										<tr>
+										<tr class="prevtrline">
 											<td class="prevContent">이전글</td>
 											<td colspan="3">
 												<a id="prevLink" class="prevTitle"
@@ -90,7 +88,7 @@
 							<div th:unless="${previousPost != null}"> <!-- 이전 글 없을 때 -->
 								<table class="prevInfo">
 									<tbody>
-										<tr>
+										<tr class="prevtrline">
 											<td colspan="4" class="prevTxt">이전 글이 없습니다.</td>
 										</tr>
 									</tbody>
@@ -98,7 +96,7 @@
 							</div>
 						</div>
 						<div class="btnbox btnbox02" style="margin-bottom: 40px;">
-							<a href="faqList" class="btnfb7" onclick="javascript:goRegist();">목록</a>
+							<a th:href="@{/faq/faqList}" class="btnfb7" onclick="javascript:goRegist();">목록</a>
 							<th:block th:if="${member_role == 'ROLE_ADMIN'}">
 								<span class="adminmenu">
 									<a th:href="@{faqModify(faq_proper_num=${vo.faq_proper_num})}" class="btn4d5"

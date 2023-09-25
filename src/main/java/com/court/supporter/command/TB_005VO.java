@@ -36,5 +36,8 @@ public class TB_005VO {
    
    //TB_010VO join
    private String trial_fcltt_description;
+   
+   //TB_011VO join
+   private String court_name;
 }
 

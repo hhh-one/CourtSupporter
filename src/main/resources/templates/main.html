@@ -1,13 +1,8 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-	
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" th:href="@{/css/main.css}">
 <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css}" />
-
+<link rel="stylesheet" th:href="@{/css/main.css}">
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 
@@ -22,92 +17,122 @@
 						<!-- Additional required wrapper -->
 						<div class="swiper-wrapper">
 							<!-- Slides -->
-							<div class="swiper-slide"><img th:src="@{/img/main1.jpg}"></div>
-							<div class="swiper-slide"><img th:src="@{/img/main2.jpg}"></div>
-							<div class="swiper-slide"><img th:src="@{/img/main3.jpg}"></div>
+							<div class="swiper-slide"><img th:src="@{/img/supporter_04.jpg}" alt="정의"></div>
+							<div class="swiper-slide"><img th:src="@{/img/supporter_07.jpg}" alt="조각상"></div>
+							<div class="swiper-slide"><img th:src="@{/img/supporter_img_05.jpg}" alt="햇빛 법원"></div>
+							<div class="swiper-slide"><img th:src="@{/img/supporter_img_02.jpg}" alt="어두운 법원"></div>
+							<div class="swiper-slide"><img th:src="@{/img/supporter_img_03.jpg}" alt="위에서 본 이미지"></div>
 						</div>
 					</div>
 				</div>
-				<div style="margin: 20px 0;">
-					<div class="search1">
-						<form action="total_search" method="get">
-		  					<input type="text" class="input1" placeholder="검색어 입력" name="search">
-		  					<input type="image" class="img1" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
-						</form>
-					</div>				
+			</div>
+
+			<!--<div class="searchBox">
+					<form action="total_search" method="get" id="total_searchform" >
+						<input type="text" name="search" id="searchtxt" placeholder="검색어를 입력하세요">
+						<button type="submit" id="searchBtn">검색</button>
+					</form>
+					</div>-->
+
+			<div class="searchBox">
+				<div class="search1">
+					<form action="total_search" method="get">
+						<input type="text" class="input1" placeholder="검색어를 입력하세요." name="search">
+						<input type="image" class="img1"
+							src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
+					</form>
 				</div>
-				<div class="contentbox">
-					<div class="contentboxin">
+			</div>
 
-						<div class="recruitment">
-							<span style="font-weight: bold; font-size: 20px; margin-bottom: 15px;">재판조력자 신청 바로가기</span>
-							<ul class="flowbox">
+			<div class="contentbox">
 
-								<li class="recruitment_image">
-									<a
-										href="announce/announceList?page=1&amount=8&trial_fcltt_proper_num=10&announce_start_date=&announce_end_date=&searchOption=announceAll&searchKeyword="><img
-											th:src="@{/img/assistant1.png}">
-										<h4>재판조력자</h4>
-									</a>
-								</li>
-								<li class="recruitment_image">
-									<a
-										th:href="@{/announce/announceList?page=1&amount=8&trial_fcltt_proper_num=20&announce_start_date=&announce_end_date=&searchOption=announceAll&searchKeyword=}"><img
-											th:src="@{/img/Translate1.png}">
-										<h4>통번역인</h4>
-									</a>
-								</li>
-								<li class="recruitment_image">
-									<a
-										th:href="@{/announce/announceList?page=1&amount=8&trial_fcltt_proper_num=30&announce_start_date=&announce_end_date=&searchOption=announceAll&searchKeyword=}"><img
-											th:src="@{/img/mediator.png}">
-										<h4>조정위원</h4>
-									</a>
-								</li>
-								<li class="recruitment_image">
-									<a
-										th:href="@{/announce/announceList?page=1&amount=8&trial_fcltt_proper_num=40&announce_start_date=&announce_end_date=&searchOption=announceAll&searchKeyword=}"><img
-											th:src="@{/img/committee1.png}">
-										<h4>전문심리위원</h4>
-									</a>
-								</li>
-								<li class="recruitment_image">
-									<a
-										th:href="@{/announce/announceList?page=1&amount=8&trial_fcltt_proper_num=50&announce_start_date=&announce_end_date=&searchOption=announceAll&searchKeyword=}"><img
-											th:src="@{/img/counseling1.png}">
-										<h4>상담위원</h4>
-									</a>
-								</li>
+				<div class="contentboxin">
 
-							</ul>
+					<div class="recruitment">
+						<div class="recruittitle">
+							<span>재판조력자 신청 바로가기</span>
+						</div>
+						<ul class="flowbox">
+							<a href="announce/announceList?page=1&amount=8&trial_fcltt_proper_num=10&announce_start_date=&announce_end_date=&searchOption=announceAll&searchKeyword="
+								class="recruitment_image">
+								<li>
+									<img th:src="@{/img/img_01.jpg}">
+									<h4>재판조력자</h4>
+								</li>
+							</a>
+							<a th:href="@{/announce/announceList?page=1&amount=8&trial_fcltt_proper_num=20&announce_start_date=&announce_end_date=&searchOption=announceAll&searchKeyword=}"
+								class="recruitment_image">
+								<li>
+									<img th:src="@{/img/img_02.jpg}">
+									<h4>통번역인</h4>
+								</li>
+							</a>
+							<a th:href="@{/announce/announceList?page=1&amount=8&trial_fcltt_proper_num=30&announce_start_date=&announce_end_date=&searchOption=announceAll&searchKeyword=}"
+								class="recruitment_image">
+								<li>
+									<img th:src="@{/img/img_03.jpg}">
+									<h4>조정위원</h4>
+								</li>
+							</a>
+							<a th:href="@{/announce/announceList?page=1&amount=8&trial_fcltt_proper_num=40&announce_start_date=&announce_end_date=&searchOption=announceAll&searchKeyword=}"
+								class="recruitment_image">
+								<li>
+									<img th:src="@{/img/img_04.jpg}">
+									<h4>전문심리위원</h4>
+								</li>
+							</a>
+							<a th:href="@{/announce/announceList?page=1&amount=8&trial_fcltt_proper_num=50&announce_start_date=&announce_end_date=&searchOption=announceAll&searchKeyword=}"
+								class="recruitment_image">
+								<li>
+									<img th:src="@{/img/img_05.jpg}">
+									<h4>상담위원</h4>
+								</li>
+							</a>
+						</ul>
+					</div> <!--recruitment 조력자 신청 박스 end-->
+
+				</div> <!--contentboxin end-->
+
+				<div class="multiBox">
+					<div class="noticeBox">
+
+						<div id="notice">
+							<section class="container_head">
+								<ul class="listbox">
+									<li class="notice on">
+										<a href="#"><span class="title">공지사항</span></a>
+									</li>
+								</ul>
+								<div class="tabcontent on">
+									<ul>
+										<li th:each="notice : ${tb_003list}">
+											<a
+												th:href="@{/notice/noticeDetail(notice_proper_num=${notice.notice_proper_num})}">[[${notice.notice_title}]]<span
+													th:text="${notice.notice_date.substring(0,10)}"></span></a>
+											<!--[[${notice.notice_date}]]-->
+										</li>
+									</ul>
+									<a href="notice/noticeList" class="more">
+										<span class="text">더보기</span>
+									</a>
+								</div>
+							</section>
 						</div>
 
 						<div id="notice">
 							<section class="container_head">
 								<ul class="listbox">
 									<li class="notice on">
-										<a href="#"><span>공지사항</span></a>
-									</li>
-									<li class="announce">
-										<a href="#"><span>모집공고</span></a>
+										<a href="#"><span class="title">모집공고</span></a>
 									</li>
 								</ul>
+
 								<div class="tabcontent on">
 									<ul>
-										<li th:each="notice : ${tb_003list}">
-            								<a th:href="@{/notice/noticeDetail(notice_proper_num=${notice.notice_proper_num})}">[[${notice.notice_title}]]<span>[[${notice.notice_date}]]</span></a>
-        								</li>
-									</ul>
-									<a href="notice/noticeList" class="more">
-										<span class="text">더보기</span>
-									</a>
-								</div>
-
-								<div class="tabcontent">
-									<ul>
 										<li th:each="announce : ${tb_002list}">
-            								<a th:href="@{/announce/announceDetail(announce_proper_num=${announce.announce_proper_num})}">[[${announce.announce_title}]]<span>[[${announce.announce_start_date}]]</span></a>
-        								</li>
+											<a
+												th:href="@{/announce/announceDetail(announce_proper_num=${announce.announce_proper_num})}">[[${announce.announce_title}]]<span>[[${announce.announce_start_date}]]</span></a>
+										</li>
 									</ul>
 									<a href="announce/announceList" class="more">
 										<span class="text">더보기</span>
@@ -116,15 +141,67 @@
 
 							</section>
 						</div>
+						<div class="supporterinfoBox">
+							<div class="infoBox">
+								<a href="/guide/guideInfo">
+									<div class="main_img01">
+										<!--<img src="/img/main_small_img.jpg" >-->
+									</div>
+									<div class="infotxt">
+										<a href="/guide/guideInfo"><span>재판조력자 제도란?</span>
+									</div>
+								</a>
+							</div>
+						</div>
 
+						<!--<div class="basicmenu">
+					<div class="supporterinfoBox">
+						<div class="infoBox">
+							<div class="main_img01">									
+								<img src="/img/main_small_img.jpg" >
+							</div>
+							<div class="infotxt">
+								<span>재판조력자란?</span>								
+							</div>
+						</div>
+						
+						<div class="infoBox">
+							<div class="main_img02">
+								<img src="/img/main_img_02.jpg" >											
+							</div>
+							<div class="infotxt">
+								<span class="infotxt">재판조력자 제도 안내</span>
+							</div>
+						</div>
+							
+						<div class="infoBox">
+							<div class="main_img03">
+								<img src="/img/main_img_03.jpg">				
+							</div>
+							<div class="infotxt">
+								<span class="infotxt">재판조력자 신청 안내</span>
+							</div>
+						</div>
 
 					</div>
+				</div>-->
+					</div> <!--noticeBox end-->
+
+
 				</div>
-			</div>
+
+			</div> <!--contentbox end-->
+
+
+
+			<!--</div>--><!--mainimg end-->
 
 		</div>
+
 	</div>
+	
 </th:block>
+
 <script th:src="@{/js/swiper.js}"></script>
 <script th:src="@{/js/main.js}"></script>
 

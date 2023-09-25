@@ -136,6 +136,29 @@ public class ApplicationController {
 		}
 		return "redirect:/";
 	}
+	
+	// 기본 정보 페이지 - 희망법원 데이터 가져오기
+	@PostMapping("/courtList")
+	public ResponseEntity<ArrayList<TB_005VO>> courtList(@RequestBody TB_005VO tb_005vo, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String jwt = (String) session.getAttribute("token");
+		if (jwt != null) {
+			Authentication authentication = jwtValidator.getAuthentication(jwt);
+			DefaultUserDetails userDetails = (DefaultUserDetails) authentication.getPrincipal();
+			String member_proper_num = userDetails.getUsername();
+			
+			tb_005vo.setUser_proper_num(member_proper_num);
+			// 기본 정보 페이지 - user_id 가져오기
+			String user_id = applicationService.getuser_id(member_proper_num);
+			tb_005vo.setUser_id(user_id);
+			tb_005vo.setAnnounce_proper_num(tb_005vo.getAnnounce_proper_num());
+			
+			ArrayList<TB_005VO> list = applicationService.getCourtList(tb_005vo);
+
+			return new ResponseEntity<>(list, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	}
 
 	// 기본 정보 페이지 - 주민번호 조회
 	@PostMapping("/fetchData")
@@ -146,15 +169,15 @@ public class ApplicationController {
 			Authentication authentication = jwtValidator.getAuthentication(jwt);
 			DefaultUserDetails userDetails = (DefaultUserDetails) authentication.getPrincipal();
 			String member_proper_num = userDetails.getUsername();
-			
-		boolean isDataAvailable = applicationService.getUserRrn(tb_001vo.getUser_proper_num(), tb_001vo.getUser_name(),
-				tb_001vo.getUser_rrn());
-		
-		if (isDataAvailable) {
-			return new ResponseEntity<>("{\"success\": true}", HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>("{\"success\": false}", HttpStatus.OK);
-		}
+
+			boolean isDataAvailable = applicationService.getUserRrn(tb_001vo.getUser_proper_num(),
+					tb_001vo.getUser_name(), tb_001vo.getUser_rrn());
+
+			if (isDataAvailable) {
+				return new ResponseEntity<>("{\"success\": true}", HttpStatus.OK);
+			} else {
+				return new ResponseEntity<>("{\"success\": false}", HttpStatus.OK);
+			}
 		}
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
@@ -174,8 +197,13 @@ public class ApplicationController {
 		// 기본 정보 페이지 - user_id 가져오기
 		String user_id = applicationService.getuser_id(member_proper_num);
 		tb_005vo.setUser_id(user_id);
-		// 기본 정보 등록
-		applicationService.basicRegist(tb_001vo, tb_005vo, tb_010vo);
+		if(applicationService.getCourtList(tb_005vo) != null) {
+			applicationService.basicDelete(tb_005vo);
+			applicationService.basicRegist(tb_001vo, tb_005vo, tb_010vo);
+		} else {
+			// 기본 정보 등록
+			applicationService.basicRegist(tb_001vo, tb_005vo, tb_010vo);
+		}
 		TB_005VO vo = applicationService.getApplicationBasicInfo(tb_005vo);
 		return "redirect:/application/applicationEducation?announce=" + vo.getAnnounce_proper_num() + "&fcltt_num=" + vo.getTrial_fcltt_proper_num() + "&detail=" + vo.getAplcn_dtls_proper_num();
 		}

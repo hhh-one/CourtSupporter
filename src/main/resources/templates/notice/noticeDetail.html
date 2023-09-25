@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<!--<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">-->
 <link rel="stylesheet" th:href="@{/css/noticeDetail.css}">
 <link rel="stylesheet" th:href="@{/css/layout-announceList-side.css}">
 
@@ -35,7 +35,7 @@
 								</colgroup>
 								<tbody>
 
-									<tr class="firstTh">
+									<tr class="firstTh tablethline">
 										<th class scope="row">제목</th>
 										<td class="left" colspan="5">[[${vo.notice_title}]]</td>
 									</tr>
@@ -74,8 +74,8 @@
 							<div th:if="${nextPost != null}">
 								<table class="nextTable">
 									<tbody>
-										<tr>
-											<td class="nextContent">다음글</td>
+										<tr class="nexttrline">
+											<th class="nextTitle">다음글</th>
 											<td colspan="3">
 												<a id="nextLink" class="nextTitle"
 													th:href="@{/notice/noticeDetail/(notice_proper_num=${nextPost.notice_proper_num})}"
@@ -89,7 +89,7 @@
 							<div th:unless="${nextPost != null}"> <!-- 다음 글 없을 때 -->
 								<table class="nextInfo">
 									<tbody>
-										<tr>
+										<tr class="nexttrline">
 											<td colspan="4" class="nextTxt">다음 글이 없습니다.</td>
 										</tr>
 									</tbody>
@@ -99,8 +99,8 @@
 							<div th:if="${previousPost != null}">
 								<table class="prevTable">
 									<tbody>
-										<tr>
-											<td class="prevContent">이전글</td>
+										<tr class="prevtrline">
+											<th class="prevTitle">이전글</td>
 											<td colspan="3">
 												<a id="prevLink" class="prevTitle"
 													th:href="@{/notice/noticeDetail/(notice_proper_num=${previousPost.notice_proper_num})}"
@@ -124,7 +124,7 @@
 
 						</div>
 						<div class="btnbox btnbox02" style="margin-bottom: 40px;">
-							<a href="noticeList" class="btnfb7" onclick="">목록</a>
+							<a th:href="@{/notice/noticeList}" class="btnfb7" onclick="">목록</a>
 							<th:block th:if="${member_role == 'ROLE_ADMIN'}">
 								<span class="adminmenu">
 									<a th:href="@{noticeModify(notice_proper_num=${vo.notice_proper_num})}"

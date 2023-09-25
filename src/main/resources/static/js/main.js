@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$("#notice > .container_head > .listbox > li > a").on("click", function() {
+	$("#notice > .container_head > .listbox > li > a").on("click", function(event) {
 		// 기본 동작 비활성화
 		event.preventDefault();
 

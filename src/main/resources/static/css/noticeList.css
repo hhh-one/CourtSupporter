@@ -1,9 +1,5 @@
-@font-face {
-  font-family: 'Noto Sans KR';
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;700;800;900&display=swap'); 
-  font-weight: normal; /* 폰트의 기본 굵기 (일반적으로는 normal로 설정) */
-  font-style: normal; /* 폰트의 기본 스타일 (일반적으로는 normal로 설정) */
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+body{ font-family: 'Noto Sans KR', sans-serif;}
 form  table tbody thead tr th td {
   margin: 0;
   padding: 0;
@@ -21,19 +17,29 @@ form  table tbody thead tr th td {
 	align-items: center; 
 	justify-content: center;
 }
-
+.titleImg {
+  background-image: url(/img/title_img_de.png);
+  background-size: 1100px;
+  background-position: 0px 90px;
+  height: 70px;
+  line-height: 70px;
+  font-size: 15px;
+  margin-top: 30px;
+  padding-left: 20px;
+  color : #08125E;
+}
 #content{
 	 width: 1280px;  
 	 position: relative;
 }
 
 #content{
-  margin-top: 20px;
-  line-height: 1;
+  /*margin-top: 20px;*/
+ /* line-height: 11px;*/
   font-size: 12px;
 }
 table th {
-background-color: #faf6ef;
+background-color: #e7edfd;  /* E6EEFF #f0f1f9; */ /* #f3f4fb;  #faf6ef;*/
 	
 }
 
@@ -49,6 +55,8 @@ table td {
 
 table th, 
 table td {
+  height: 26px;
+  font-size: 15px;
   padding-top: 9px;
   padding-bottom: 7px;
 }
@@ -106,7 +114,7 @@ input, select {
 
 #contentstitle{
   padding-bottom: 15px;
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid #081247;
 
 }
 
@@ -119,7 +127,7 @@ input, select {
 
 .board_search_text {
 	float: right;
-	padding-bottom: 10px;
+	padding-bottom: 20px;
 }
 
 .board_search_text input,
@@ -128,8 +136,8 @@ input, select {
    border: 1px #c4c4c4 solid;
    height: 30px;
    line-height: 30px;
-   color: #777777;
-   font-size: 15px;
+  /* color: #777777;*/
+   font-size: 14px;
    box-sizing: border-box;
    vertical-align: top;
 
@@ -159,6 +167,7 @@ input, select {
 }
 
 #contents .searchbox {
+  
   margin-bottom: 1em;
   text-align: right;
 }

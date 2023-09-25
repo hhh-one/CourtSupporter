@@ -157,6 +157,12 @@
 	    AND user_proper_num = #{user_proper_num}
 	</select>
 	
+	<select id="getUserInfo2">
+		select *
+		FROM TB_005
+	    WHERE announce_proper_num = #{announce_proper_num}
+	    AND user_proper_num = #{user_proper_num}
+	</select>
 	
 	<!-- 이전 글 조회 <![CDATA[<]]>  &lt;  &gt;  -->
 	<select id="getPrev" resultType="TB_002VO">

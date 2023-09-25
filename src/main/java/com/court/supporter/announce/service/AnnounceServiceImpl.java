@@ -195,6 +195,13 @@ public class AnnounceServiceImpl implements AnnounceService{
 		 announceMapper.announceFileDelete(announce_proper_num);		
 	}
 
+
+	@Override
+	public ArrayList<TB_005VO> getUserInfo2(String announce_proper_num, String user_proper_num) {
+		
+		return announceMapper.getUserInfo2(announce_proper_num, user_proper_num);
+	}
+
 	
 
 

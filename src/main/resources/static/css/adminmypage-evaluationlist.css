@@ -1,9 +1,5 @@
-@font-face {
-  font-family: 'Noto Sans KR';
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;700;800;900&display=swap'); 
-  font-weight: normal; /* 폰트의 기본 굵기 (일반적으로는 normal로 설정) */
-  font-style: normal; /* 폰트의 기본 스타일 (일반적으로는 normal로 설정) */
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+body{ font-family: 'Noto Sans KR', sans-serif;}
 .adminmypage-evaluationlist {
 	display: flex;
 	justify-content: center;
@@ -15,6 +11,17 @@
 	position: relative;
 }
 
+.titleImg {
+  background-image: url(/img/title_img_de.png);
+  background-size: 1100px;
+  background-position: 0px 90px;
+  height: 70px;
+  line-height: 70px;
+  
+  margin-top: 30px;
+  padding-left: 20px;
+  color : #08125E;
+}
 .user-applicationlist {
 	border-bottom: 3px solid black;
 }
@@ -41,7 +48,7 @@
 }
 
 .board_table th {
-	background-color: #f3f4fb;
+	background-color: #F0F2FE; /* #f3f4fb;*/
 	font-size: 16px;
 	color: #222222;
 	padding: 12px 0;
@@ -79,7 +86,7 @@
 	color: #FFF;
 	background: #ED7032;
 	text-align: center;
-	font-family: "ngB" !important;
+	/*font-family: "ngB" !important;*/
 	line-height: 15px;
 	border-radius: 2px;
 	position: absolute;
@@ -106,7 +113,7 @@
 .searchzonewrap {
 	width: 100%;
 	height: 120px;
-	background-color: #f3f4fb;
+	background-color: #F0F2FE;
 	margin-bottom: 20px;
 }
 
@@ -132,7 +139,7 @@
 	background: rgb(11, 38, 110);
 	color: white;
 	font-size: 13px;
-	font-family: "ngB" !important;
+	/*font-family: "ngB" !important;*/
 	height: 30px;
 	line-height: 30px;
 	width: 80px;

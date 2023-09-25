@@ -1,10 +1,5 @@
-@font-face {
-  font-family: 'Noto Sans KR';
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;700;800;900&display=swap'); 
-  font-weight: normal; /* 폰트의 기본 굵기 (일반적으로는 normal로 설정) */
-  font-style: normal; /* 폰트의 기본 스타일 (일반적으로는 normal로 설정) */
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+body{ font-family: 'Noto Sans KR', sans-serif;}
 * {
 	padding: 0;
 	margin: 0;
@@ -117,7 +112,7 @@ li {
 	/*font-size: 17px;*/
 	font-weight: bold;
 	/*padding-left: 20px;*/
-	background-color: #f3f4fb; /* #034273;*/
+	background-color: #F0F2FE; /* #034273;*/
 	color:  #525252;  /* white;*/
 }
 
@@ -183,7 +178,7 @@ li {
 	vertical-align: middle;
 	font-weight: bold;
 	/*padding-left: 20px;*/
-	background-color: #f3f4fb; /*#034273;*/
+	background-color: #F0F2FE; /*#034273;*/
 	color: #525252;  /* white;*/
 }
 
@@ -248,7 +243,7 @@ textarea {
 	height: 50px;
 	text-align: center;
 	font-weight: bold;
-	background-color:#f3f4fb;  /* #034273;*/
+	background-color:#F0F2FE;  /* #034273;*/
 	color: #525252;
 	height: 70px;
 }
@@ -299,7 +294,7 @@ textarea {
 	height: 50px;
 	text-align: center;
 	font-weight: bold;
-	background-color:  #f3f4fb;  /* #034273;*/
+	background-color:  #F0F2FE;  /* #034273;*/
 	color: #525252;
 	height: 70px;
 }
@@ -351,7 +346,7 @@ textarea {
 	height: 50px;
 	text-align: center;
 	font-weight: bold;
-	background-color:  #f3f4fb;  /* #034273;*/
+	background-color:  #F0F2FE;  /* #034273;*/
 	color: #525252;
 	height: 70px;
 }
@@ -402,7 +397,7 @@ textarea {
 	height: 50px;
 	text-align: center;
 	font-weight: bold;
-	background-color: #f3f4fb;  /* #034273;*/
+	background-color: #F0F2FE;  /* #034273;*/
 	color: #525252;
 	height: 70px;
 }
@@ -448,7 +443,7 @@ textarea {
 	vertical-align: middle;
 	font-weight: bold;
 	/*padding-left: 20px;*/
-	background-color:#f3f4fb;  /* #034273;*/
+	background-color:#F0F2FE;  /* #034273;*/
 	color:  #525252; /* white;*/
 }
 

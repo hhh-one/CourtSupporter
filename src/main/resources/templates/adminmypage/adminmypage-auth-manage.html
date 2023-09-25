@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<!--<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
+-->
 <link rel="stylesheet" th:href="@{/css/adminmypage-auth-manage.css}">
 <th:block th:replace="~{./include/layout :: setContent(~{::.adminmypage-auth-manage})}">
 	<div class="adminmypage-auth-manage">
@@ -16,8 +16,9 @@
 					<h3>권한 관리</h3>
 				</div>
 				<div class="auth-manage-list-title-wrap">
-					<h3 class="auth-manage-list-title">권한 관리</h3>
+					<!--<h3 class="auth-manage-list-title">권한 관리</h3>-->
 				</div>
+				<p class="titleImg">사용자 및 관리자 권한 관리 게시판입니다.</p>
 				<div class="search-wrap">
 					<div class="board_total">검색글수 :
 						<th:block>

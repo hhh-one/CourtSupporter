@@ -1,9 +1,5 @@
-@font-face {
-   font-family: 'Noto Sans KR', sans-serif; /* 폰트 패밀리 이름 지정 */
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap'); /* 폰트 파일의 경로 */
-  font-weight: normal; /* 폰트의 기본 굵기 (일반적으로는 normal로 설정) */
-  font-style: normal; /* 폰트의 기본 스타일 (일반적으로는 normal로 설정) */
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+
 a:hover {
 	text-decoration: none !important;
 }
@@ -12,17 +8,18 @@ body {
 }
  /* 로그인 스타일 */
  .color {
-	 background-color: rgb(0, 64, 128);
+	background-color: rgb(0, 64, 128);
  }
  
- .header-login-wrap {
+ .header-login-wrap {	
  	overflow: hidden;
  	border-bottom: 1px solid rgb(213, 213, 213);
+ 	/*background-color: white;*/
  }
 
- .login-wrap {
+ .login-wrap {	 
  	float: right;
- 	margin: 20px 30px;
+ 	margin: 17px 30px;
  	padding: 0 25px;
  	border-left: 1px solid #d1d1d1;
  	border-right: 1px solid #d1d1d1;
@@ -36,42 +33,42 @@ body {
 /***********************************************************************/
  /* 상단 메뉴 바 스타일 */
  .header-menu-wrap {
- 	/*background-color: white;*/
- 	background-image: url(/img/line.png);
- 	background-size: 1280px;
- 	box-shadow: 0px 3px 5px -2px rgba(0, 0, 0, 0.16);
+ 	background-color: white;
+ 	/*background-image: url(/img/headerLine_.png);
+ 	background-size: 1280px;*/
+ 	/*box-shadow: 0px 3px 5px -2px rgba(0, 0, 0, 0.16);*/
+ 	background-image: url(/img/mainheaderLine.png/);
+ 	background-size: 100% 330px;
  	position: fixed;
- 	top: 60px;
+ 	top:57px;
  	left: 0;
  	right: 0;
  	margin: 0 auto;
- 	width: 1280px;
+ 	/*width: 1280px;*/
  	height: 330px;
- 	z-index: 1000;
+ 	z-index: 1000; /*1000*/
  	overflow: hidden;
  }
-
  .logo-wrap {
  	float: left;
- 	padding-left: 20px;
+ 	padding-left: 300px;/*20px;*/
  }
-
  /* 로고 이미지 스타일 */
  .logo-wrap img {
  	width: auto;
  	height: 100px;
  }
-
  /* 메뉴 스타일 */
  .menu-wrap {
  	float: right;
+ 	padding-right: 300px;
  }
 
  .menus {
 	line-height: 100px;
 	height: 100px;
  	list-style: none;
- 	display: flex;
+ 	display: block; /*flex*/
  	margin: 0;
  	padding: 0;
  	justify-content: space-between;
@@ -81,11 +78,95 @@ body {
  .menus li span {
  	text-decoration: none;
  	color: #333;
- 	font-weight: bold;
+ 	font-weight: 500;
  	font-size: 20px;
- 	margin: 0 60px;
+ 	margin: 0 45px;
  }
-
+ 
+ .usermenus {
+	line-height: 100px;
+	height: 100px;
+ 	list-style: none;
+	display: block;
+	margin: 0;
+ 	padding: 0;
+ 	justify-content: space-between;
+ 	align-items: center;
+ }
+  .usermenus li span {
+ 	text-decoration: none;
+ 	color: #333;
+ 	font-weight: 500;
+ 	font-size: 20px;
+ 	margin: 0 45px;
+ }
+ 
+ 
+ /***********************************************************************/
+ /* menu underline */ 
+.line {	
+    display: inline-block;
+    position: relative;
+    line-height: 40px;
+}
+.line:after {
+    content:"";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: rgb(0, 64, 128); /* #233e8e;*/
+    transition: all .5s;
+}
+.line:before {
+    content:"";
+    position: absolute;
+    right: 50%;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: rgb(0, 64, 128); /* #233e8e;*/
+    transition: all .5s;
+}
+.line:hover:after {
+    width: 24%
+}
+.line:hover:before {
+    width: 24%
+}
+/***********************************************************************/
+.longline {
+    display: inline-block;
+    position: relative;
+    line-height: 40px;
+}
+.longline:after {
+    content:"";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color:  rgb(0, 64, 128); /* #233e8e;*/
+    transition: all .5s;
+}
+.longline:before {
+    content:"";
+    position: absolute;
+    right: 50%;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color:  rgb(0, 64, 128); /* #233e8e;*/
+    transition: all .5s;
+}
+.longline:hover:after {
+    width: 30%
+}
+.longline:hover:before {
+    width: 30%
+}
 
 /***********************************************************************/
  /* 상단 상세메뉴 바 스타일 */
@@ -93,12 +174,10 @@ body {
 	display: flex;
 	/*border-left: 2px solid rgb(219, 219, 219);*/
 	text-align: center;
-	font-family: 'Noto Sans KR', sans-serif;
-  	src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;700;800;900&display=swap'); 
-
+	font-family: 'Noto Sans KR', sans-serif;  	
  }
  
- .detail-menus h2 {
+/* .detail-menus h2 {
 	font-weight: 550;
 	font-size: 17px;
 	padding-bottom: 40px;
@@ -107,33 +186,58 @@ body {
 	text-align: center;
 	text-decoration: none;
 }
-
-
 .detail-menus h3 {
 	font-weight: 550;
 	font-size: 20px;
 	padding-bottom: 40px;
 	color: #333;
 	margin: 0 60px;
-}
-
-
+}*/
 .detail-menus li {
 	font-size: 17px;
-	margin-bottom: 20px;
-	font-weight: bold;
+	margin-bottom: 30px;
+	/*font-weight: bold;*/
 	text-align: center;
 	text-decoration: none;
 }
-
 .detail-menus li:hover {
 	color: rgb(0, 64, 128);
+	font-weight: bold;
 	cursor: pointer;
 }
-
 .detail-menus h2:hover {
 	color: rgb(0, 64, 128);
 	cursor: pointer;
+}
+.userdetailmenu01{	
+	padding-left: 58px;	
+}
+.userdetailmenu02{	
+	padding-left: 113px;	
+}
+.userdetailmenu03{	
+	padding-left: 74px;	
+}
+.userdetailmenu04{	
+	padding-left: 70px;	
+}
+.admindetailmenu01 {
+	padding-left: 52px;	
+}
+.admindetailmenu02 {
+	padding-left: 109px;	
+}
+.admindetailmenu03 {
+	padding-left: 110px;	
+}
+.courtdetailmenu01 {
+	padding-left: 49px;	
+}
+.courtdetailmenu02 {
+	padding-left: 90px;	
+}
+.courtdetailmenu03 {
+	padding-left: 95px;	
 }
 
 /***********************************************************************/
@@ -149,10 +253,12 @@ body {
  #footer-box {
  	margin: 0 auto;
  	width: 1280px;
+ 	min-height : 230px;
  	padding: 0 20px;
  }
 
  .logo-footer {
+	padding-top: 60px;
  	float: left;
  }
 
@@ -163,8 +269,9 @@ body {
 
  .footer-menu {
  	margin-top: 20px;
- 	padding: 0;
- }
+ 	/*padding: 0;*/
+	padding-top: 25px;
+}
 
  .footer-menu li {
  	display: inline-block;
@@ -176,6 +283,7 @@ body {
  }
 
  .footer-notice span {
+	margin-bottom:15px;
  	display: block;
  	font-weight: bold;
  	color: #000;
@@ -184,9 +292,11 @@ body {
  	/* 오른쪽으로 정렬 */
  }
 
- address {
+address {
  	display: block;
- 	margin-top: 15px;
+ 	margin : 0;
+ 	margin-top:15px;
+ 	font-size: 13px;
  	font-style: normal;
  	text-align: right;
  	/* 오른쪽으로 정렬 */

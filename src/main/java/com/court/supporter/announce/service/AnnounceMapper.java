@@ -41,5 +41,6 @@ public interface AnnounceMapper {
 	 public void announceDelete(String announce_proper_num); //공고 삭제
 	 public void announceFileDelete(String announce_proper_num); //file 삭제
 	 public String announce_authcheck(String member_proper_num); //관리자 여부 확인
+	 public ArrayList<TB_005VO> getUserInfo2(@Param("announce_proper_num") String announce_proper_num, @Param("user_proper_num") String user_proper_num);
 		
 }

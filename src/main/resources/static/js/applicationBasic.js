@@ -72,6 +72,38 @@ function selectChange() {
 */
 
 $(document).ready(function() {
+	var announce = document.getElementById("announce_proper_num").value;
+
+	$.ajax({
+		url: "../application/courtList",
+		method: "POST",
+		contentType: "application/json",
+		data: JSON.stringify({ announce_proper_num: announce }),
+		success: function(data) {
+			console.log(data);
+
+
+			
+			for (var i = 0; i < data.length; i++) {
+			$("#" + data[i].court_proper_num).remove();
+				var str = "";	
+				str += '<option value="' + data[i].court_proper_num + '" class="court_proper_num">' + data[i].court_name + '</option>';
+				$("#demo").append(str);
+				str = "";
+				str += '<input type="hidden" name="court_proper_num_list" value="' + data[i].court_proper_num + '">';
+				$("#demo").after(str);
+				
+			}
+
+
+		},
+		error: function(error) {
+			console.error(error);
+		}
+	});
+})
+
+$(document).ready(function() {
     document.getElementById("addressSearch").addEventListener("click", function(){ //주소입력칸을 클릭하면
         //카카오 지도 발생
         new daum.Postcode({

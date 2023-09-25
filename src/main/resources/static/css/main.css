@@ -1,15 +1,11 @@
-@font-face {
-  font-family: 'Noto Sans KR', sans-serif; /* 폰트 패밀리 이름 지정 */
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap'); /* 폰트 파일의 경로 */
-  font-weight: normal; /* 폰트의 기본 굵기 (일반적으로는 normal로 설정) */
-  font-style: normal; /* 폰트의 기본 스타일 (일반적으로는 normal로 설정) */
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+
 body {font-family: 'Noto Sans KR', sans-serif;}
 .main {
    display: flex;
    justify-content: center;
-   margin-top: 150px;
-   margin-bottom: 150px;
+   margin-top: 103px; /*150*/
+   margin-bottom: 50px;/*150px;*/
 }
 
 /***********************************/
@@ -39,31 +35,150 @@ height: 30px;
 
 /***********************************/
 .main-wrap {
-   width: 1280px;
+   /*width: 1280px;*/
+   width: 100%;
    text-align: center;
 }
-
+.mainimg {
+	/*height: 790px;*/
+	display: block;
+}
 a:link, a:visited { /* a링크 색깔 조정 */
   text-decoration:none;
   color:#555555;
 }
+.swiper-slide img {
+ /* width: 1280px;
+  height:600px; 
+ */
+  width: 100%;
+  height: 100%;
+} 
 
+/***********************************/
+.searchBox {
+	display: block;
+	margin: 0 auto;
+	margin-top: 36px;	
+	width: 40%;
+	height: 90px;
+	justify-content: center;
+	align-items: center;
+	padding-left: 200px;
+	/*margin-top: -70px;*/
+}
+.search1 {
+  display: block;
+  width: 550px;
+  height: 60px;
+  position: relative;
+}
+.input1 {
+  width: 100%;
+  height: 30px;
+  border: 3px solid rgb(11, 38, 110);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 16px;
+  font-weight: 500;
+}
+.img1 {
+  color: rgb(11, 38, 110);
+  position : absolute;
+  width: 17px;
+  top: 19px;
+  right: -8px; /*4px*/
+  margin: 0;
+}
+/**************************************************/
+.supporterinfoBox {
+	/*margin-top: -130px;*/
+	margin-left: 20px;
+	/*margin-bottom: 50px;*/
+	display: inline-block;
+	float: right;
+}
+.infoBox {	
+	/*display: inline-block;*/	
+	width: 270px;
+	height: 267px;
+	margin-right: 50px;	
+	border: 1px solid #d3d3d3;
+	border-radius: 10px;
+}
+
+.infotxt {
+	font-weight: 500;
+	font-size: 16px;
+	padding-top: 10px;
+	height: 20px;
+	line-height: 20px;
+	/*background-color: white;*/
+}
+.main_img01 {
+	width: 265px;	
+	height: 225px;
+	background-image: url('/img/main_small_img_01.jpg');
+	background-size: 265px;
+	border-radius: 10px;
+	text-align: center;
+}
+.main_img02 {
+	
+	height: 320px;
+	background-image: url('/img/main_img_02.jpg');
+	background-size: 100%;
+}
+.main_img03 {
+	
+	height: 320px;
+	background-image: url('/img/main_img_03.jpg');
+	background-size: 100%;
+}
+
+/**************************************************/
 .contentbox {
   padding: 0;
   position: relative;
   overflow: hidden;
 }
-
 .contentboxin {
   width: 100%;
+  margin: 0 auto;
+  margin-top: -183px;
+  padding-bottom : 50px;
   overflow: hidden;
   display: flex;
+  min-height: 330px;
+  background-color:#F0F2FE; /* #f5f6f9;*/
 }
 
+.recruittitle {
+	/*float: left;*/
+	text-align: left;
+	/*margin-top: 5px;*/
+	margin-bottom: 0px;
+	padding-left: 3px;
+}
 .recruitment {/* 재판조력자 신청 전체박스 */
-  position:relative;
-  width: 60%;
+  margin: 0 auto;
+  margin-top: 210px;
+ /* position:relative;*/
+  width: 1280px;
   height: 200px;
+
+ /* border: 1px solid #777;*/
+  align-items: center;
+  padding-left: 90px;
+  padding-right: 90px;
+  padding-bottom: 50px;  
+}
+.recruitment span {/* 재판조력자 신청박스 제목 */
+  font-size: 20px;
+  font-weight: 600;
+  color: #0e3a71;
+  line-height: 60px;
+  height: 60px;
   border :1px solid rgb(11, 38, 110);
 }
 
@@ -74,41 +189,76 @@ a:link, a:visited { /* a링크 색깔 조정 */
   position: relative;
 }
 
-
-.recruitment span {/* 재판조력자 신청박스 제목 */
-
-  line-height: 30px;
-}
-
 .flowbox {/* 재판조력자 신청 이미지 및 링크 */
+  margin-top: 10px;  
   overflow: hidden;
-  position: relative;
-  padding: 0 30px;
+  /*position: relative;*/
+  box-sizing: border-box;
   list-style-type: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); /* 여기서 200px는 각 요소의 최소 너비 */
-  grid-gap: 20px; /* 요소들 사이의 간격 조절 */
-  justify-items: center; /* 가로 가운데 정렬 (선택 사항) */
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  /*padding: 0 30px;*/
+  /* display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));  여기서 200px는 각 요소의 최소 너비 
+  grid-gap: 100px;  요소들 사이의 간격 조절 */
+  /*justify-items: center;  가로 가운데 정렬 (선택 사항) */
 }
-
+.flowbox li {
+	width: 120px;
+	height: 120px;
+	padding: 20px 30px 40px 30px;
+	border: 1px solid #cdcdcd;
+	border-radius: 5px;
+	background-color: white;
+}
 .recruitment_image {/* 재판조력자 신청 이미지박스 */
   float: left;
 }
 
-.recruitment_image > a > img {/* 재판조력자 신청 이미지 */
+.recruitment_image > li > img {/* 재판조력자 신청 이미지 */
   width: 110px;
 }
 
 .recruitment_image > a > h4 {/* 재판조력자 신청 텍스트 */
-  padding: 0;
+  padding: 10px;
   margin-top: 0;
+  margin-bottom: 10px;
+  
+}
+/**************************************************/
+.multiBox {
+	float: left;
+}
+.noticeBox {
+	margin-top: 30px;
+	padding-left: 200px;
+	/*width: 1280px;*/
+	height: 350px;
+	/*background-color: #f3f4fb;*/
+	/*border: 1px solid #333;*/
+	
+    /*padding-right: 50px;*/
+}
+#notice{/* 공지사항 전체 박스 */
+  float: left;
+  /*width: 47%;*/
+  width: 520px;
+  height: 300px;
+  position: relative;
+  /*border: 1px solid #d3d3d3;*//* #eee;*/
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 50px;
+  /*box-shadow: 5px 5px 5px 0px  #aaa;*/
 }
 
 .container_head {/* 공지사항 섹션 */
   display: block;
   width: auto;
   position: relative;
-  height: 100%;
+  height: 100%; 
 }
 
 #notice .container_head .listbox {/* 공지사항 섹션 중 상위 교차탭 제목 */
@@ -117,14 +267,19 @@ a:link, a:visited { /* a링크 색깔 조정 */
   margin-top: 0;
   margin-bottom: 0;
   padding-left: 0;
-  height: 20%;
+  height: 17%;
   width: 100%;
   float: left;
+
 }
 
 #notice .container_head .tabcontent {/* 공지사항 섹션 중 상위 교차탭 내용박스 */
   width: 100%;
   float: left;
+  padding-bottom: 10px;
+  background-color: white;
+  border: 1px solid #d3d3d3;
+  border-radius: 10px;
 }
 
 #notice .container_head .listbox > li {/* 공지사항 섹션 중 상위 교차탭 내용 리스트 */
@@ -136,33 +291,38 @@ a:link, a:visited { /* a링크 색깔 조정 */
 #notice .container_head .listbox > li > a {/* 공지사항 섹션 중 상위 교차탭 내용 리스트의 링크 */
   display:block;
   position:relative;
-  padding: 10px 14px 9px 15px;
+  /*padding: 10px 14px 9px 15px;*/
   line-height:24px;
   text-align:center;
   letter-spacing: 0;
-  font-size:19px;
+  font-size:18px;
   transition-property:color;
   transition-duration:200ms;
   transition-timing-function:ease-in-out;
 }
 
-a span {/* 공통 설정 */
+.listbox a span {/* 공통 설정 */
   cursor:pointer;
   display:inline-block;
   margin:0;
-  padding:0;
+  padding: 5px;
   box-sizing:border-box;
+ 
 }
-
+.title {
+   font-weight: bold;
+   color: #0e3a71;
+	
+}
 /* 공지사항 섹션 중 on off에 따른 설정 ~ */
 
 .container_head .listbox {
-  display:none;
+ /* display:none;*/
 }
 
 .container_head .listbox .on{
-  display:block;
-  box-shadow: 3px 0 3px  #aaa;
+  /*display:block;
+  box-shadow: 3px 0 3px  #aaa;*/
 }
 
 /* 기본적으로 모든 탭 내용 숨기기 */
@@ -185,21 +345,22 @@ a span {/* 공통 설정 */
 }
 
 #notice .container_head .tabcontent, #notice .container_head .tabcontent.on{
-  height: 80%;
+ /* height: 80%;*/
 }
 
 /* 공지사항 섹션 중 상위 교차탭 내용박스 세부 설정 */
 
 #notice .container_head .tabcontent ul {
-  color: aqua;
-  padding-left: 30px;
+  /*color: aqua;*/
+  /*padding-left: 30px;*/
+  padding: 5px 5px 5px 15px;
   text-align: justify;
   width: auto;
   margin-top: 0;
 }
 
 #notice .container_head .tabcontent ul li {
-  border-bottom: 1px solid #777;
+  border-bottom: 1px solid #d3d3d3;
   list-style: circle;
   display: flex;
   justify-content: space-between;
@@ -213,13 +374,13 @@ a span {/* 공통 설정 */
   color:#222222;
   text-overflow:ellipsis;
   line-height:30px;
-  font-size:20px;
+  font-size:16px;
   letter-spacing:-0.05em;
   margin-top: 3px;
   margin-bottom: 3px;
   height:30px;
   white-space: nowrap;
-  overflow:hidden;
+  /*overflow:hidden;*/
 }
 
 /* 공지사항 섹션 중 상위 교차탭 내용박스 - 날짜 */
@@ -239,12 +400,13 @@ a span {/* 공통 설정 */
   line-height: 30px;
   display: inline-block;
   text-align: center;
-  font-size: 1.063rem;
+  font-size: 15px;
   color: #6c7790;
   position: absolute;
-  right: -15px;
-  top: 8px;
+  right: -27px;
+  top: 0px;
 }
+
 /* 
 .arrow-th-right{
   width: 8px;
@@ -255,9 +417,4 @@ a span {/* 공통 설정 */
   transform: rotate(315deg);
   display: inline-block;
 } */
-
-.swiper-slide img {
-  width: 1280px;
-  height:600px; 
-} 
 

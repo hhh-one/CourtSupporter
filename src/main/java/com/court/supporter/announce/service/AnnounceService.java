@@ -39,5 +39,5 @@ import com.court.supporter.util.Criteria;
 	 
 	 public String announce_authcheck(String member_proper_num); //관리자 여부 확인
 
-	
+	public ArrayList<TB_005VO> getUserInfo2(String announce_proper_num, String member_proper_num);
 }

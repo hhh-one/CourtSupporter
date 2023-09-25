@@ -1,14 +1,23 @@
-@font-face {
-  font-family: 'Noto Sans KR';
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;700;800;900&display=swap'); 
-  font-weight: normal; /* 폰트의 기본 굵기 (일반적으로는 normal로 설정) */
-  font-style: normal; /* 폰트의 기본 스타일 (일반적으로는 normal로 설정) */
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+
 *{ padding: 0; margin: 0; }
 ul, li { list-style: none; } 
 *{ margin: 0 auto; }
 
 body{ font-family: 'Noto Sans KR', sans-serif;}
+.topmenuWrap {
+	width: 100%;
+	margin-top: 500px;
+}
+.topmenu {	
+	width: 100%;
+	height: 15px;
+	display:inline-block;
+}
+.quickmenu {
+	float: right;
+	overflow: hidden;
+}
 
 .announceList {
    display: flex;
@@ -20,6 +29,8 @@ body{ font-family: 'Noto Sans KR', sans-serif;}
    width: 1280px;
    position: relative;
 }
+/***********************************************/
+
 .announceInner{
 /*  display: block;
    margin: 0 auto; */
@@ -33,7 +44,7 @@ body{ font-family: 'Noto Sans KR', sans-serif;}
 
 .announceTitle{ /* rgb(11, 38, 110); */  
   font-size: x-large;
-  font-weight: 700;
+  font-weight: 600;
 /*  padding: 20px;*/
   padding-left: 5px;
   padding-bottom: 15px;
@@ -78,7 +89,7 @@ body{ font-family: 'Noto Sans KR', sans-serif;}
 	margin-bottom: 30px;
 	
 	height: 100px;
-	background-color: #f3f4fb;  /* f3f3fb #f4f5fa #EAEDF8 #F2F2F2; */
+	background-color: #F0F2FE;   /* f5f6f9  #f3f4fb; */ /* f3f3fb #f4f5fa #EAEDF8; */
 }
 .searchTxt {
   margin-top: 15px;
@@ -141,7 +152,7 @@ body{ font-family: 'Noto Sans KR', sans-serif;}
   align-items: center;
   justify-content: center;
    /*#081247;*/
-  background-color:  #f3f4fb; /* #F2F2F2;*/
+  background-color:  #F0F2FE; /* #F2F2F2;*/
   color:#515151;
 }
 .announceMenu > li {  /*.on:before*/
@@ -204,7 +215,7 @@ td {
   border-top: 2px solid #08125E;/* #081247;*/
   border-bottom: 1px solid #848484; /* #090C5F;*/ /* rgb(160, 160, 160);*/
   padding: 15px;
-  background-color:  #f3f4fb; /*  #F2F2F2;   #EAEBF8;*/
+  background-color:  #F0F2FE; /*  #F2F2F2;   #EAEBF8;*/
   box-sizing: border-box;
 /*  background-color: rgb(226, 226, 226);*/
   /*background-color:  rgb(214, 221, 238);*/
@@ -304,7 +315,7 @@ td {
   background-color:  rgb(11, 38, 110);
   
   vertical-align: middle;
-  font-family:"ngB" !important;
+  /*font-family:"ngB" !important;*/
 }
 .btn > a{
   color: white;
@@ -316,32 +327,31 @@ td {
 
 .registBox {
 	width: 80px;
-	/*display: block;	*/
-/*	 text-align: right;*/
+	display: block;	
+   text-align: center;
 	display: flex;
-  	justify-content: flex-end;	
+  	/*justify-content: flex-end;*/	
 }
 .registBtn{
   margin-top: 20px;
   margin-bottom: 20px;
-  padding-left: 11px; 
-  padding-right: 10px; 
+ /* padding-left: 11px; 
+  padding-right: 10px; */
   width: 70px;
   height: 30px;
   line-height: 29.5px;
 
   font-size: 14px;  
-  font-weight: 500;
-  border: none;
+  font-weight: 500;  
   background-color:  rgb(11, 38, 110);
   
   cursor: pointer;
   vertical-align: middle;
-  font-family:"ngB" !important;
+  color: white;
+  
 }
 .registBtn > a {
 	font-family: "Noto Sans KR", sans-serif;
-  color: white;
 }
 .registBtn > a:hover{
   text-decoration: none;

@@ -1,57 +1,55 @@
-
 //summernote
 $(document).ready(function() {
-    $('#summernote').summernote({
-		styleWithSpan: true,
-		codeviewFilter: false, // 코드 보기 필터 비활성화
-        codeviewIframeFilter: false, // 코드 보기 iframe 필터 비활성화
+  $('#summernote').summernote({
+  styleWithSpan: true,
+  codeviewFilter: false, // 코드 보기 필터 비활성화
+      codeviewIframeFilter: false, // 코드 보기 iframe 필터 비활성화
 
-		//width: 500,
-        height: 500, // 에디터 높이	      
-        minHeight: 500, // 최소 높이
-        maxHeight: null, // 최대 높이
-        focus: true, // 에디터 로딩 후 포커스를 맞출지 여부
-        lang: "ko-KR", // 한글 설정
-        placeholder: '최대 2000자까지 쓸 수 있습니다', // placeholder 설정
-        styleTags: [
-				    'p',  // 일반 문단 스타일 옵션
-				    {
-				        title: 'Blockquote',
-				        tag: 'blockquote',
-				        className: 'blockquote',
-				        value: 'blockquote',
-				    },  // 인용구 스타일 옵션
-				    'pre',  // 코드 단락 스타일 옵션
-				    {
-				        title: 'code_light',
-				        tag: 'pre',
-				        className: 'code_light',
-				        value: 'pre',
-				    },  // 밝은 코드 스타일 옵션
-				    {
-				        title: 'code_dark',
-				        tag: 'pre',
-				        className: 'code_dark',
-				        value: 'pre',
-				    },  // 어두운 코드 스타일 옵션
-				    'h1', 'h2', 'h3', 'h4', 'h5', 'h6',  // 제목 스타일 옵션
-				],
+  //width: 500,
+      height: 500, // 에디터 높이	      
+      minHeight: 500, // 최소 높이
+      maxHeight: null, // 최대 높이
+      focus: true, // 에디터 로딩 후 포커스를 맞출지 여부
+      lang: "ko-KR", // 한글 설정
+      placeholder: '최대 2000자까지 쓸 수 있습니다', // placeholder 설정
+      styleTags: [
+          'p',  // 일반 문단 스타일 옵션
+          {
+              title: 'Blockquote',
+              tag: 'blockquote',
+              className: 'blockquote',
+              value: 'blockquote',
+          },  // 인용구 스타일 옵션
+          'pre',  // 코드 단락 스타일 옵션
+          {
+              title: 'code_light',
+              tag: 'pre',
+              className: 'code_light',
+              value: 'pre',
+          },  // 밝은 코드 스타일 옵션
+          {
+              title: 'code_dark',
+              tag: 'pre',
+              className: 'code_dark',
+              value: 'pre',
+          },  // 어두운 코드 스타일 옵션
+          'h1', 'h2', 'h3', 'h4', 'h5', 'h6',  // 제목 스타일 옵션
+      ],
 
-        toolbar: [
-		          ['style', ['style']],
-		          ['font', ['bold', 'underline', 'clear']],
-		          ['color', ['color']],
-		          ['para', ['ul', 'ol', 'paragraph']],
-		          ['table', ['table']],
-		          ['insert', ['link', 'picture', 'video']],
-		          ['view', ['fullscreen', 'codeview', 'help']]
-        ],
-        fontSizes: [
-	                '8', '9', '10', '11', '12', '14', '16', '18',
-	                '20', '22', '24', '28', '30', '36', '50', '72'
-        ] // 글꼴 크기 옵션        
-    	
-    });
+      toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+      ],
+      fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
+	  fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
+	 
+  });
 });
 	
 $('.summernote').summernote('destroy');
@@ -209,31 +207,31 @@ if (firstSelect == '0103' || firstSelect == '0301') {
 
 
 
-	//파일 첨부 및 삭제
-	$(document).ready(function() {
-		$("a[name='file-delete']").on("click", function(e) {
-			e.preventDefault();
-			deleteFile($(this));
-		})
+//파일 첨부 및 삭제
+$(document).ready(function() {
+	$("a[name='file-delete']").on("click", function(e) {
+		e.preventDefault();
+		deleteFile($(this));
+	})
+});
+	  
+function addFile(){ // id='fileList'
+	
+	 var str = "<div><input type='file' name='file' class='sel' multiple >";
+	    str += "<a href='#this' name='file-delete' class='delete'>삭제</a></div>";
+	   
+	
+	$("#fileList").append(str);
+	$("a[name='file-delete']").on("click", function(e) {
+		e.preventDefault();
+		deleteFile($(this));
 	});
-		  
-	function addFile(){ // id='fileList'
-		
-		 var str = "<div><input type='file' name='file' class='sel' multiple >";
-		    str += "<a href='#this' name='file-delete' class='delete'>삭제</a></div>";
-		   
-		
-		$("#fileList").append(str);
-		$("a[name='file-delete']").on("click", function(e) {
-			e.preventDefault();
-			deleteFile($(this));
-		});
-	}
-	
-	function deleteFile(obj) {
-		obj.parent().remove();		
-	}
-	
+}
+
+function deleteFile(obj) {
+	obj.parent().remove();		
+}
+
 	
   //작성확인
   let registBtn = document.getElementById("registBtn");  
@@ -270,13 +268,13 @@ if (firstSelect == '0103' || firstSelect == '0301') {
   }    	
 	
 	
-	
-	//작성취소 - 목록으로 돌아가기
-	let listBtn = document.getElementById("listBtn");
-	listBtn.onclick = () => {
-		event.preventDefault();
-		window.location.href = "/announce/announceList";
-	}
-	
-	
+
+//작성취소 - 목록으로 돌아가기
+let listBtn = document.getElementById("listBtn");
+listBtn.onclick = () => {
+	event.preventDefault();
+	window.location.href = "/announce/announceList";
+}
+
+
 	

@@ -1,10 +1,6 @@
 @charset "UTF-8";
-@font-face {
-  font-family: 'Noto Sans KR';
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;700;800;900&display=swap'); 
-  font-weight: normal; /* 폰트의 기본 굵기 (일반적으로는 normal로 설정) */
-  font-style: normal; /* 폰트의 기본 스타일 (일반적으로는 normal로 설정) */
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+body{ font-family: 'Noto Sans KR', sans-serif;}
 form  table tbody thead tr th td {
   margin: 0;
   padding: 0;
@@ -98,7 +94,7 @@ input, select {
 
 #contentstitle{
   padding-bottom: 15px;
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid #081247;
 }
 
 #contentstitle > .noticetitle,
@@ -114,15 +110,14 @@ input, select {
   line-height: 1.3em;
 }
 
-
 #contents .tablebox{
   position: relative;
 }
 
 #contents .tablebox table{
   width: 100%;
-  border-top: 2px solid #545861;
-  border-bottom: 2px solid #545861;
+  /*border-top: 1px solid #545861;
+  border-bottom: 1px solid #545861;*/
 }
 
 table{
@@ -131,15 +126,17 @@ table{
 }
 
 th {
-	background-color: #faf6ef;
+	height: 20px;
+	background-color: #e7edfd;  /* #faf6ef;*/
 }
 
 #contents .tablebox table tr.firstTh th {
   border-bottom: 1px solid #e3e3e3;
+  height: 20px;
 }
 
 #contents .tablebox table th,
-#contents .tablebox table td {
+#contents .tablebox table td { 
   padding: 1em;
   display: table-cell;
   vertical-align: middle;
@@ -154,25 +151,26 @@ th {
   font-weight: normal;
   display: table-cell;
 }
-
+.tablethline {
+	border-top: 2px solid #081247;
+}
 #contents .tablebox table th {
-  padding-top: 9px;
-  padding-bottom: 7px;
+/*  padding-top: 5px;
+  padding-bottom: 5px;*/
 }
 
 #contents .tablebox table td {
-  padding-top: 9px;
-  padding-bottom: 7px;
+  /*padding-top: 9px;
+  padding-bottom: 7px;*/
   text-align: center;
   margin: 0;
   border-bottom: 1px solid #e3e3e3;
   color: #666;
 }
 
-
 #contents .tablebox table .contents {
   padding: 1.5em 0;
-  border-bottom: 1px solid #545861;
+  /*border-bottom: 1px solid #545861;*/
   line-height: 1.8em;
 }
 
@@ -184,9 +182,24 @@ th {
   margin: 2em 0;
   border-top: 1px solid #545861;
 }
+.nextTitle {
+	width: 20%;
+	font-weight: 500;
+}
+.prevTitle {
+	width: 20%;
+	font-weight: 500;
+}
 
-
-
+.nexttrline .nextContent {
+	padding-left: 50px;
+}
+.nexttrline {	
+	border-top: 2px solid #081247;
+}
+.prevtrline {
+	border-bottom: 2px solid #081247;
+}
 .btnbox{text-align: center; margin-top: 40px;}
 .btnbox .btnfb7{background-color: rgb(11, 38, 110); font-size: 18px;color: #FFF; height: 42px; line-height: 42px; display: inline-block; padding: 0 25px; vertical-align: middle; font-family:"ngB" !important;}
 .btnbox .btn4d5{background-color: #4d515b; font-size: 18px;color: #FFF; height: 42px; line-height: 42px; display: inline-block; padding: 0 25px; vertical-align: middle; font-family:"ngB" !important;}

@@ -1,9 +1,5 @@
-@font-face {
-  font-family: 'Noto Sans KR';
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;700;800;900&display=swap'); 
-  font-weight: normal; /* 폰트의 기본 굵기 (일반적으로는 normal로 설정) */
-  font-style: normal; /* 폰트의 기본 스타일 (일반적으로는 normal로 설정) */
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+body{ font-family: 'Noto Sans KR', sans-serif;}
 
 /* 공통 */
 .basic, .education, .work, .certificate, .attachment, .complete {
@@ -32,8 +28,7 @@ html,body,h1,h2,h3,h4,h5,h6,p,ul,li,dt,dl,dd,a,img, input,ol,fieldset, form, lab
 article, aside, canvas, details, embed,figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video,div, span,
 object, iframe,abbr, address, big, cite, code,del, dfn, em, img, ins, small, strike, strong, sub, sup, var, center{
 	margin:0; padding:0;border: 0;font-size: 100%;vertical-align: baseline;
-	font-family: 'Noto Sans KR', sans-serif;
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+	font-family: 'Noto Sans KR', sans-serif;  
 	}
 
 ul, dl{list-style:none;}
@@ -43,7 +38,7 @@ img, input, select{border:none; vertical-align:middle;}
 .ellipsis{width:100%; overflow:hidden; text-overflow:ellipsis;white-space:nowrap;}
 h1,h2,h3,h4,h5,h6,strong,b,th {
 	font-family: 'Noto Sans KR', sans-serif;
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');letter-spacing:-1px;font-weight:normal;
+  letter-spacing:-1px;font-weight:normal;
   }
 /* table */
 table {border-collapse:collapse; border-spacing: 0;}
@@ -56,7 +51,7 @@ fieldset, blockquote, iframe, button{ border:none; }
 .tableT{margin-top: 5px; border-top: 1px #535353 solid;border-bottom: 1px #535353 solid;width: 100%;}
 .tableT th{font-weight: bold; font-size: 16px;background-color: #f3f3f3;color: #555555;padding: 12px 2px;border-bottom: 1px #dbdbdb solid;letter-spacing: -0.6px;word-break: keep-all;
 font-family: 'Noto Sans KR', sans-serif;
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');}
+  }
 .tableT td{color: #555555;padding: 12px 3px 12px 15px;text-align: left;border-bottom: 1px #dbdbdb solid;letter-spacing: -0.6px;word-break: keep-all;font-size: 14px;color: #777777;}
 .tableT .bB0{border-bottom: 0;}
 
@@ -68,7 +63,7 @@ font-family: 'Noto Sans KR', sans-serif;
 .popup_btn{
 	float: right; display: inline-block;background: rgb(11,38,110);color: #FFF;font-size: 13px;height: 30px; margin-bottom: 5px; line-height: 30px;width: 100px;text-align: center;vertical-align: top;
 	font-family: 'Noto Sans KR', sans-serif;
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');}
+ }
 .board_table{width: 100%;border-top: 1px #333333 solid;border-bottom: 1px #959595 solid;margin-top: 5px;}
 .board_table th{font-weight: bold; background-color: #f3f3f3; font-size: 16px;color: #555555;padding: 12px 0;border-bottom: 1px #959595 solid;letter-spacing: -0.7px;}
 .board_table td{font-size: 15px;color: #555555;padding: 10px 0;border-bottom: 1px #ebebeb solid;text-align: center;word-break: keep-all;letter-spacing: -0.7px;}
@@ -88,18 +83,18 @@ font-family: 'Noto Sans KR', sans-serif;
 .filePlusBtn, .OtFilePlusBtn, .CoFilePlusBtn1, .CoFilePlusBtn2, .CoFilePlusBtn3, .PeFilePlusBtn2, .PeFilePlusBtn3, .PeFilePlusBtn4{
 	background-color: rgb(11, 38, 110);display: inline-block;padding: 0 10px;vertical-align: middle;height: 30px;
 	font-family: 'Noto Sans KR', sans-serif;
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+ 
 }
 .fileDeleteBtn{
 	background-color: rgb(11, 38, 110);display: inline-block;padding: 0 5px;vertical-align: middle;height: 30px;
 	font-family: 'Noto Sans KR', sans-serif;
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+  
 }
 .file-label {position: relative;}
 .fileAddBtn {
 	background-color: rgb(11, 38, 110);display: inline-block;padding:7px 10px 3px;color: #fff;height: 20px;vertical-align: middle;cursor: pointer;
 	font-family: 'Noto Sans KR', sans-serif;
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+  
 }
 .addFile{width: 130px;}
 .file-container{margin: 5px}
@@ -107,7 +102,7 @@ font-family: 'Noto Sans KR', sans-serif;
 .PeFileDeleteBtn1, .fileDeleteBtn2{
 	background-color: rgb(11, 38, 110);color: #fff; width: 80px;height: 30px;
 	font-family: 'Noto Sans KR', sans-serif;
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+ 
 	}
 
 
@@ -128,12 +123,12 @@ font-family: 'Noto Sans KR', sans-serif;
 .btnbox .btnfb7{
 	background-color: rgb(11, 38, 110);font-size: 18px;color: #FFF;height: 42px;line-height: 42px;display: inline-block;padding: 0 25px;vertical-align: middle;
 	font-family: 'Noto Sans KR', sans-serif;
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+  
 }
 .btnbox .btn4d5{
 	background-color: #4d515b;font-size: 18px;color: #FFF;height: 42px;line-height: 42px;display: inline-block;padding: 0 25px;vertical-align: middle;
 	font-family: 'Noto Sans KR', sans-serif;
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+  
 }
 .btnbox02 input{width: 129px;box-sizing: border-box;}
 .small_s{font-size: 14px;color: #666666;vertical-align: middle;}
@@ -142,19 +137,19 @@ font-family: 'Noto Sans KR', sans-serif;
 .dninfobox dt{
 	font-size: 17px;color: #36536a;margin-bottom: 3px;
 	font-family: 'Noto Sans KR', sans-serif;
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+  
 }
 .dninfobox dd{color: #777777;font-size: 16px;margin-bottom: 5px;}
 .dninfobox dd:last-child{margin-bottom: 0;}
 .agreetxt{
 	font-size: 15px;color: #707070;text-align: right;margin: 10px 0 30px;
 	font-family: 'Noto Sans KR', sans-serif;
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+  
 }
 .p_text div{
 	font-size: 15px;color: #565656;
 	font-family: 'Noto Sans KR', sans-serif;
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+ 
 }
 .popT .uptr04 input{width: 13%;}
 

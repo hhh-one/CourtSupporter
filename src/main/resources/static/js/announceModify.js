@@ -1,4 +1,3 @@
-
 //summernote
 $(document).ready(function() {
   $('#summernote').summernote({
@@ -40,17 +39,16 @@ $(document).ready(function() {
       toolbar: [
             ['style', ['style']],
             ['font', ['bold', 'underline', 'clear']],
+            ['fontsize', ['fontsize']],
             ['color', ['color']],
             ['para', ['ul', 'ol', 'paragraph']],
             ['table', ['table']],
             ['insert', ['link', 'picture', 'video']],
             ['view', ['fullscreen', 'codeview', 'help']]
       ],
-      fontSizes: [
-                '8', '9', '10', '11', '12', '14', '16', '18',
-                '20', '22', '24', '28', '30', '36', '50', '72'
-      ] // 글꼴 크기 옵션        
-    
+      fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
+	  fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
+	 
   });
 });
 
@@ -204,8 +202,72 @@ if (!secondSelect) {
   return false;
 }
 }*/
+/////////////////////////////////////////////////////////////////////////
 
-/*
+
+
+// 파일 입력 필드
+const fileInput = document.getElementById('files');
+
+// 파일 이름을 나타낼 영역
+const fileNamesDisplay = document.getElementById('fileNames');
+
+// 파일 입력 필드의 변경 이벤트 리스너 추가
+fileInput.addEventListener('change', () => {
+	// 선택된 파일 목록 가져오기
+	const selectedFiles = fileInput.files;
+
+	// 파일 이름을 나타내는 문자열 초기화
+	let fileNames = '';
+
+	// 선택된 각 파일의 이름을 문자열에 추가
+	for (let i = 0; i < selectedFiles.length; i++) {
+		fileNames += selectedFiles[i].name + '<br>';
+	}
+
+	// 파일 이름을 나타낼 영역 업데이트
+	fileNamesDisplay.innerHTML = fileNames;
+});
+/////////////////////////////////////////////////////////////////////////
+
+//파일 첨부
+var contentDetail = document.getElementById("contentDetail");
+contentDetail.innerHTML = contentDetail.innerHTML.replace(/\n/g, "<br>");
+
+//파일 첨부 및 삭제
+$(document).ready(function() {
+	$("a[name='file-delete']").on("click", function(e) {
+		e.preventDefault();
+		deleteFile($(this));
+	})
+});
+	  
+function addFile(){ // id='fileList'
+	
+	 var str = "<div><input type='file' name='file' class='sel' multiple >";
+	    str += "<a href='#this' name='file-delete' class='delete'>삭제</a></div>";
+	   
+	$("#fileList").append(str);
+	$("a[name='file-delete']").on("click", function(e) {
+		e.preventDefault();
+		deleteFile($(this));
+	});
+}
+
+function deleteFile(obj) {
+	obj.parent().remove();		
+}
+/////////////////////////////////////////////////////////////////////////
+
+ //작성취소 - 목록으로 돌아가기
+let listBtn = document.getElementById("listBtn");
+listBtn.onclick = () => {
+	event.preventDefault();
+	window.location.href = "/announce/announceList";
+}
+
+/////////////////////////////////////////////////////////////////////////
+
 //등록 전 확인
 let modifyBtn = document.getElementById("modifyBtn");  
   modifyBtn.onclick = () => {
@@ -239,42 +301,4 @@ let modifyBtn = document.getElementById("modifyBtn");
       return true;
     }
   }    
- */ 
-  
- //작성취소 - 목록으로 돌아가기
-let listBtn = document.getElementById("listBtn");
-listBtn.onclick = () => {
-	event.preventDefault();
-	window.location.href = "/announce/announceList";
-}
-
-/*
-//파일 첨부
-var contentDetail = document.getElementById("contentDetail");
-contentDetail.innerHTML = contentDetail.innerHTML.replace(/\n/g, "<br>");
-
-//파일 첨부 및 삭제
-$(document).ready(function() {
-	$("a[name='file-delete']").on("click", function(e) {
-		e.preventDefault();
-		deleteFile($(this));
-	})
-});
-	  
-function addFile(){ // id='fileList'
-	
-	 var str = "<div><input type='file' name='file' class='sel' multiple >";
-	    str += "<a href='#this' name='file-delete' class='delete'>삭제</a></div>";
-	   
-	$("#fileList").append(str);
-	$("a[name='file-delete']").on("click", function(e) {
-		e.preventDefault();
-		deleteFile($(this));
-	});
-}
-
-function deleteFile(obj) {
-	obj.parent().remove();		
-}
-
-*/
+ 

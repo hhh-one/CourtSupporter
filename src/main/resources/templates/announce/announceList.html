@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" th:href="@{/css/page.css}">
 <link rel="stylesheet" th:href="@{/css/announceList.css}">
 <link rel="stylesheet" th:href="@{/css/layout-announceList-side.css}">
-<link rel="stylesheet" th:href="@{/css/page.css}">
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
@@ -18,15 +14,23 @@
 <!--<script th:src="@{/js/announceList.js}"></script>-->
 
 <th:block th:replace="~{./include/layout :: setContent(~{:: .announceList})}">
-
+<!--	<div class="topmenuWrap">
+		<div class="topmenu">
+			<ul class="quickmenu">
+				<li><a href="/">Home &nbsp > &nbsp </a></li>
+				<li><a href="/announce/announceList">모집공고</a></li>
+			</ul>
+		</div>
+	</div>	-->
 	<div class="announceList"> <!-- 가장 큰 박스 -->
-
+		
 		<div class="announceList-wrap"> <!-- 다음으로 감싸는 박스-->
 
 			<div> <!--sidebar-->
 				<th:block th:replace="~{./include/layout-announceList-side}"></th:block>
 			</div>
-
+			
+			
 			<div class="announceInner"> <!-- 공고게시판 -->
 
 				<div class="announceTitle"> <!-- 게시판 타이틀 -->
@@ -159,9 +163,7 @@
 
 					<th:block th:if="${auth == 'ROLE_ADMIN'}">
 						<div class="registBox"  > <!--  float 쓰면 이동이 안 됨-->
-							<button class="registBtn" id="registBtn">
-								<a href="/announce/announceReg">글 작성</a>
-							</button>
+							<a href="/announce/announceReg" class="registBtn" id="registBtn">글 작성</a>
 						</div>										
 
 					</th:block>

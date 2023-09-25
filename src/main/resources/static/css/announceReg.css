@@ -1,9 +1,5 @@
-@font-face {
-  font-family: 'Noto Sans KR';
-  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;700;800;900&display=swap'); 
-  font-weight: normal; /* 폰트의 기본 굵기 (일반적으로는 normal로 설정) */
-  font-style: normal; /* 폰트의 기본 스타일 (일반적으로는 normal로 설정) */
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+
 *{ padding: 0; margin: 0; }
 ul, li { list-style: none; } 
 *{ margin: 0 auto; }
@@ -30,7 +26,7 @@ body{font-family: 'Noto Sans KR', sans-serif;}
 
 .announceTitle{
   font-size: x-large;
-  font-weight: 550;
+  font-weight: 600;
   padding-left: 5px;
   padding-bottom: 15px;
   border-bottom: 3px solid #081247; /* #424242;*/
@@ -80,7 +76,7 @@ body{font-family: 'Noto Sans KR', sans-serif;}
   color: #424242;/* #424d65 */  /* #332E3B */
   /*border-top: 0.3px solid #AEAFBbF; */  /*#BDBDBD;*/
   /*border-bottom: 0.3px solid #AEAFBF; */
-  background-color: #f3f4fb; /* F2F2F2 #EAEBF8;*/ /*#E8E8E9; */
+  background-color: #F0F2FE /*  #f3f4fb; F2F2F2 #EAEBF8;*/ /*#E8E8E9; */
 }
 .board td {
    /*border-top: 0.3px solid #AEAFBF;
