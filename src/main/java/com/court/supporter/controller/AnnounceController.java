@@ -201,6 +201,7 @@ public class AnnounceController {
     System.out.println(cri.getTrial_fcltt_proper_num());
     model.addAttribute("list", list);
     model.addAttribute("pageVO", pageVO);
+    model.addAttribute("total", total);
 
     if (jwt != null) { // 목록 조회시 로그인이 된 경우
       Authentication authentication = jwtValidator.getAuthentication(jwt);
