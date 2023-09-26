@@ -9,6 +9,7 @@ import javax.mail.internet.MimeMessage.RecipientType;
 
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import com.court.supporter.command.TB_001VO;
@@ -59,21 +60,30 @@ public class UserServiceImpl implements UserService {
   public String sendMail(TB_001VO tb_001vo) {
     int number = (int) (Math.random() * 90000) + 100000;
     MimeMessage message = javaMailSender.createMimeMessage();
+    MimeMessageHelper helper = new MimeMessageHelper(message, "utf-8");
+
     try {
-      message.setRecipients(MimeMessage.RecipientType.TO, tb_001vo.getUser_email());
-      message.setFrom("904lhw@gmail.com");
-      message.setSubject("[재판조력자선발] 메일 인증");
+      // message.setRecipients(MimeMessage.RecipientType.TO,
+      // tb_001vo.getUser_email());
+
+      // // message.setFrom("904lhw@gmail.com");
+      // message.setSubject("[재판조력자선발] 메일 인증");
+      helper.setTo(tb_001vo.getUser_email());
 
       String body = "";
       body += "<h3>요청하신 인증번호입니다.</h3>";
       body += "<h1>" + number + "</h1>";
       body += "<h3>감사합니다.</h3>";
 
-      message.setText(body, "UTF-8", "html");
+      helper.setSubject("[재판조력자선발] 메일 인증번호는 " + number + "입니다");
+      // HTML 형식으로 메일 내용 작성
+      helper.setText(body, true);
+      javaMailSender.send(message);
+
+      // message.setText(body, "UTF-8", "html");
     } catch (MessagingException e) {
       e.printStackTrace();
     }
-    javaMailSender.send(message);
     return String.valueOf(number);
   }
 
@@ -81,40 +91,52 @@ public class UserServiceImpl implements UserService {
       throws MessagingException, UnsupportedEncodingException {
 
     MimeMessage message = javaMailSender.createMimeMessage();
+    MimeMessageHelper helper = new MimeMessageHelper(message, "utf-8");
 
-    message.addRecipients(RecipientType.TO, tb_001VO.getUser_email());// 보내는 대상
-    message.setSubject(tb_005VO.getAnnounce_title() + "재판조력자 선발 결과");// 제목
+    // message.addRecipients(RecipientType.TO, tb_001VO.getUser_email());// 보내는 대상
+    // message.setSubject(tb_005VO.getAnnounce_title() + "재판조력자 선발 결과");// 제목
+    try {
+      String test = "";
+      String result = "";
+      if (aplicn_dtls_sts.equals("04")) {
+        test = "1차평가";
+        result = "서류반려(1차 불합격)";
+      } else if (aplicn_dtls_sts.equals("05")) {
+        test = "1차평가";
+        result = "1차합격";
+      } else if (aplicn_dtls_sts.equals("07")) {
+        test = "최종평가";
+        result = "불합격(최종 불합격)";
+      } else if (aplicn_dtls_sts.equals("08")) {
+        test = "최종평가";
+        result = "최종합격";
+      }
 
-    String test = "";
-    String result = "";
-    if (aplicn_dtls_sts.equals("04")) {
-      test = "1차평가";
-      result = "서류반려(1차 불합격)";
-    } else if (aplicn_dtls_sts.equals("05")) {
-      test = "1차평가";
-      result = "1차합격";
-    } else if (aplicn_dtls_sts.equals("07")) {
-      test = "최종평가";
-      result = "불합격(최종 불합격)";
-    } else if (aplicn_dtls_sts.equals("08")) {
-      test = "최종평가";
-      result = "최종합격";
+      String msgg = "";
+      msgg += "<div style='margin:100px;'>";
+      msgg += "<div align='center' style='border:2px solid black; font-family:verdana; height: 230px'>";
+      msgg += "<h1> " + tb_001VO.getUser_name() + "님 안녕하세요</h1>";
+      msgg += "<p>재판조력자 선발 담당자입니다.</p>";
+      msgg += "<p>" + tb_005VO.getAnnounce_title() + "에 대한 신청 결과를 알려드립니다</p>";
+      msgg += "<br>";
+      msgg += "<h3 style='color:blue;'>" + test + " 결과</h3>";
+      msgg += "<h1 style='color:red;'>" + result + "입니다.</h1>";
+      msgg += "</div>";
+      msgg += "</div>";
+
+      helper.setTo(tb_001VO.getUser_email());
+      helper.setSubject(tb_005VO.getAnnounce_title() + "재판조력자 선발 결과");
+      // HTML 형식으로 메일 내용 작성
+      helper.setText(msgg, true);
+      javaMailSender.send(message);
+    } catch (Exception e) {
+      e.printStackTrace();
     }
 
-    String msgg = "";
-    msgg += "<div style='margin:100px;'>";
-    msgg += "<div align='center' style='border:2px solid black; font-family:verdana; height: 230px'>";
-    msgg += "<h1> " + tb_001VO.getUser_name() + "님 안녕하세요</h1>";
-    msgg += "<p>재판조력자 선발 담당자입니다.</p>";
-    msgg += "<p>" + tb_005VO.getAnnounce_title() + "에 대한 신청 결과를 알려드립니다</p>";
-    msgg += "<br>";
-    msgg += "<h3 style='color:blue;'>" + test + " 결과</h3>";
-    msgg += "<h1 style='color:red;'>" + result + "입니다.</h1>";
-    msgg += "</div>";
-    msgg += "</div>";
-    message.setText(msgg, "utf-8", "html");
-    message.setFrom(new InternetAddress("CourtSupporter@naver.com", "CourtSupporter_ADMIN"));// 보내는 사람
-    javaMailSender.send(message);
+    // message.setText(msgg, "utf-8", "html");
+    // message.setFrom(new InternetAddress("CourtSupporter@naver.com",
+    // "CourtSupporter_ADMIN"));// 보내는 사람
+
     return message;
   }
 
