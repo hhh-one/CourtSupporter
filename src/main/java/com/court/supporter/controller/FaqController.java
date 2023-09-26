@@ -37,218 +37,214 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class FaqController {
 
-	@Autowired
-	@Qualifier("faqService")
-	private faqService faqService;
+  @Autowired
+  @Qualifier("faqService")
+  private faqService faqService;
 
-	@Autowired
-	@Qualifier("adminMypageService")
-	private AdminMypageService adminMypageService;
+  @Autowired
+  @Qualifier("adminMypageService")
+  private AdminMypageService adminMypageService;
 
-	private final JwtValidator jwtValidator;
+  private final JwtValidator jwtValidator;
 
-	// faq 목록
-	@GetMapping("/faqList")
-	public String faqList(Model model, Criteria cri, HttpServletRequest request) {
+  // faq 목록
+  @GetMapping("/faqList")
+  public String faqList(Model model, Criteria cri, HttpServletRequest request) {
 
-		// 로그인 기능을 만들어서 계정 분류에 따라 버튼이 다르게 나와야함
-		// 임시 로그인
-		String writer = "aaa";
+    ArrayList<TB_004VO> list = faqService.faqList(cri);
 
-		ArrayList<TB_004VO> list = faqService.faqList(writer, cri);
+    int total = faqService.getTotal(cri);
+    PageVO pageVO = new PageVO(cri, total);
 
-		int total = faqService.getTotal(writer, cri);
-		PageVO pageVO = new PageVO(cri, total);
+    model.addAttribute("total", total);
+    model.addAttribute("list", list);
+    model.addAttribute("pageVO", pageVO);
 
-		model.addAttribute("total", total);
-		model.addAttribute("list", list);
-		model.addAttribute("pageVO", pageVO);
+    System.out.println(pageVO.toString());
+    System.out.println(total);
 
-		System.out.println(pageVO.toString());
-		System.out.println(total);
+    // 시큐리티
+    HttpSession session = request.getSession();
+    String jwt = (String) session.getAttribute("token");
+    if (jwt != null) {
+      Authentication authentication = jwtValidator.getAuthentication(jwt);
+      DefaultUserDetails userDetails = (DefaultUserDetails) authentication.getPrincipal();
+      String member_proper_num = userDetails.getUsername();
+      String member_role = adminMypageService.adminmypage_authcheck(member_proper_num);
+      if (member_role.equals("ROLE_ADMIN")) {
 
-		// 시큐리티
-		HttpSession session = request.getSession();
-		String jwt = (String) session.getAttribute("token");
-		if (jwt != null) {
-			Authentication authentication = jwtValidator.getAuthentication(jwt);
-			DefaultUserDetails userDetails = (DefaultUserDetails) authentication.getPrincipal();
-			String member_proper_num = userDetails.getUsername();
-			String member_role = adminMypageService.adminmypage_authcheck(member_proper_num);
-			if (member_role.equals("ROLE_ADMIN")) {
+        model.addAttribute("member_role", member_role);
+      }
 
-				model.addAttribute("member_role", member_role);
-			}
+    }
+    return "faq/faqList";
+  }
 
-		}
-		return "faq/faqList";
-	}
+  // faq 글 내용
+  @GetMapping("/faqDetail")
+  public String faqDetail(@RequestParam("faq_proper_num") String faq_proper_num, Model model,
+      HttpServletRequest request) {
 
-	// faq 글 내용
-	@GetMapping("/faqDetail")
-	public String faqDetail(@RequestParam("faq_proper_num") String faq_proper_num, Model model,
-			HttpServletRequest request) {
+    TB_004VO vo = faqService.faqDetail(faq_proper_num);
 
-		TB_004VO vo = faqService.faqDetail(faq_proper_num);
-		
-		// 이전 글과 다음 글 조회
-        TB_004VO previousPost = faqService.faqGetPrev(faq_proper_num);
-        TB_004VO nextPost = faqService.faqGetNext(faq_proper_num);
+    // 이전 글과 다음 글 조회
+    TB_004VO previousPost = faqService.faqGetPrev(faq_proper_num);
+    TB_004VO nextPost = faqService.faqGetNext(faq_proper_num);
 
-		model.addAttribute("vo", vo);
-		
-		model.addAttribute("previousPost", previousPost);
-        model.addAttribute("nextPost", nextPost);  
+    model.addAttribute("vo", vo);
 
-		// 시큐리티
-		HttpSession session = request.getSession();
-		String jwt = (String) session.getAttribute("token");
-		if (jwt != null) {
-			Authentication authentication = jwtValidator.getAuthentication(jwt);
-			DefaultUserDetails userDetails = (DefaultUserDetails) authentication.getPrincipal();
-			String member_proper_num = userDetails.getUsername();
-			String member_role = adminMypageService.adminmypage_authcheck(member_proper_num);
-			if (member_role.equals("ROLE_ADMIN")) {
+    model.addAttribute("previousPost", previousPost);
+    model.addAttribute("nextPost", nextPost);
 
-				model.addAttribute("member_role", member_role);
-			}
+    // 시큐리티
+    HttpSession session = request.getSession();
+    String jwt = (String) session.getAttribute("token");
+    if (jwt != null) {
+      Authentication authentication = jwtValidator.getAuthentication(jwt);
+      DefaultUserDetails userDetails = (DefaultUserDetails) authentication.getPrincipal();
+      String member_proper_num = userDetails.getUsername();
+      String member_role = adminMypageService.adminmypage_authcheck(member_proper_num);
+      if (member_role.equals("ROLE_ADMIN")) {
 
-		}
+        model.addAttribute("member_role", member_role);
+      }
 
-		return "faq/faqDetail";
-	}
+    }
 
-	// faq 작성/등록 페이지
-	@GetMapping("/faqRegist")
-	public String faqRegist(HttpServletRequest request) {
+    return "faq/faqDetail";
+  }
 
-		// 시큐리티
-		HttpSession session = request.getSession();
-		String jwt = (String) session.getAttribute("token");
-		if (jwt != null) {
-			Authentication authentication = jwtValidator.getAuthentication(jwt);
-			DefaultUserDetails userDetails = (DefaultUserDetails) authentication.getPrincipal();
-			String member_proper_num = userDetails.getUsername();
-			String member_role = adminMypageService.adminmypage_authcheck(member_proper_num);
-			if (!member_role.equals("ROLE_ADMIN")) {
+  // faq 작성/등록 페이지
+  @GetMapping("/faqRegist")
+  public String faqRegist(HttpServletRequest request) {
 
-				return "redirect:/faq/faqList";
-			}
+    // 시큐리티
+    HttpSession session = request.getSession();
+    String jwt = (String) session.getAttribute("token");
+    if (jwt != null) {
+      Authentication authentication = jwtValidator.getAuthentication(jwt);
+      DefaultUserDetails userDetails = (DefaultUserDetails) authentication.getPrincipal();
+      String member_proper_num = userDetails.getUsername();
+      String member_role = adminMypageService.adminmypage_authcheck(member_proper_num);
+      if (!member_role.equals("ROLE_ADMIN")) {
 
-		}
+        return "redirect:/faq/faqList";
+      }
 
-		return "faq/faqRegist";
-	}
+    }
 
-	// faq 등록요청
-	@PostMapping("/faqRegistForm")
-	public String faqRegistForm(TB_004VO vo, RedirectAttributes ra, HttpServletRequest request) {
+    return "faq/faqRegist";
+  }
 
-		// 시큐리티
-		HttpSession session = request.getSession();
-		String jwt = (String) session.getAttribute("token");
-		if (jwt != null) {
-			Authentication authentication = jwtValidator.getAuthentication(jwt);
-			DefaultUserDetails userDetails = (DefaultUserDetails) authentication.getPrincipal();
-			String member_proper_num = userDetails.getUsername();
-			String member_role = adminMypageService.adminmypage_authcheck(member_proper_num);
-			if (!member_role.equals("ROLE_ADMIN")) {
+  // faq 등록요청
+  @PostMapping("/faqRegistForm")
+  public String faqRegistForm(TB_004VO vo, RedirectAttributes ra, HttpServletRequest request) {
 
-				return "redirect:/faq/faqList";
-			}
+    // 시큐리티
+    HttpSession session = request.getSession();
+    String jwt = (String) session.getAttribute("token");
+    if (jwt != null) {
+      Authentication authentication = jwtValidator.getAuthentication(jwt);
+      DefaultUserDetails userDetails = (DefaultUserDetails) authentication.getPrincipal();
+      String member_proper_num = userDetails.getUsername();
+      String member_role = adminMypageService.adminmypage_authcheck(member_proper_num);
+      if (!member_role.equals("ROLE_ADMIN")) {
 
-			vo.setAdmin_proper_num(member_proper_num);
-		}
+        return "redirect:/faq/faqList";
+      }
 
-		System.out.println(vo.toString());
-		int result = faqService.faqRegist(vo);
+      vo.setAdmin_proper_num(member_proper_num);
+    }
 
-		String msg = result == 1 ? "등록되었습니다." : "등록실패";
+    System.out.println(vo.toString());
+    int result = faqService.faqRegist(vo);
 
-		ra.addFlashAttribute("msg", msg);
+    String msg = result == 1 ? "등록되었습니다." : "등록실패";
 
-		return "redirect:/faq/faqList";
-	}
+    ra.addFlashAttribute("msg", msg);
 
-	// faq 수정 페이지
-	@GetMapping("/faqModify")
-	public String faqModify(@RequestParam("faq_proper_num") String faq_proper_num, Model model,
-			HttpServletRequest request) {
+    return "redirect:/faq/faqList";
+  }
 
-		// 시큐리티
-		HttpSession session = request.getSession();
-		String jwt = (String) session.getAttribute("token");
-		if (jwt != null) {
-			Authentication authentication = jwtValidator.getAuthentication(jwt);
-			DefaultUserDetails userDetails = (DefaultUserDetails) authentication.getPrincipal();
-			String member_proper_num = userDetails.getUsername();
-			String member_role = adminMypageService.adminmypage_authcheck(member_proper_num);
-			if (!member_role.equals("ROLE_ADMIN")) {
+  // faq 수정 페이지
+  @GetMapping("/faqModify")
+  public String faqModify(@RequestParam("faq_proper_num") String faq_proper_num, Model model,
+      HttpServletRequest request) {
 
-				return "redirect:/faq/faqList";
-			}
+    // 시큐리티
+    HttpSession session = request.getSession();
+    String jwt = (String) session.getAttribute("token");
+    if (jwt != null) {
+      Authentication authentication = jwtValidator.getAuthentication(jwt);
+      DefaultUserDetails userDetails = (DefaultUserDetails) authentication.getPrincipal();
+      String member_proper_num = userDetails.getUsername();
+      String member_role = adminMypageService.adminmypage_authcheck(member_proper_num);
+      if (!member_role.equals("ROLE_ADMIN")) {
 
-		}
+        return "redirect:/faq/faqList";
+      }
 
-		TB_004VO vo = faqService.faqDetail(faq_proper_num);
+    }
 
-		model.addAttribute("vo", vo);
+    TB_004VO vo = faqService.faqDetail(faq_proper_num);
 
-		return "faq/faqModify";
-	}
+    model.addAttribute("vo", vo);
 
-	// faq 수정(업데이트)
-	@PostMapping("/faqUpdateForm")
-	public String faqUpdate(TB_004VO vo, RedirectAttributes ra, HttpServletRequest request) {
+    return "faq/faqModify";
+  }
 
-		// 시큐리티
-		HttpSession session = request.getSession();
-		String jwt = (String) session.getAttribute("token");
-		if (jwt != null) {
-			Authentication authentication = jwtValidator.getAuthentication(jwt);
-			DefaultUserDetails userDetails = (DefaultUserDetails) authentication.getPrincipal();
-			String member_proper_num = userDetails.getUsername();
-			String member_role = adminMypageService.adminmypage_authcheck(member_proper_num);
-			if (!member_role.equals("ROLE_ADMIN")) {
+  // faq 수정(업데이트)
+  @PostMapping("/faqUpdateForm")
+  public String faqUpdate(TB_004VO vo, RedirectAttributes ra, HttpServletRequest request) {
 
-				return "redirect:/faq/faqList";
-			}
+    // 시큐리티
+    HttpSession session = request.getSession();
+    String jwt = (String) session.getAttribute("token");
+    if (jwt != null) {
+      Authentication authentication = jwtValidator.getAuthentication(jwt);
+      DefaultUserDetails userDetails = (DefaultUserDetails) authentication.getPrincipal();
+      String member_proper_num = userDetails.getUsername();
+      String member_role = adminMypageService.adminmypage_authcheck(member_proper_num);
+      if (!member_role.equals("ROLE_ADMIN")) {
 
-		}
-		System.out.println(vo.toString());
+        return "redirect:/faq/faqList";
+      }
 
-		int result = faqService.faqUpdate(vo);
+    }
+    System.out.println(vo.toString());
 
-		String msg = result == 1 ? "등록되었습니다." : "등록실패";
+    int result = faqService.faqUpdate(vo);
 
-		ra.addFlashAttribute("msg", msg);
+    String msg = result == 1 ? "등록되었습니다." : "등록실패";
 
-		return "redirect:/faq/faqList";
-	}
+    ra.addFlashAttribute("msg", msg);
 
-	// faq 삭제
-	@GetMapping("/faqDelete")
-	public String faqDelete(@RequestParam("faq_proper_num") String faq_proper_num, RedirectAttributes ra,
-			HttpServletRequest request) {
+    return "redirect:/faq/faqList";
+  }
 
-		// 시큐리티
-		HttpSession session = request.getSession();
-		String jwt = (String) session.getAttribute("token");
-		if (jwt != null) {
-			Authentication authentication = jwtValidator.getAuthentication(jwt);
-			DefaultUserDetails userDetails = (DefaultUserDetails) authentication.getPrincipal();
-			String member_proper_num = userDetails.getUsername();
-			String member_role = adminMypageService.adminmypage_authcheck(member_proper_num);
-			if (!member_role.equals("ROLE_ADMIN")) {
+  // faq 삭제
+  @GetMapping("/faqDelete")
+  public String faqDelete(@RequestParam("faq_proper_num") String faq_proper_num, RedirectAttributes ra,
+      HttpServletRequest request) {
 
-				return "redirect:/faq/faqList";
-			}
+    // 시큐리티
+    HttpSession session = request.getSession();
+    String jwt = (String) session.getAttribute("token");
+    if (jwt != null) {
+      Authentication authentication = jwtValidator.getAuthentication(jwt);
+      DefaultUserDetails userDetails = (DefaultUserDetails) authentication.getPrincipal();
+      String member_proper_num = userDetails.getUsername();
+      String member_role = adminMypageService.adminmypage_authcheck(member_proper_num);
+      if (!member_role.equals("ROLE_ADMIN")) {
 
-		}
+        return "redirect:/faq/faqList";
+      }
 
-		faqService.faqDelete(faq_proper_num);
+    }
 
-		return "redirect:/faq/faqList";
-	}
+    faqService.faqDelete(faq_proper_num);
+
+    return "redirect:/faq/faqList";
+  }
 
 }

@@ -9,88 +9,89 @@
 <th:block th:replace="~{./include/layout :: setContent(~{::.faqListWrap})}">
 
 
-	<!--contents-->
-	<div class="faqListWrap mainWrap">
-		<div id="content">
-			<div> <!--sidebar-->
-         		<th:block th:replace="~{./include/layout-announceList-side}"></th:block>
-      		</div>
+  <!--contents-->
+  <div class="faqListWrap mainWrap">
+    <div id="content">
+      <div> <!--sidebar-->
+        <th:block th:replace="~{./include/layout-announceList-side}"></th:block>
+      </div>
 
-			<div id="contentsbox">
-				<div id="contentstitle">
-					<span class="FAQtitle">자주묻는질문(FAQ)</span>
-				</div>
-				<p class="titleImg">많은 분들이 찾는 질문들은 여기에 다 있습니다.</p>
-				<div id="contents">
+      <div id="contentsbox">
+        <div id="contentstitle">
+          <span class="FAQtitle">자주묻는질문(FAQ)</span>
+        </div>
+        <p class="titleImg">많은 분들이 찾는 질문들은 여기에 다 있습니다.</p>
+        <div id="contents">
 
-					<!--searchform-->
-					<form id="searchform" name="searchForm" action="faqList" method="get">
-						<input type="hidden" name="page" value="1">
-						<input type="hidden" name="amount" th:value="${pageVO.amount}">
-						<input type="hidden" id="eSer" name="srchbub">
+          <!--searchform-->
+          <form id="searchform" name="searchForm" action="faqList" method="get">
+            <input type="hidden" name="page" value="1">
+            <input type="hidden" name="amount" th:value="${pageVO.amount}">
+            <input type="hidden" id="eSer" name="srchbub">
 
-						<!--<div class="searchbox">
+            <!--<div class="searchbox">
                   			<input type="text" name="search_gongji" id="search_gongji" class="waterMark" title="검색"
                     		style="width: 150px;" maxlength="40" value="">
                   			<a href=""><input type="button" value="검색" id="searchbtn" style="cursor: pointer;"></a>
                 		</div>-->
-						<div style="width: 100%; overflow: hidden;">
-							<div class="board_search_text">
-								<input type="text" id="searchFaq" name="searchFaq" placeholder="검색어 입력"
-									th:value="${pageVO.cri.searchFaq}">
-								<input type="submit" class="search_btn" value="검색">
-							</div>
-						</div>
+            <div style="width: 100%; overflow: hidden;">
+              <div class="board_search_text">
+                <input type="text" id="searchFaq" name="searchFaq" placeholder="검색어 입력"
+                  th:value="${pageVO.cri.searchFaq}">
+                <input type="submit" class="search_btn" value="검색">
+              </div>
+            </div>
 
-						<!--table-->
-						<div class="tablebox">
-							<table>
-								<colgroup>
-									<col width="10%">
-									<col width="auto">
-								</colgroup>
+            <!--table-->
+            <div class="tablebox">
+              <table>
+                <colgroup>
+                  <col width="10%">
+                  <col width="auto">
+                </colgroup>
 
-								<thead>
-									<tr style="background-color: rgb(226, 226, 226);">
-										<th scope="col" style="font-weight: bold;">번호</th>
-										<th scope="col" style="font-weight: bold;">제목</th>
-									</tr>
-								</thead>
+                <thead>
+                  <tr style="background-color: rgb(226, 226, 226);">
+                    <th scope="col" style="font-weight: bold;">번호</th>
+                    <th scope="col" style="font-weight: bold;">제목</th>
+                  </tr>
+                </thead>
 
-								<tbody>
+                <tbody>
 
-									<tr th:each="vo, status : ${list}">
-										<td class="left" style="text-align: center;"><span th:text="${list.size() - status.count+1}"></td>
-										<td class="left" style="text-align: center;">
-											<a th:href="@{faqDetail(faq_proper_num=${vo.faq_proper_num})}">[[${vo.faq_ask_content}]]</a>
-										</td>
-									</tr>
+                  <tr th:each="vo, status : ${list}">
+                    <td class="left" style="text-align: center;"><span
+                        th:text="${total - ((pageVO.page-1)*8) - status.count+1} "></span></td>
+                    <td class="left" style="text-align: center;">
+                      <a th:href="@{faqDetail(faq_proper_num=${vo.faq_proper_num})}">[[${vo.faq_ask_content}]]</a>
+                    </td>
+                  </tr>
 
 
-								</tbody>
-							</table>
-						</div>
+                </tbody>
+              </table>
+            </div>
 
-						<!--pagination-->
-						<!--현재 페이지 부분을 strong으로 강조, 링크 없음-->
+            <!--pagination-->
+            <!--현재 페이지 부분을 strong으로 강조, 링크 없음-->
 
-						<th:block th:replace="~{./include/faqPage :: pageNation( ${pageVO} )}"></th:block>
+            <th:block th:replace="~{./include/faqPage :: pageNation( ${pageVO} )}"></th:block>
 
-						<!--pagination end-->
-						<th:block th:if="${member_role == 'ROLE_ADMIN'}">
-							<div class="btnbox btnbox02 adminmenu">
-								<a href="faqRegist" class="btnfb7">글 작성</a>
-							</div>
-						</th:block>
-					</form>
+            <!--pagination end-->
+            <th:block th:if="${member_role == 'ROLE_ADMIN'}">
+              <div class="btnbox btnbox02 adminmenu">
+                <a href="faqRegist" class="btnfb7">글 작성</a>
+              </div>
+            </th:block>
+          </form>
 
-					<!--searchform end-->
-				</div>
-			</div>
+          <!--searchform end-->
+        </div>
+      </div>
 
-		</div>
+    </div>
 
-	</div>
+  </div>
 
 
 </th:block>

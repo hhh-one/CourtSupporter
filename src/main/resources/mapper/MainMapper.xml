@@ -94,4 +94,17 @@
 		</if>
 	</select>
 
+   <select id="getmainannounce">
+    SELECT *
+    FROM TB_002 
+    ORDER BY announce_start_date
+    LIMIT 5;
+   </select>
+  
+  <select id="getmainnotice">
+    SELECT *
+    FROM TB_003
+    ORDER BY notice_date
+    LIMIT 5;
+   </select>
 </mapper>

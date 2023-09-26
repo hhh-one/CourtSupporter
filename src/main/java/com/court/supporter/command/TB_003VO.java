@@ -12,10 +12,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class TB_003VO {
-	//faq 테이블
-	private String notice_proper_num;
-	private String notice_title;
-	private String notice_content;
-	private String notice_date;
-	private int admin_proper_num;
+  // faq 테이블
+  private String notice_proper_num;
+  private String notice_title;
+  private String notice_content;
+  private String notice_date;
+  private String admin_proper_num;
 }

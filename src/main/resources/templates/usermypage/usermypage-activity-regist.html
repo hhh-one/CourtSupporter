@@ -5,110 +5,111 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">-->
 <link rel="stylesheet" th:href="@{/css/usermypage-activity-regist.css}">
 <th:block th:replace="~{./include/layout :: setContent(~{::.usermypage-activity-regist})}">
-	<div class="usermypage-activity-regist">
-		<div class="usermypage-activity-regist-wrap">
-			<!-- 상단 혹은 좌측 메뉴바 -->
-			<div class="container"> <!-- innerWrap -->
+  <div class="usermypage-activity-regist">
+    <div class="usermypage-activity-regist-wrap">
+      <!-- 상단 혹은 좌측 메뉴바 -->
+      <div class="container"> <!-- innerWrap -->
 
-				<div class="announceTitle"> <!-- 게시판 타이틀 -->
-					<p>활동내역</p>
-				</div>
+        <div class="announceTitle"> <!-- 게시판 타이틀 -->
+          <p>활동내역</p>
+        </div>
 
 
-				<!-- innerBox -->
+        <!-- innerBox -->
 
-				<div class="announceBox">
-					<form action="usermypage_activity_regist_form" method="post">
-					
-						<table class="annouonceTable">
-							<tbody class="board">
-								<tr> <!-- class="boardTitle" -->
-									<th class="propernum">조력자등재번호</th>
-									<td colspan="2">
-										<select name="accept_proper_num" class="acceptnum" value="">
-											<option value="">선택</option>
-											<th:block th:each="vo : ${list}">
-												<option value="${vo.accept_proper_num}">[[${vo.accept_proper_num}]]</option>
-											</th:block>
-										</select>															
-									</td>
-								</tr>
-								
-								<tr> <!-- class="boardTitle" -->
-									<th class="title">재판번호</th>
-									<td colspan="2"><input type="text" name="judgement_num" class="judgement_num" value=""></td>
-								</tr>
-					
-								<tr>
-									<th class="date">선정일</th>
-									<td colspan="2">
-										<div class="board_search_date">
-											<input type="text" class="datepicker datepicker1" name="chosen_date" readonly placeholder="날짜선택"
-												required pattern="\d{4}-\d{2}-\d{2}" value="">
-										</div>
-									</td>
-								</tr>
-					
-								<tr>
-									<th class="viewCount">출석일자</th>
-									<td colspan="2">
-										<div class="board_search_date">
-											<input type="text" class="datepicker datepicker3" name="attendance_date" readonly
-												placeholder="날짜선택" required pattern="\d{4}-\d{2}-\d{2}" value="">
-										</div>
-									</td>
-								</tr>
-					
-								<tr>
-									<th class="file">완료여부</th>
-									<td>
-										완료<input type="radio" name="act_complete_yn" value="Y">
-										미완료<input type="radio" name="act_complete_yn" value="N">
-									</td>
-								</tr>
-					
-								<tr class="announceContent">
-									<th>내용</th>
-									<td class="innerContent">
-										<textarea class="content"></textarea>
-									</td>
-								</tr>
-							</tbody>
-					
-						</table>
-					</form>
-					<div class="btnbox btnbox02">
-						<a th:href="@{usermypage_activitylist}" class="btn4d5">취소</a>
-						<a href="#none" class="btnfb7 subbtn">등록</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+        <div class="announceBox">
+          <form action="usermypage_activity_regist_form" method="post">
+
+            <table class="annouonceTable">
+              <tbody class="board">
+                <tr> <!-- class="boardTitle" -->
+                  <th class="propernum">조력자등재번호</th>
+                  <td colspan="2">
+                    <select name="accept_proper_num" class="acceptnum" value="">
+                      <option value="">선택</option>
+                      <th:block th:each="vo : ${list}">
+                        <input type="radio" name="accept_proper_num" th:value="${vo.accept_proper_num}">
+                      </th:block>
+                    </select>
+                  </td>
+                </tr>
+
+                <tr> <!-- class="boardTitle" -->
+                  <th class="title">재판번호</th>
+                  <td colspan="2"><input type="text" name="judgement_num" class="judgement_num" value=""></td>
+                </tr>
+
+                <tr>
+                  <th class="date">선정일</th>
+                  <td colspan="2">
+                    <div class="board_search_date">
+                      <input type="text" class="datepicker datepicker1" name="chosen_date" readonly placeholder="날짜선택"
+                        required pattern="\d{4}-\d{2}-\d{2}" value="">
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th class="viewCount">출석일자</th>
+                  <td colspan="2">
+                    <div class="board_search_date">
+                      <input type="text" class="datepicker datepicker3" name="attendance_date" readonly
+                        placeholder="날짜선택" required pattern="\d{4}-\d{2}-\d{2}" value="">
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th class="file">완료여부</th>
+                  <td>
+                    완료<input type="radio" name="act_complete_yn" value="Y">
+                    미완료<input type="radio" name="act_complete_yn" value="N">
+                  </td>
+                </tr>
+
+                <tr class="announceContent">
+                  <th>내용</th>
+                  <td class="innerContent">
+                    <textarea class="content"></textarea>
+                  </td>
+                </tr>
+              </tbody>
+
+            </table>
+          </form>
+          <div class="btnbox btnbox02">
+            <a th:href="@{usermypage_activitylist}" class="btn4d5">취소</a>
+            <a href="#none" class="btnfb7 subbtn">등록</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </th:block>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script th:inline="javascript">
-	// jQuery UI Datepicker를 활성화
-	$(function () {
-		$(".datepicker").datepicker({
-			dateFormat: 'yy-mm-dd', // 날짜 형식 지정 (yyyy-mm-dd)
-			onSelect: function (dateText) {
-				// 날짜가 선택되면 선택된 날짜를 해당 입력 필드에 삽입
-				$(this).val(dateText);
-			}
-		});
-	});
-	
-	var subbtn = document.querySelector('.subbtn');
-	subbtn.addEventListener('click', function(e) {
-		var acceptnum = document.querySelector('.acceptnum');
-		if(acceptnum.value == null || acceptnum.value == '') {
-			event.preventDefault();  // 기본 동작인 폼 제출 방지
-			alert('등재 번호를 선택하세요!');
-		}		
-	});
-	
+  // jQuery UI Datepicker를 활성화
+  $(function () {
+    $(".datepicker").datepicker({
+      dateFormat: 'yy-mm-dd', // 날짜 형식 지정 (yyyy-mm-dd)
+      onSelect: function (dateText) {
+        // 날짜가 선택되면 선택된 날짜를 해당 입력 필드에 삽입
+        $(this).val(dateText);
+      }
+    });
+  });
+
+  var subbtn = document.querySelector('.subbtn');
+  subbtn.addEventListener('click', function (e) {
+    var acceptnum = document.querySelector('.acceptnum');
+    if (acceptnum.value == null || acceptnum.value == '') {
+      event.preventDefault();  // 기본 동작인 폼 제출 방지
+      alert('등재 번호를 선택하세요!');
+    }
+  });
+
 </script>
+
 </html>

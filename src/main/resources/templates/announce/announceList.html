@@ -14,7 +14,7 @@
 <!--<script th:src="@{/js/announceList.js}"></script>-->
 
 <th:block th:replace="~{./include/layout :: setContent(~{:: .announceList})}">
-<!--	<div class="topmenuWrap">
+  <!--	<div class="topmenuWrap">
 		<div class="topmenu">
 			<ul class="quickmenu">
 				<li><a href="/">Home &nbsp > &nbsp </a></li>
@@ -22,162 +22,168 @@
 			</ul>
 		</div>
 	</div>	-->
-	<div class="announceList"> <!-- 가장 큰 박스 -->
-		
-		<div class="announceList-wrap"> <!-- 다음으로 감싸는 박스-->
+  <div class="announceList"> <!-- 가장 큰 박스 -->
 
-			<div> <!--sidebar-->
-				<th:block th:replace="~{./include/layout-announceList-side}"></th:block>
-			</div>
-			
-			
-			<div class="announceInner"> <!-- 공고게시판 -->
+    <div class="announceList-wrap"> <!-- 다음으로 감싸는 박스-->
 
-				<div class="announceTitle"> <!-- 게시판 타이틀 -->
-					<p>모집 공고</p>
-				</div>
-					<p class="titleImg">조력자 공고를 볼 수 있는 게시판입니다.</p>
-					<!--<img th:src="@{/img/title_img.png}" class="titleImg">-->
+      <div> <!--sidebar-->
+        <th:block th:replace="~{./include/layout-announceList-side}"></th:block>
+      </div>
 
-				<form action="/announce/announceList" name="searchForm" class="searchBox" method="get">
-					<!-- 검색창 action="searchForm"or announceList  class="searchBox" -->
-					<input type="hidden" name="page" value="1">
-					<input type="hidden" name="amount" th:value="${pageVO.amount}">						
-					<input type="hidden" name="trial_fcltt_proper_num" id="trialNum" value="">
-		
-					<!-- 조력자별 공고 조회 -->
-					<ul class="announceMenu"> 
-						<li data-trial-fcltt-proper-num="" class="supporter"> 
-							<a href="#" class="menu" th:classappend="${pageVO.cri.trial_fcltt_proper_num == ''} ? 'active' : '' " >전체</a>
-						</li>
-						<li data-trial-fcltt-proper-num="10" class="supporter" >
-							<a href="#" class="menu" th:classappend="${pageVO.cri.trial_fcltt_proper_num == '10'} ? 'active' : ''" name="">조력자</a>
-						</li>
-						<li data-trial-fcltt-proper-num="20" class="supporter">
-							<a href="#" class="menu" th:classappend="${pageVO.cri.trial_fcltt_proper_num == '20'} ? 'active' : ''"  name="" >통번역인</a>
-						</li>
-						<li data-trial-fcltt-proper-num="30" class="supporter">
-							<a href="#" class="menu" th:classappend="${pageVO.cri.trial_fcltt_proper_num == '30'} ? 'active' : ''" name="" >조정위원</a>
-						</li>
-						<li  data-trial-fcltt-proper-num="40" class="supporter">
-							<a href="#" class="menu" th:classappend="${pageVO.cri.trial_fcltt_proper_num == '40'} ? 'active' : ''" name="">전문시말위원</a>
-						</li>
-						<li data-trial-fcltt-proper-num="50" class="supporter" >
-							<a href="#" class="menu" th:classappend="${pageVO.cri.trial_fcltt_proper_num == '50'} ? 'active' : ''" name="">상담위원</a>
-						</li>							
-					</ul>
-					
 
-					<div class="searchWrap">
+      <div class="announceInner"> <!-- 공고게시판 -->
 
-						<div class="searchTxt"> <!-- th:value="${pageVO.cri.announce_title}"  name="announceSearch"-->
-							<div class="searchdateselect">
-								<label for="startDate">모집기간 선택</label>
-							</div>
+        <div class="announceTitle"> <!-- 게시판 타이틀 -->
+          <p>모집 공고</p>
+        </div>
+        <p class="titleImg">조력자 공고를 볼 수 있는 게시판입니다.</p>
+        <!--<img th:src="@{/img/title_img.png}" class="titleImg">-->
 
-							<input type="date" class="searchStartDate" name="announce_start_date" id="startDate"
-								th:value="${pageVO.cri.announce_start_date}">
-							<!--<label for="endDate">모집종료일</label>-->
-							<label for="startDate"> ~ </label>
-							<input type="date" class="searchEndDate" name="announce_end_date" id="endDate"
-								th:value="${pageVO.cri.announce_end_date}">
-							<select id="searchOption" name="searchOption">
-								<option value="announceAll" th:selected="${pageVO.cri.searchOption == 'announceAll'}">전체
-								</option>
-								<option value="announce_title"
-									th:selected="${pageVO.cri.searchOption == 'announce_title'}">제목</option>
-								<option value="announce_content"
-									th:selected="${pageVO.cri.searchOption == 'announce_content'}">내용</option>
-							</select>
+        <form action="/announce/announceList" name="searchForm" class="searchBox" method="get">
+          <!-- 검색창 action="searchForm"or announceList  class="searchBox" -->
+          <input type="hidden" name="page" value="1">
+          <input type="hidden" name="amount" th:value="${pageVO.amount}">
+          <input type="hidden" name="trial_fcltt_proper_num" id="trialNum" value="">
 
-							<input type="text" class="search" name="searchKeyword" placeholder="검색어 입력"
-								th:value="${pageVO.cri.searchKeyword}">
-							<!-- 검색 버튼 -->
-							<button type="submit" id="searchBtn" class="searchBtn">검색</button>
-						</div>
-					</div>
+          <!-- 조력자별 공고 조회 -->
+          <ul class="announceMenu">
+            <li data-trial-fcltt-proper-num="" class="supporter">
+              <a href="#" class="menu"
+                th:classappend="${pageVO.cri.trial_fcltt_proper_num == ''} ? 'active' : '' ">전체</a>
+            </li>
+            <li data-trial-fcltt-proper-num="10" class="supporter">
+              <a href="#" class="menu" th:classappend="${pageVO.cri.trial_fcltt_proper_num == '10'} ? 'active' : ''"
+                name="">조력자</a>
+            </li>
+            <li data-trial-fcltt-proper-num="20" class="supporter">
+              <a href="#" class="menu" th:classappend="${pageVO.cri.trial_fcltt_proper_num == '20'} ? 'active' : ''"
+                name="">통번역인</a>
+            </li>
+            <li data-trial-fcltt-proper-num="30" class="supporter">
+              <a href="#" class="menu" th:classappend="${pageVO.cri.trial_fcltt_proper_num == '30'} ? 'active' : ''"
+                name="">조정위원</a>
+            </li>
+            <li data-trial-fcltt-proper-num="40" class="supporter">
+              <a href="#" class="menu" th:classappend="${pageVO.cri.trial_fcltt_proper_num == '40'} ? 'active' : ''"
+                name="">전문시말위원</a>
+            </li>
+            <li data-trial-fcltt-proper-num="50" class="supporter">
+              <a href="#" class="menu" th:classappend="${pageVO.cri.trial_fcltt_proper_num == '50'} ? 'active' : ''"
+                name="">상담위원</a>
+            </li>
+          </ul>
 
-					<!-- 게시판 -->
-					<div class="announceBoard">
 
-						<table class="board" id="menuData" > <!-- 공고게시판 -->
-							<thead>
+          <div class="searchWrap">
 
-								<tr class="boardTitle"> <!-- 게시판 상단부분 (분류) -->
+            <div class="searchTxt"> <!-- th:value="${pageVO.cri.announce_title}"  name="announceSearch"-->
+              <div class="searchdateselect">
+                <label for="startDate">모집기간 선택</label>
+              </div>
 
-						      <!--<th>맨 앞쪽에 다 넣어야함  
+              <input type="date" class="searchStartDate" name="announce_start_date" id="startDate"
+                th:value="${pageVO.cri.announce_start_date}">
+              <!--<label for="endDate">모집종료일</label>-->
+              <label for="startDate"> ~ </label>
+              <input type="date" class="searchEndDate" name="announce_end_date" id="endDate"
+                th:value="${pageVO.cri.announce_end_date}">
+              <select id="searchOption" name="searchOption">
+                <option value="announceAll" th:selected="${pageVO.cri.searchOption == 'announceAll'}">전체
+                </option>
+                <option value="announce_title" th:selected="${pageVO.cri.searchOption == 'announce_title'}">제목</option>
+                <option value="announce_content" th:selected="${pageVO.cri.searchOption == 'announce_content'}">내용
+                </option>
+              </select>
+
+              <input type="text" class="search" name="searchKeyword" placeholder="검색어 입력"
+                th:value="${pageVO.cri.searchKeyword}">
+              <!-- 검색 버튼 -->
+              <button type="submit" id="searchBtn" class="searchBtn">검색</button>
+            </div>
+          </div>
+
+          <!-- 게시판 -->
+          <div class="announceBoard">
+
+            <table class="board" id="menuData"> <!-- 공고게시판 -->
+              <thead>
+
+                <tr class="boardTitle"> <!-- 게시판 상단부분 (분류) -->
+
+                  <!--<th>맨 앞쪽에 다 넣어야함  
 								 	 <input type="checkbox" class="allCheck">
 								  </th>-->
-									<th>번호</th>
-									<th>모집여부</th>									
-									<th>제목</th>
-									<!--<th>모집인원</th>-->
-									<th class="regdate">작성일</th>
-									<!--<th>공고 모집일</th>-->
-									<!--<th>조회</th>-->
-								</tr>
+                  <th>번호</th>
+                  <th>모집여부</th>
+                  <th>제목</th>
+                  <!--<th>모집인원</th>-->
+                  <th class="regdate">작성일</th>
+                  <!--<th>공고 모집일</th>-->
+                  <!--<th>조회</th>-->
+                </tr>
 
-							<tbody id="datalist"> <!-- 게시판 글 목록-->
-								<tr th:each="vo, iterStat : ${list}"> <!--boardContent-->
-								  <!--<td><input type="checkbox" class="chk"></td>-->
-								  
-									<td class="contentNumber">
-										<span th:text="${list.size() - iterStat.count+1}"></span><!--  th:text="${vo.announce_proper_num}"-->							
-									</td>
+              <tbody id="datalist"> <!-- 게시판 글 목록-->
+                <tr th:each="vo, status : ${list}"> <!--boardContent-->
+                  <!--<td><input type="checkbox" class="chk"></td>-->
 
-									<td class="hirebox">
-										<span class="hireIcon" id="hire" th:text="${vo.announceStatus}"></span>
-									</td>
-									
-									<td class="contentTitle">
-										<!--<div class="hirebox">-->
-										<!-- <span class="hireIcon" id="hire" th:text="${vo.announceStatus}"></span>-->
-										<!--</div>-->										
-										<a th:href="@{announceDetail(announce_proper_num=${vo.announce_proper_num})}"
-											th:text="${vo.announce_title}"></a>											
-									</td>
+                  <td class="contentNumber">
+                    <span
+                      th:text="${total - ((pageVO.page-1)*8) - status.count+1} "></span><!--  th:text="${vo.announce_proper_num}"-->
+                  </td>
 
-									<td class="recruitNumber">
-										<span th:text="${vo.announce_recruit_num}" class="recruitNumberTxt"></span>	
-									</td>
-									
-									<td class="contentDate">
-										<span th:text="${vo.announce_first_date.substring(0,10)}"></span>
-										<!--${#temporals.format(vo.announce_first_date, 'yyyy-MM-dd')}-->
-									</td>
+                  <td class="hirebox">
+                    <span class="hireIcon" id="hire" th:text="${vo.announceStatus}"></span>
+                  </td>
 
-									<!--<td class="contentViews"><span id="viewCount">0</span></td>-->
-								</tr>
+                  <td class="contentTitle">
+                    <!--<div class="hirebox">-->
+                    <!-- <span class="hireIcon" id="hire" th:text="${vo.announceStatus}"></span>-->
+                    <!--</div>-->
+                    <a th:href="@{announceDetail(announce_proper_num=${vo.announce_proper_num})}"
+                      th:text="${vo.announce_title}"></a>
+                  </td>
 
-							</tbody>
+                  <td class="recruitNumber">
+                    <span th:text="${vo.announce_recruit_num}" class="recruitNumberTxt"></span>
+                  </td>
 
-							</thead>
-						</table>
+                  <td class="contentDate">
+                    <span th:text="${vo.announce_first_date.substring(0,10)}"></span>
+                    <!--${#temporals.format(vo.announce_first_date, 'yyyy-MM-dd')}-->
+                  </td>
 
-					</div>
+                  <!--<td class="contentViews"><span id="viewCount">0</span></td>-->
+                </tr>
+
+              </tbody>
+
+              </thead>
+            </table>
+
+          </div>
 
 
-					<!-- <div>
+          <!-- <div>
 				 <button type="button"  name="check" id="del"> 삭제 </button>
 			 </div>-->
 
-					<th:block th:if="${auth == 'ROLE_ADMIN'}">
-						<div class="registBox"  > <!--  float 쓰면 이동이 안 됨-->
-							<a href="/announce/announceReg" class="registBtn" id="registBtn">글 작성</a>
-						</div>										
+          <th:block th:if="${auth == 'ROLE_ADMIN'}">
+            <div class="registBox"> <!--  float 쓰면 이동이 안 됨-->
+              <a href="/announce/announceReg" class="registBtn" id="registBtn">글 작성</a>
+            </div>
 
-					</th:block>
+          </th:block>
 
-					<!--페이지네이션-->
-					<th:block th:replace="~{./include/announcePage :: pageNation(${pageVO})}"></th:block>
+          <!--페이지네이션-->
+          <th:block th:replace="~{./include/announcePage :: pageNation(${pageVO})}"></th:block>
 
-				</form>
+        </form>
 
-			</div>
+      </div>
 
-		</div>
+    </div>
 
-	</div>
+  </div>
 
 </th:block>
 
@@ -185,92 +191,92 @@
 
 <script th:inline="javascript">
 
-	//검색
-	var searchBtn = document.getElementById("searchBtn");
-	searchBtn.onclick = () => {
-		event.preventDefault();
-		document.searchForm.submit();
-	}
+  //검색
+  var searchBtn = document.getElementById("searchBtn");
+  searchBtn.onclick = () => {
+    event.preventDefault();
+    document.searchForm.submit();
+  }
 
 </script>
 
 <script th:inline="javascript">
 
-	//조력자 공고 조회	
-	 $(document).ready(function() {  
-        $(".menu").click(function(event) {			
-			var supporter = $(this);
-				   
-			event.stopPropagation();  		
-       	 	supporter.addClass("active"); //해당되는 프로그램 코드에 넣어줘야함
-       	 	//$(".menu").not(supporter).removeClass("on");
-	        var trial_fcltt_proper_num = $(this).parent().data("trial-fcltt-proper-num");
-	        var trialNum = document.querySelector("#trialNum");
-	        trialNum.value = trial_fcltt_proper_num;
-	        console.log(trial_fcltt_proper_num);
-	        console.log(trialNum);	        	   
-	        	       
-	        $(".searchBox").submit();	 
-    	});  
+  //조력자 공고 조회	
+  $(document).ready(function () {
+    $(".menu").click(function (event) {
+      var supporter = $(this);
+
+      event.stopPropagation();
+      supporter.addClass("active"); //해당되는 프로그램 코드에 넣어줘야함
+      //$(".menu").not(supporter).removeClass("on");
+      var trial_fcltt_proper_num = $(this).parent().data("trial-fcltt-proper-num");
+      var trialNum = document.querySelector("#trialNum");
+      trialNum.value = trial_fcltt_proper_num;
+      console.log(trial_fcltt_proper_num);
+      console.log(trialNum);
+
+      $(".searchBox").submit();
     });
-  
-</script>
+  });
 
-<script th:inline="javascript">
-	
-	 $(document).ready(function() {     
-	    var support = document.querySelector(".announceMenu li a");
-	    support.onclick = function() {
-			if(support.classList.contains("active")) {
-				support.classList.remove("active");
-				support.style.display = "none";
-			} else {
-				support.classList.add("active");
-				support.style.display = "block";
-				//support.style.border = "2px solid #08125e";
-			}
-		}
-      });
-      
-</script>
-
-<script th:inline="javascript">
-	//공고 검색 기능
-	var searchOption = document.querySelector("#searchOption");
-	var search = document.querySelector(".search");
-
-	document.querySelector("#searchOption").addEventListener("change", function () {
-		var selectValue = this.value;
-
-		var searchInput = document.querySelector(".search");
-
-		if (selectValue === "announce_title") {
-			searchInput.setAttribute("name", "announce_title");
-		} else if (selectValue === "announce_content") {
-			searchInput.setAttribute("name", "announce_content");
-		} else if (selectValue === "announce_start_date") {
-			searchInput.setAttribute("name", "announce_start_date");
-		} else if (selectValue === "announce_end_date") {
-			searchInput.setAttribute("name", "announce_end_date");
-		}
-	});
 </script>
 
 <script th:inline="javascript">
 
-</script>
-<script th:inline="javascript"> 	
-
-	var loginresult = '[[${loginresult}]]';
-    if (loginresult == 1) {
-        alert('로그인 후 신청해주세요.');        
+  $(document).ready(function () {
+    var support = document.querySelector(".announceMenu li a");
+    support.onclick = function () {
+      if (support.classList.contains("active")) {
+        support.classList.remove("active");
+        support.style.display = "none";
+      } else {
+        support.classList.add("active");
+        support.style.display = "block";
+        //support.style.border = "2px solid #08125e";
+      }
     }
- 
+  });
+
+</script>
+
+<script th:inline="javascript">
+  //공고 검색 기능
+  var searchOption = document.querySelector("#searchOption");
+  var search = document.querySelector(".search");
+
+  document.querySelector("#searchOption").addEventListener("change", function () {
+    var selectValue = this.value;
+
+    var searchInput = document.querySelector(".search");
+
+    if (selectValue === "announce_title") {
+      searchInput.setAttribute("name", "announce_title");
+    } else if (selectValue === "announce_content") {
+      searchInput.setAttribute("name", "announce_content");
+    } else if (selectValue === "announce_start_date") {
+      searchInput.setAttribute("name", "announce_start_date");
+    } else if (selectValue === "announce_end_date") {
+      searchInput.setAttribute("name", "announce_end_date");
+    }
+  });
+</script>
+
+<script th:inline="javascript">
+
 </script>
 <script th:inline="javascript">
-   if ('[[${result}]]' > 0) {
-      alert('이미 지원한 공고입니다.');      
-   } 
+
+  var loginresult = '[[${loginresult}]]';
+  if (loginresult == 1) {
+    alert('로그인 후 신청해주세요.');
+  }
+
+</script>
+<script th:inline="javascript">
+  if ('[[${result}]]' > 0) {
+    alert('이미 지원한 공고입니다.');
+  } 
 </script>
 
 

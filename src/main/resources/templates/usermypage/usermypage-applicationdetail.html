@@ -5,516 +5,520 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">-->
 <link rel="stylesheet" th:href="@{/css/usermypage-applicationdetail.css}">
 <th:block th:replace="~{./include/layout :: setContent(~{::.usermypage-applicationdetail})}">
-	<div class="usermypage-applicationdetail">
-		<div class="usermypage-applicationdetail-wrap">
-			<!-- 상단 혹은 좌측 메뉴바 -->
-			<div class="container"> <!-- innerWrap -->
+  <div class="usermypage-applicationdetail">
+    <div class="usermypage-applicationdetail-wrap">
+      <!-- 상단 혹은 좌측 메뉴바 -->
+      <div class="container"> <!-- innerWrap -->
 
-				<div class="announceTitle"> <!-- 게시판 타이틀 -->
-					<p>재판조력자 신청</p>
-				</div>
+        <div class="announceTitle"> <!-- 게시판 타이틀 -->
+          <p>재판조력자 신청</p>
+        </div>
 
-				<div class="announceBox">
-					<div class="myinfoSection">
-						<h3>기본정보</h3>
-						<div class="arrow-wrap">
-							<div class="arrow arrow-up"></div>
-						</div>
-						<table class="myinfoTable">
-							<th:block th:if="${tb_001VO == null}">
+        <div class="announceBox">
+          <div class="myinfoSection">
+            <h3>기본정보</h3>
+            <div class="arrow-wrap">
+              <div class="arrow arrow-up"></div>
+            </div>
+            <table class="myinfoTable">
+              <th:block th:if="${tb_001VO == null}">
 
-							</th:block>
-							<th:block th:unless="${tb_001VO == null}">
-								<tbody>
-									<tr class="myinfoLine1">
-										<td>이름</td>
-										<td>[[${tb_001VO.user_name}]]</td>
-										<td>생년월일</td>
-										<td>[[${tb_001VO.user_birthdate}]]</td>
-									</tr>
-									<tr class="myinfoLine2">
-										<td>휴대전화번호</td>
-										<td>[[${tb_001VO.user_phone}]]</td>
-										<td>이메일</td>
-										<td>[[${tb_001VO.user_email}]]</td>
-									</tr>
-									<tr class="myinfoLine3">
-										<td>주소</td>
-										<td colspan="3">[[${tb_001VO.user_ar}]] [[${tb_001VO.user_ar_detail}]]
-											<span>[</span>[[${tb_001VO.user_ar_zonecode}]]<span>]</span>
-										</td>
-									</tr>
-								</tbody>
+              </th:block>
+              <th:block th:unless="${tb_001VO == null}">
+                <tbody>
+                  <tr class="myinfoLine1">
+                    <td>이름</td>
+                    <td>[[${tb_001VO.user_name}]]</td>
+                    <td>생년월일</td>
+                    <td>[[${tb_001VO.user_birthdate}]]</td>
+                  </tr>
+                  <tr class="myinfoLine2">
+                    <td>휴대전화번호</td>
+                    <td>[[${tb_001VO.user_phone}]]</td>
+                    <td>이메일</td>
+                    <td>[[${tb_001VO.user_email}]]</td>
+                  </tr>
+                  <tr class="myinfoLine3">
+                    <td>주소</td>
+                    <td colspan="3">[[${tb_001VO.user_ar}]] [[${tb_001VO.user_ar_detail}]]
+                      <span>[</span>[[${tb_001VO.user_ar_zonecode}]]<span>]</span>
+                    </td>
+                  </tr>
+                </tbody>
 
-							</th:block>
-						</table>
-					</div>
+              </th:block>
+            </table>
+          </div>
 
-					<div class="detailSection">
-						<h3>신청내용</h3>
-						<div class="arrow-wrap">
-							<div class="arrow arrow-up"></div>
-						</div>
-						<table class="detailTable">
-							<th:block th:if="${tb_005VO == null} and ${tb_010VO == null}">
+          <div class="detailSection">
+            <h3>신청내용</h3>
+            <div class="arrow-wrap">
+              <div class="arrow arrow-up"></div>
+            </div>
+            <table class="detailTable">
+              <th:block th:if="${tb_005VO == null} and ${tb_010VO == null}">
 
-							</th:block>
-							<th:block th:unless="${tb_005VO == null} and ${tb_010VO == null}">
-								<tbody>
-									<tr class="detailLine1">
-										<td>공고제목</td>
-										<td>[[${tb_005VO.announce_title}]]</td>
-										<td>재판조력자 분류</td>
-										<td>[[${tb_010VO.trial_fcltt_description}]]</td>
-									</tr>
-									<tr class="detailLine2">
-										<td>신청상태</td>
-										<td>
-											<th:block th:if="${tb_005VO.aplicn_dtls_sts == '02'}">
-												신청완료
-											</th:block>
-											<th:block th:if="${tb_005VO.aplicn_dtls_sts == '03'}">
-												심사중
-											</th:block>
-											<th:block th:if="${tb_005VO.aplicn_dtls_sts == '04'}">
-												서류반려
-											</th:block>
-											<th:block th:if="${tb_005VO.aplicn_dtls_sts == '05'}">
-												1차통과
-											</th:block>
-											<th:block th:if="${tb_005VO.aplicn_dtls_sts == '06'}">
-												최종심사중
-											</th:block>
-											<th:block th:if="${tb_005VO.aplicn_dtls_sts == '07'}">
-												불합격
-											</th:block>
-											<th:block th:if="${tb_005VO.aplicn_dtls_sts == '08'}">
-												합격
-											</th:block>
-										</td>
-										<td>신청날짜</td>
-										<td><span
-												th:text="${#strings.substring(tb_005VO.aplicn_dtls_date, 0, 10)}"></span>
-										</td>
-									</tr>
-									<tr class="detailLine3">
-										<td>소송사건 당사자 경력</td>
-										<td colspan="3" class="inputbox">
-											<div>
-												유<input type="radio" name="ligtn_case_casrer_yn" disabled
-													th:checked="${tb_005VO.ligtn_case_carer_yn == 'Y'}">
-												무<input type="radio" name="ligtn_case_casrer_yn" disabled
-													th:checked="${tb_005VO.ligtn_case_carer_yn == 'N'}">
-											</div>
-											<th:block th:if="${tb_005VO.ligtn_case_carer_yn == 'Y'}">
-												<div>
-													<textarea readonly>[[${tb_005VO.ligtn_case_carer_etc}]]</textarea>
-												</div>
-											</th:block>
-										</td>
-									</tr>
-									<tr class="detailLine4">
-										<td>보험업계 경력</td>
-										<td colspan="3" class="inputbox">
-											<div>
-												유<input type="radio" name="insrn_indst_carer_yn" disabled
-													th:checked="${tb_005VO.insrn_indst_carer_yn == 'Y'}">
-												무<input type="radio" name="insrn_indst_carer_yn" disabled
-													th:checked="${tb_005VO.insrn_indst_carer_yn == 'N'}">
-											</div>
-											<th:block th:if="${tb_005VO.insrn_indst_carer_yn == 'Y'}">
-												<div>
-													<textarea readonly>[[${tb_005VO.insrn_indst_carer_etc}]]</textarea>
-												</div>
-											</th:block>
-										</td>
-									</tr>
-									<tr class="detailLine5">
-										<td>형사처벌 받은 경력</td>
-										<td colspan="3" class="inputbox">
-											<div>
-												유<input type="radio" name="criminal_penalty_carer_yn" disabled
-													th:checked="${tb_005VO.criminal_penalty_carer_yn == 'Y'}">
-												무<input type="radio" name="criminal_penalty_carer_yn" disabled
-													th:checked="${tb_005VO.criminal_penalty_carer_yn == 'N'}">
-											</div>
-											<th:block th:if="${tb_005VO.criminal_penalty_carer_yn == 'Y'}">
-												<div>
-													<textarea
-														readonly>[[${tb_005VO.criminal_penalty_carer_etc}]]</textarea>
-												</div>
-											</th:block>
-										</td>
-									</tr>
-								</tbody>
+              </th:block>
+              <th:block th:unless="${tb_005VO == null} and ${tb_010VO == null}">
+                <tbody>
+                  <tr class="detailLine1">
+                    <td>공고제목</td>
+                    <td>[[${tb_005VO.announce_title}]]</td>
+                    <td>재판조력자 분류</td>
+                    <td>[[${tb_010VO.trial_fcltt_description}]]</td>
+                  </tr>
+                  <tr class="detailLine2">
+                    <td>신청상태</td>
+                    <td>
+                      <th:block th:if="${tb_005VO.aplicn_dtls_sts == '02'}">
+                        신청완료
+                      </th:block>
+                      <th:block th:if="${tb_005VO.aplicn_dtls_sts == '03'}">
+                        심사중
+                      </th:block>
+                      <th:block th:if="${tb_005VO.aplicn_dtls_sts == '04'}">
+                        서류반려
+                      </th:block>
+                      <th:block th:if="${tb_005VO.aplicn_dtls_sts == '05'}">
+                        1차통과
+                      </th:block>
+                      <th:block th:if="${tb_005VO.aplicn_dtls_sts == '06'}">
+                        최종심사중
+                      </th:block>
+                      <th:block th:if="${tb_005VO.aplicn_dtls_sts == '07'}">
+                        불합격
+                      </th:block>
+                      <th:block th:if="${tb_005VO.aplicn_dtls_sts == '08'}">
+                        합격
+                      </th:block>
+                    </td>
+                    <td>신청날짜</td>
+                    <td><span th:text="${#strings.substring(tb_005VO.aplicn_dtls_date, 0, 10)}"></span>
+                    </td>
+                  </tr>
+                  <tr class="detailLine3">
+                    <td>소송사건 당사자 경력</td>
+                    <td colspan="3" class="inputbox">
+                      <div>
+                        유<input type="radio" name="ligtn_case_casrer_yn" disabled
+                          th:checked="${tb_005VO.ligtn_case_carer_yn == 'Y'}">
+                        무<input type="radio" name="ligtn_case_casrer_yn" disabled
+                          th:checked="${tb_005VO.ligtn_case_carer_yn == 'N'}">
+                      </div>
+                      <th:block th:if="${tb_005VO.ligtn_case_carer_yn == 'Y'}">
+                        <div>
+                          <textarea readonly>[[${tb_005VO.ligtn_case_carer_etc}]]</textarea>
+                        </div>
+                      </th:block>
+                    </td>
+                  </tr>
+                  <tr class="detailLine4">
+                    <td>보험업계 경력</td>
+                    <td colspan="3" class="inputbox">
+                      <div>
+                        유<input type="radio" name="insrn_indst_carer_yn" disabled
+                          th:checked="${tb_005VO.insrn_indst_carer_yn == 'Y'}">
+                        무<input type="radio" name="insrn_indst_carer_yn" disabled
+                          th:checked="${tb_005VO.insrn_indst_carer_yn == 'N'}">
+                      </div>
+                      <th:block th:if="${tb_005VO.insrn_indst_carer_yn == 'Y'}">
+                        <div>
+                          <textarea readonly>[[${tb_005VO.insrn_indst_carer_etc}]]</textarea>
+                        </div>
+                      </th:block>
+                    </td>
+                  </tr>
+                  <tr class="detailLine5">
+                    <td>형사처벌 받은 경력</td>
+                    <td colspan="3" class="inputbox">
+                      <div>
+                        유<input type="radio" name="criminal_penalty_carer_yn" disabled
+                          th:checked="${tb_005VO.criminal_penalty_carer_yn == 'Y'}">
+                        무<input type="radio" name="criminal_penalty_carer_yn" disabled
+                          th:checked="${tb_005VO.criminal_penalty_carer_yn == 'N'}">
+                      </div>
+                      <th:block th:if="${tb_005VO.criminal_penalty_carer_yn == 'Y'}">
+                        <div>
+                          <textarea readonly>[[${tb_005VO.criminal_penalty_carer_etc}]]</textarea>
+                        </div>
+                      </th:block>
+                    </td>
+                  </tr>
+                </tbody>
 
-							</th:block>
-						</table>
-					</div>
+              </th:block>
+            </table>
+          </div>
 
-					<th:block th:if="${#lists.isEmpty(tb_009VOlist)}">
-						<div style="height: 50px;"></div>
-					</th:block>
-					<th:block th:unless="${#lists.isEmpty(tb_009VOlist)}">
-						<div class="attachSection">
-							<h4 class="attachTitle"><i class="required-img">
-									<span class="hidden">필수입력</span>
-								</i> 첨부파일(신청내용)</h4>
-							<table class="attachTable">
-								<tbody>
-									<tr>
-										<td>증빙서류</td>
-										<td>
-											<p class="attachTable-content"><i class="required-img">
-													<span class="hidden">필수입력</span>
-												</i> gif, jpg, jpeg, png, pdf 파일만 등록할 수 있습니다.</p>
-											<p class="attachTable-content"><i class="required-img">
-													<span class="hidden">필수입력</span>
-												</i> (단, pdf는 한글에서 전환한 파일은 불가능하며, 이미지로 변환한 경우만 가능)</p>
-											<p class="attachTable-content"><i class="required-img">
-													<span class="hidden">필수입력</span>
-												</i> 첨부파일은 최대 5개까지 등록할 수 있으며, 용량은 파일단 5MB 이하여야 합니다.</p>
+          <th:block th:if="${#lists.isEmpty(tb_009VOlist)}">
+            <div style="height: 50px;"></div>
+          </th:block>
+          <th:block th:unless="${#lists.isEmpty(tb_009VOlist)}">
+            <div class="attachSection">
+              <h4 class="attachTitle"><i class="required-img">
+                  <span class="hidden">필수입력</span>
+                </i> 첨부파일(신청내용)</h4>
+              <table class="attachTable">
+                <tbody>
+                  <tr>
+                    <td>증빙서류</td>
+                    <td>
+                      <p class="attachTable-content"><i class="required-img">
+                          <span class="hidden">필수입력</span>
+                        </i> gif, jpg, jpeg, png, pdf 파일만 등록할 수 있습니다.</p>
+                      <p class="attachTable-content"><i class="required-img">
+                          <span class="hidden">필수입력</span>
+                        </i> (단, pdf는 한글에서 전환한 파일은 불가능하며, 이미지로 변환한 경우만 가능)</p>
+                      <p class="attachTable-content"><i class="required-img">
+                          <span class="hidden">필수입력</span>
+                        </i> 첨부파일은 최대 5개까지 등록할 수 있으며, 용량은 파일단 5MB 이하여야 합니다.</p>
 
 
 
-											<th:block th:each="tb_009VO : ${tb_009VOlist}">
-												<th:block th:if="${tb_009VO.key.file_type == 'RESUME'} or
+                      <th:block th:each="tb_009VO : ${tb_009VOlist}">
+                        <th:block th:if="${tb_009VO.key.file_type == 'RESUME'} or
 																				 ${tb_009VO.key.file_type == 'BUSINESSLICENSE'} or
 																				 ${tb_009VO.key.file_type == 'BUSINESSREPORT'} or
 																				 ${tb_009VO.key.file_type == 'TAXCONFIRM'} or
 																				 ${tb_009VO.key.file_type == 'OTHER'}">
-													<p class="attachTable-content">
-														<a th:href="@{'https://court-supporter-project-t4.s3.ap-northeast-2.amazonaws.com/' + ${tb_009VO.key.file_path} + '/' + ${tb_009VO.key.uuid} + '_' + ${tb_009VO.key.original_file_name}}" style="color: blue; font-weight: bold;">
-															<img th:src="@{/img/documentY.png}" class="documentY">
-															[[${tb_009VO.value}]]
-														</a>													
-													</p>
-												</th:block>
-											</th:block>
+                          <p class="attachTable-content">
+                            <a th:href="@{'https://court-supporter-project-t4.s3.ap-northeast-2.amazonaws.com/' + ${tb_009VO.key.file_path} + '/' + ${tb_009VO.key.uuid} + '_' + ${tb_009VO.key.original_file_name}}"
+                              style="color: blue; font-weight: bold;">
+                              <img th:src="@{/img/documentY.png}" class="documentY">
+                              [[${tb_009VO.value}]]
+                            </a>
+                          </p>
+                        </th:block>
+                      </th:block>
 
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</th:block>
-					<th:block th:if="${#lists.isEmpty(tb_011VOlist)}">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </th:block>
+          <th:block th:if="${#lists.isEmpty(tb_011VOlist)}">
 
-					</th:block>
-					<th:block th:unless="${#lists.isEmpty(tb_011VOlist)}">
-						<div class="courtSection">
-							<h3>희망법원</h3>
-							<div class="arrow-wrap">
-								<div class="arrow arrow-up"></div>
-							</div>
-							<table class="courtTable">
-								<colgroup>
-									<col width="10%">
-									<col width="90%">
-								</colgroup>
-								<thead>
-									<tr class="courtHead">
-										<th>번호</th>
-										<th>법원</th>
-									</tr>
-								</thead>
-								<tbody>
-									<th:block th:each="tb_011VO, status : ${tb_011VOlist}">
-										<tr class="courtBody">
-											<td>[[${status.count}]]</td>
-											<td>[[${tb_011VO.court_name}]]</td>
-										</tr>
-									</th:block>
-								</tbody>
-							</table>
-						</div>
-					</th:block>
+          </th:block>
+          <th:block th:unless="${#lists.isEmpty(tb_011VOlist)}">
+            <div class="courtSection">
+              <h3>희망법원</h3>
+              <div class="arrow-wrap">
+                <div class="arrow arrow-up"></div>
+              </div>
+              <table class="courtTable">
+                <colgroup>
+                  <col width="10%">
+                  <col width="90%">
+                </colgroup>
+                <thead>
+                  <tr class="courtHead">
+                    <th>번호</th>
+                    <th>법원</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <th:block th:each="tb_011VO, status : ${tb_011VOlist}">
+                    <tr class="courtBody">
+                      <td>[[${status.count}]]</td>
+                      <td>[[${tb_011VO.court_name}]]</td>
+                    </tr>
+                  </th:block>
+                </tbody>
+              </table>
+            </div>
+          </th:block>
 
-					<th:block th:if="${#lists.isEmpty(tb_006VOlist)}">
+          <th:block th:if="${#lists.isEmpty(tb_006VOlist)}">
 
-					</th:block>
-					<th:block th:unless="${#lists.isEmpty(tb_006VOlist)}">
-						<div class="edctnSection">
-							<h3>학력정보</h3>
-							<div class="arrow-wrap">
-								<div class="arrow arrow-up"></div>
-							</div>
-							<table class="edctnTable">
-								<colgroup>
-									<col width="10%">
-									<col width="30%">
-									<col width="30%">
-									<col width="30%">
-								</colgroup>
-								<thead>
-									<tr class="edctnHead">
-										<th>번호</th>
-										<th>학교명</th>
-										<th>전공</th>
-										<th>입학일 및 졸업일</th>
-									</tr>
-								</thead>
-								<tbody>
-									<th:block th:each="tb_006VO, status : ${tb_006VOlist}">
-										<tr class="edctnBody">
-											<td>[[${status.count}]]</td>
-											<td>[[${tb_006VO.edctn_school_name}]]</td>
-											<td>[[${tb_006VO.edctn_major}]]</td>
-											<td>
-												<span th:text="${#strings.substring(tb_006VO.edctn_admsn_date, 0, 10)}" />
-												<span>~</span>
-												<span th:text="${#strings.substring(tb_006VO.edctn_grdtn_date, 0, 10)}" />
-											</td>
-										</tr>
-									</th:block>
-								</tbody>
-							</table>
-						</div>		
-					</th:block>
+          </th:block>
+          <th:block th:unless="${#lists.isEmpty(tb_006VOlist)}">
+            <div class="edctnSection">
+              <h3>학력정보</h3>
+              <div class="arrow-wrap">
+                <div class="arrow arrow-up"></div>
+              </div>
+              <table class="edctnTable">
+                <colgroup>
+                  <col width="10%">
+                  <col width="30%">
+                  <col width="30%">
+                  <col width="30%">
+                </colgroup>
+                <thead>
+                  <tr class="edctnHead">
+                    <th>번호</th>
+                    <th>학교명</th>
+                    <th>전공</th>
+                    <th>입학일 및 졸업일</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <th:block th:each="tb_006VO, status : ${tb_006VOlist}">
+                    <tr class="edctnBody">
+                      <td>[[${status.count}]]</td>
+                      <td>[[${tb_006VO.edctn_school_name}]]</td>
+                      <td>[[${tb_006VO.edctn_major}]]</td>
+                      <td>
+                        <span th:text="${#strings.substring(tb_006VO.edctn_admsn_date, 0, 10)}" />
+                        <span>~</span>
+                        <span th:text="${#strings.substring(tb_006VO.edctn_grdtn_date, 0, 10)}" />
+                      </td>
+                    </tr>
+                  </th:block>
+                </tbody>
+              </table>
+            </div>
+          </th:block>
 
-					<th:block th:if="${#lists.isEmpty(tb_009VOlist)}">
-						<div style="height: 50px;"></div>
-					</th:block>
-					<th:block th:unless="${#lists.isEmpty(tb_009VOlist)}">
+          <th:block th:if="${#lists.isEmpty(tb_009VOlist)}">
+            <div style="height: 50px;"></div>
+          </th:block>
+          <th:block th:unless="${#lists.isEmpty(tb_009VOlist)}">
 
-						<div class="attachSection">
-							<h4 class="attachTitle"><i class="required-img">
-									<span class="hidden">필수입력</span>
-								</i> 첨부파일(학력정보)</h4>
-							<table class="attachTable">
-								<tbody>
-									<tr>
-										<td>증빙서류</td>
-										<td>
-											<p class="attachTable-content"><i class="required-img">
-													<span class="hidden">필수입력</span>
-												</i> gif, jpg, jpeg, png, pdf 파일만 등록할 수 있습니다.</p>
-											<p class="attachTable-content"><i class="required-img">
-													<span class="hidden">필수입력</span>
-												</i> (단, pdf는 한글에서 전환한 파일은 불가능하며, 이미지로 변환한 경우만 가능)</p>
-											<p class="attachTable-content"><i class="required-img">
-													<span class="hidden">필수입력</span>
-												</i> 첨부파일은 최대 5개까지 등록할 수 있으며, 용량은 파일단 5MB 이하여야 합니다.</p>
-
-
-											<th:block th:each="tb_009VO : ${tb_009VOlist}">
-												<th:block th:if="${tb_009VO.key.file_type == 'EDUCATIONLEVEL'}">
-													<p class="attachTable-content">
-														<a th:href="@{'https://court-supporter-project-t4.s3.ap-northeast-2.amazonaws.com/' + ${tb_009VO.key.file_path} + '/' + ${tb_009VO.key.uuid} + '_' + ${tb_009VO.key.original_file_name}}" style="color: blue; font-weight: bold;">
-															<img th:src="@{/img/documentY.png}" class="documentY">
-															[[${tb_009VO.value}]]
-														</a>				
-													</p>
-												</th:block>
-											</th:block>
-
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</th:block>
-					<th:block th:if="${#lists.isEmpty(tb_007VOlist)}">
-
-					</th:block>
-					<th:block th:unless="${#lists.isEmpty(tb_007VOlist)}">
-
-						<div class="carerSection">
-							<h3>경력</h3>
-							<div class="arrow-wrap">
-								<div class="arrow arrow-up"></div>
-							</div>
-							<table class="carerTable">
-								<colgroup>
-									<col width="10%">
-									<col width="30%">
-									<col width="20%">
-									<col width="20%">
-									<col width="20%">
-								</colgroup>
-								<thead>
-									<tr class="carerHead">
-										<th>번호</th>
-										<th>회사명</th>
-										<th>경력구분</th>
-										<th>근무시작 및 종료일자</th>
-										<th>부서 및 직책</th>
-									</tr>
-								</thead>
-								<tbody>
-									<th:block th:if="${#lists.isEmpty(tb_007VOlist)}">
-
-									</th:block>
-									<th:block th:unless="${#lists.isEmpty(tb_007VOlist)}">
-										<th:block th:each="tb_007VO, status : ${tb_007VOlist}">
-											<tr class="carerBody">
-												<td>[[${status.count}]]</td>
-												<td>[[${tb_007VO.company_name}]]</td>
-												<td>[[${tb_007VO.carer_type}]]</td>
-												<td>
-													<span th:text="${#strings.substring(tb_007VO.work_start_date, 0, 10)}" />
-													<span>~</span>
-													<span th:text="${#strings.substring(tb_007VO.work_end_date, 0, 10)}" />
-												</td>
-												<td>[[${tb_007VO.work_department}]] / [[${tb_007VO.work_position}]]</td>
-											</tr>
-										</th:block>
-									</th:block>
-								</tbody>
-							</table>
-						</div>
-					</th:block>
-
-					<th:block th:if="${#lists.isEmpty(tb_009VOlist)}">
-						<div style="height: 50px;"></div>
-					</th:block>
-					<th:block th:unless="${#lists.isEmpty(tb_009VOlist)}">
+            <div class="attachSection">
+              <h4 class="attachTitle"><i class="required-img">
+                  <span class="hidden">필수입력</span>
+                </i> 첨부파일(학력정보)</h4>
+              <table class="attachTable">
+                <tbody>
+                  <tr>
+                    <td>증빙서류</td>
+                    <td>
+                      <p class="attachTable-content"><i class="required-img">
+                          <span class="hidden">필수입력</span>
+                        </i> gif, jpg, jpeg, png, pdf 파일만 등록할 수 있습니다.</p>
+                      <p class="attachTable-content"><i class="required-img">
+                          <span class="hidden">필수입력</span>
+                        </i> (단, pdf는 한글에서 전환한 파일은 불가능하며, 이미지로 변환한 경우만 가능)</p>
+                      <p class="attachTable-content"><i class="required-img">
+                          <span class="hidden">필수입력</span>
+                        </i> 첨부파일은 최대 5개까지 등록할 수 있으며, 용량은 파일단 5MB 이하여야 합니다.</p>
 
 
-						<div class="attachSection">
-							<h4 class="attachTitle"><i class="required-img">
-									<span class="hidden">필수입력</span>
-								</i> 첨부파일(경력정보)</h4>
-							<table class="attachTable">
-								<tbody>
-									<tr>
-										<td>증빙서류</td>
-										<td>
-											<p class="attachTable-content"><i class="required-img">
-													<span class="hidden">필수입력</span>
-												</i> gif, jpg, jpeg, png, pdf 파일만 등록할 수 있습니다.</p>
-											<p class="attachTable-content"><i class="required-img">
-													<span class="hidden">필수입력</span>
-												</i> (단, pdf는 한글에서 전환한 파일은 불가능하며, 이미지로 변환한 경우만 가능)</p>
-											<p class="attachTable-content"><i class="required-img">
-													<span class="hidden">필수입력</span>
-												</i> 첨부파일은 최대 5개까지 등록할 수 있으며, 용량은 파일단 5MB 이하여야 합니다.</p>
+                      <th:block th:each="tb_009VO : ${tb_009VOlist}">
+                        <th:block th:if="${tb_009VO.key.file_type == 'EDUCATIONLEVEL'}">
+                          <p class="attachTable-content">
+                            <a th:href="@{'https://court-supporter-project-t4.s3.ap-northeast-2.amazonaws.com/' + ${tb_009VO.key.file_path} + '/' + ${tb_009VO.key.uuid} + '_' + ${tb_009VO.key.original_file_name}}"
+                              style="color: blue; font-weight: bold;">
+                              <img th:src="@{/img/documentY.png}" class="documentY">
+                              [[${tb_009VO.value}]]
+                            </a>
+                          </p>
+                        </th:block>
+                      </th:block>
 
-											<th:block th:each="tb_009VO : ${tb_009VOlist}">
-												<th:block th:if="${tb_009VO.key.file_type == 'CARRER'}">
-													<p class="attachTable-content">
-														<a th:href="@{'https://court-supporter-project-t4.s3.ap-northeast-2.amazonaws.com/' + ${tb_009VO.key.file_path} + '/' + ${tb_009VO.key.uuid} + '_' + ${tb_009VO.key.original_file_name}}" style="color: blue; font-weight: bold;">
-															<img th:src="@{/img/documentY.png}" class="documentY">
-															[[${tb_009VO.value}]]
-														</a>				
-													</p>
-												</th:block>
-											</th:block>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </th:block>
+          <th:block th:if="${#lists.isEmpty(tb_007VOlist)}">
 
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</th:block>
-					<th:block th:if="${#lists.isEmpty(tb_008VOlist)}">
+          </th:block>
+          <th:block th:unless="${#lists.isEmpty(tb_007VOlist)}">
 
-					</th:block>
-					<th:block th:unless="${#lists.isEmpty(tb_008VOlist)}">
-						<div class="crtfcSection">
-							<h3>자격증</h3>
-							<div class="arrow-wrap">
-								<div class="arrow arrow-up"></div>
-							</div>
-							<table class="crtfcTable">
-								<colgroup>
-									<col width="10%">
-									<col width="50%">
-									<col width="20%">
-									<col width="20%">
-								</colgroup>
-								<thead>
-									<tr class="crtfcHead">
-										<th>번호</th>
-										<th>자격증명</th>
-										<th>발급일</th>
-										<th>발급기관</th>
-									</tr>
-								</thead>
-								<tbody>
-									<th:block th:each="tb_008VO, status : ${tb_008VOlist}">
-										<tr class="crtfcBody">
-											<td>[[${status.count}]]</td>
-											<td>[[${tb_008VO.crtfc_type}]]</td>
-											<td><span th:text="${#strings.substring(tb_008VO.issue_date, 0, 10)}" />
-											</td>
-											<td>[[${tb_008VO.issue_agency}]]</td>
-										</tr>
-									</th:block>
-								</tbody>
-							</table>
-						</div>
-					</th:block>
+            <div class="carerSection">
+              <h3>경력</h3>
+              <div class="arrow-wrap">
+                <div class="arrow arrow-up"></div>
+              </div>
+              <table class="carerTable">
+                <colgroup>
+                  <col width="10%">
+                  <col width="30%">
+                  <col width="20%">
+                  <col width="20%">
+                  <col width="20%">
+                </colgroup>
+                <thead>
+                  <tr class="carerHead">
+                    <th>번호</th>
+                    <th>회사명</th>
+                    <th>경력구분</th>
+                    <th>근무시작 및 종료일자</th>
+                    <th>부서 및 직책</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <th:block th:if="${#lists.isEmpty(tb_007VOlist)}">
 
-					<th:block th:if="${#lists.isEmpty(tb_009VOlist)}">
-						<div style="height: 50px;"></div>
-					</th:block>
-					<th:block th:unless="${#lists.isEmpty(tb_009VOlist)}">
-						<div class="attachSection">	
-							<h4 class="attachTitle"><i class="required-img">
-									<span class="hidden">필수입력</span>
-								</i> 첨부파일(자격증정보)</h4>
-							<table class="attachTable">
-								<tbody>
-									<tr>
-										<td>증빙서류</td>
-										<td>
-											<p class="attachTable-content"><i class="required-img">
-													<span class="hidden">필수입력</span>
-												</i> gif, jpg, jpeg, png, pdf 파일만 등록할 수 있습니다.</p>
-											<p class="attachTable-content"><i class="required-img">
-													<span class="hidden">필수입력</span>
-												</i> (단, pdf는 한글에서 전환한 파일은 불가능하며, 이미지로 변환한 경우만 가능)</p>
-											<p class="attachTable-content"><i class="required-img">
-													<span class="hidden">필수입력</span>
-												</i> 첨부파일은 최대 5개까지 등록할 수 있으며, 용량은 파일단 5MB 이하여야 합니다.</p>
+                  </th:block>
+                  <th:block th:unless="${#lists.isEmpty(tb_007VOlist)}">
+                    <th:block th:each="tb_007VO, status : ${tb_007VOlist}">
+                      <tr class="carerBody">
+                        <td>[[${status.count}]]</td>
+                        <td>[[${tb_007VO.company_name}]]</td>
+                        <td>[[${tb_007VO.carer_type}]]</td>
+                        <td>
+                          <span th:text="${#strings.substring(tb_007VO.work_start_date, 0, 10)}" />
+                          <span>~</span>
+                          <span th:text="${#strings.substring(tb_007VO.work_end_date, 0, 10)}" />
+                        </td>
+                        <td>[[${tb_007VO.work_department}]] / [[${tb_007VO.work_position}]]</td>
+                      </tr>
+                    </th:block>
+                  </th:block>
+                </tbody>
+              </table>
+            </div>
+          </th:block>
 
-											<th:block th:each="tb_009VO : ${tb_009VOlist}">
-												<th:block th:if="${tb_009VO.key.file_type == 'CERTIFICATE'}">
-													<p class="attachTable-content">
-														<a th:href="@{'https://court-supporter-project-t4.s3.ap-northeast-2.amazonaws.com/' + ${tb_009VO.key.file_path} + '/' + ${tb_009VO.key.uuid} + '_' + ${tb_009VO.key.original_file_name}}" style="color: blue; font-weight: bold;">
-															<img th:src="@{/img/documentY.png}" class="documentY">
-															[[${tb_009VO.value}]]
-														</a>				
-													</p>
-												</th:block>
-											</th:block>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</th:block>
-					
-					<form action="usermypage_evaluation_result" method="post" name="evaluateresult" id="evaluateresult">
-						<input type="hidden" name="aplcn_dtls_proper_num" th:value="${tb_005VO.aplcn_dtls_proper_num}">
-						<input type="hidden" name="announce_proper_num" th:value="${tb_005VO.announce_proper_num}">
-					</form>
-					
-					<div class="btnbox btnbox02">
-						<a th:href="@{usermypage_applicationlist}" class="btn4d5">목록</a>
-						<th:block th:if="${tb_005VO.aplicn_dtls_sts == '01'}">
-							<a href="#none" class="btnfb7 modifybtn">수정</a>
-						</th:block>
-						<th:block th:unless="${tb_005VO.aplicn_dtls_sts == '01'}">
-							<a href="#none" class="btnfb7 resultbtn">평가결과</a>
-						</th:block>
-						<th:block th:each="tb_009VO, status : ${tb_009VOlist}">
-							<th:block th:if="${tb_009VO.key.file_type == 'APPLICATIONRESULT'}">
-								<a class="btn4d5"  th:href="@{'https://court-supporter-project-t4.s3.ap-northeast-2.amazonaws.com/' + ${tb_009VO.key.file_path} + '/' + ${tb_009VO.key.uuid} + '_' + ${tb_009VO.key.original_file_name}}">출력</a>								
-							</th:block>
-						</th:block>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+          <th:block th:if="${#lists.isEmpty(tb_009VOlist)}">
+            <div style="height: 50px;"></div>
+          </th:block>
+          <th:block th:unless="${#lists.isEmpty(tb_009VOlist)}">
+
+
+            <div class="attachSection">
+              <h4 class="attachTitle"><i class="required-img">
+                  <span class="hidden">필수입력</span>
+                </i> 첨부파일(경력정보)</h4>
+              <table class="attachTable">
+                <tbody>
+                  <tr>
+                    <td>증빙서류</td>
+                    <td>
+                      <p class="attachTable-content"><i class="required-img">
+                          <span class="hidden">필수입력</span>
+                        </i> gif, jpg, jpeg, png, pdf 파일만 등록할 수 있습니다.</p>
+                      <p class="attachTable-content"><i class="required-img">
+                          <span class="hidden">필수입력</span>
+                        </i> (단, pdf는 한글에서 전환한 파일은 불가능하며, 이미지로 변환한 경우만 가능)</p>
+                      <p class="attachTable-content"><i class="required-img">
+                          <span class="hidden">필수입력</span>
+                        </i> 첨부파일은 최대 5개까지 등록할 수 있으며, 용량은 파일단 5MB 이하여야 합니다.</p>
+
+                      <th:block th:each="tb_009VO : ${tb_009VOlist}">
+                        <th:block th:if="${tb_009VO.key.file_type == 'CARRER'}">
+                          <p class="attachTable-content">
+                            <a th:href="@{'https://court-supporter-project-t4.s3.ap-northeast-2.amazonaws.com/' + ${tb_009VO.key.file_path} + '/' + ${tb_009VO.key.uuid} + '_' + ${tb_009VO.key.original_file_name}}"
+                              style="color: blue; font-weight: bold;">
+                              <img th:src="@{/img/documentY.png}" class="documentY">
+                              [[${tb_009VO.value}]]
+                            </a>
+                          </p>
+                        </th:block>
+                      </th:block>
+
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </th:block>
+          <th:block th:if="${#lists.isEmpty(tb_008VOlist)}">
+
+          </th:block>
+          <th:block th:unless="${#lists.isEmpty(tb_008VOlist)}">
+            <div class="crtfcSection">
+              <h3>자격증</h3>
+              <div class="arrow-wrap">
+                <div class="arrow arrow-up"></div>
+              </div>
+              <table class="crtfcTable">
+                <colgroup>
+                  <col width="10%">
+                  <col width="50%">
+                  <col width="20%">
+                  <col width="20%">
+                </colgroup>
+                <thead>
+                  <tr class="crtfcHead">
+                    <th>번호</th>
+                    <th>자격증명</th>
+                    <th>발급일</th>
+                    <th>발급기관</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <th:block th:each="tb_008VO, status : ${tb_008VOlist}">
+                    <tr class="crtfcBody">
+                      <td>[[${status.count}]]</td>
+                      <td>[[${tb_008VO.crtfc_type}]]</td>
+                      <td><span th:text="${#strings.substring(tb_008VO.issue_date, 0, 10)}" />
+                      </td>
+                      <td>[[${tb_008VO.issue_agency}]]</td>
+                    </tr>
+                  </th:block>
+                </tbody>
+              </table>
+            </div>
+          </th:block>
+
+          <th:block th:if="${#lists.isEmpty(tb_009VOlist)}">
+            <div style="height: 50px;"></div>
+          </th:block>
+          <th:block th:unless="${#lists.isEmpty(tb_009VOlist)}">
+            <div class="attachSection">
+              <h4 class="attachTitle"><i class="required-img">
+                  <span class="hidden">필수입력</span>
+                </i> 첨부파일(자격증정보)</h4>
+              <table class="attachTable">
+                <tbody>
+                  <tr>
+                    <td>증빙서류</td>
+                    <td>
+                      <p class="attachTable-content"><i class="required-img">
+                          <span class="hidden">필수입력</span>
+                        </i> gif, jpg, jpeg, png, pdf 파일만 등록할 수 있습니다.</p>
+                      <p class="attachTable-content"><i class="required-img">
+                          <span class="hidden">필수입력</span>
+                        </i> (단, pdf는 한글에서 전환한 파일은 불가능하며, 이미지로 변환한 경우만 가능)</p>
+                      <p class="attachTable-content"><i class="required-img">
+                          <span class="hidden">필수입력</span>
+                        </i> 첨부파일은 최대 5개까지 등록할 수 있으며, 용량은 파일단 5MB 이하여야 합니다.</p>
+
+                      <th:block th:each="tb_009VO : ${tb_009VOlist}">
+                        <th:block th:if="${tb_009VO.key.file_type == 'CERTIFICATE'}">
+                          <p class="attachTable-content">
+                            <a th:href="@{'https://court-supporter-project-t4.s3.ap-northeast-2.amazonaws.com/' + ${tb_009VO.key.file_path} + '/' + ${tb_009VO.key.uuid} + '_' + ${tb_009VO.key.original_file_name}}"
+                              style="color: blue; font-weight: bold;">
+                              <img th:src="@{/img/documentY.png}" class="documentY">
+                              [[${tb_009VO.value}]]
+                            </a>
+                          </p>
+                        </th:block>
+                      </th:block>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </th:block>
+
+          <form action="usermypage_evaluation_result" method="post" name="evaluateresult" id="evaluateresult">
+            <input type="hidden" name="aplcn_dtls_proper_num" th:value="${tb_005VO.aplcn_dtls_proper_num}">
+            <input type="hidden" name="announce_proper_num" th:value="${tb_005VO.announce_proper_num}">
+          </form>
+
+          <div class="btnbox btnbox02">
+            <a th:href="@{usermypage_applicationlist}" class="btn4d5">목록</a>
+            <th:block th:if="${tb_005VO.aplicn_dtls_sts == '01'}">
+              <!--<a href="#none" class="btnfb7 modifybtn">수정</a>-->
+            </th:block>
+            <th:block th:unless="${tb_005VO.aplicn_dtls_sts == '01'}">
+              <a href="#none" class="btnfb7 resultbtn">평가결과</a>
+            </th:block>
+            <th:block th:each="tb_009VO, status : ${tb_009VOlist}">
+              <th:block th:if="${tb_009VO.key.file_type == 'APPLICATIONRESULT'}">
+                <a class="btn4d5"
+                  th:href="@{'https://court-supporter-project-t4.s3.ap-northeast-2.amazonaws.com/' + ${tb_009VO.key.file_path} + '/' + ${tb_009VO.key.uuid} + '_' + ${tb_009VO.key.original_file_name}}">출력</a>
+              </th:block>
+            </th:block>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </th:block>
 <script>
-	var modifybtn = document.querySelector('.modifybtn');
-	modifybtn.addEventListener('click', function(e) {
-		alert('개발중');
-	});
+  //var modifybtn = document.querySelector('.modifybtn');
+  //modifybtn.addEventListener('click', function (e) {
+  //  alert('개발중');
+  //});
 </script>
 <script th:src="@{/js/usermypage-applicationdetail.js}"></script>
+
 </html>

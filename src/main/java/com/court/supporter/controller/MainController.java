@@ -54,8 +54,8 @@ public class MainController {
       session.setAttribute("member_role", member_role.get(0).getAuthority());
     }
 
-    ArrayList<TB_002VO> tb_002list = mainService.getannouncelist("");
-    ArrayList<TB_003VO> tb_003list = mainService.getnoticelist("");
+    ArrayList<TB_002VO> tb_002list = mainService.getmainannounce();
+    ArrayList<TB_003VO> tb_003list = mainService.getmainnotice();
 
     model.addAttribute("tb_002list", tb_002list);
     model.addAttribute("tb_003list", tb_003list);

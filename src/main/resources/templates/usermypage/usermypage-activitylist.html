@@ -5,165 +5,167 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">-->
 <link rel="stylesheet" th:href="@{/css/usermypage-activitylist.css}">
 <th:block th:replace="~{./include/layout :: setContent(~{::.usermypage-activitylist})}">
-	<div class="usermypage-activitylist">
-		<div class="usermypage-activitylist-wrap">
-			<!-- 네비게이션바 -->
-			<th:block th:replace="~{./include/layout-usermypage-side :: layout-usermypage-side}">
-			</th:block>
-			<div class="myinfo-activitylist-wrap">
-				<div class="myinfo-activitylist">
-					<h3>활동내역</h3>
-				</div>
-				<div class="myinfo-activitylist-title-wrap">
-					<!--<h3 class="myinfo-activitylist-title">활동내역</h3>-->
-				</div>
-				<p class="titleImg">조력자 활동내역을 확인할 수 있는 게시판입니다.</p>
-				<div class="search-wrap">
-					<form action="usermypage_activitylist" method="get">
-						<input type="hidden" name="page" value="1">
-						<input type="hidden" name="amount" th:value="${pageVO.amount}">
-						<div class="board_search">
-							<div class="board_search_date">
-								<div class="searchzone">
-									<div style="margin-top: 25px; margin-left: 150px; float: left;">
-										<span class="date-content" style="margin-right: 16px;">기간별 검색(선정일)</span>
-										<input type="text" class="datepicker datepicker1" name="chosen_startdate" readonly
-											placeholder="날짜선택" required pattern="\d{4}-\d{2}-\d{2}"
-											th:value="${pageVO.cri.chosen_startdate}">
-										<span class="date-content">~</span>
-										<input type="text" class="datepicker datepicker2" name="chosen_enddate" readonly placeholder="날짜선택" required
-											pattern="\d{4}-\d{2}-\d{2}" th:value="${pageVO.cri.chosen_enddate}">
-									</div>
-									<div style="margin-top: 10px; margin-left: 150px; float: left;">
-										<span class="date-content">기간별 검색(출석일자)</span>
-										<input type="text" class="datepicker datepicker3" name="attendance_startdate" readonly placeholder="날짜선택" required
-											pattern="\d{4}-\d{2}-\d{2}" th:value="${pageVO.cri.attendance_startdate}">
-										<span class="date-content">~</span>
-										<input type="text" class="datepicker datepicker4" name="attendance_enddate" readonly placeholder="날짜선택" required
-											pattern="\d{4}-\d{2}-\d{2}" th:value="${pageVO.cri.attendance_enddate}">										
-									</div>
-									<div class="board_search_sts">
-										<span class="sts-content">완료여부</span>
-										<select name="act_complete_yn" class="choiceyn">
-											<option value="" th:selected="${pageVO.cri.act_complete_yn == ''}">선택</option>
-											<option value="Y" th:selected="${pageVO.cri.act_complete_yn == 'Y'}">완료</option>
-											<option value="N" th:selected="${pageVO.cri.act_complete_yn == 'N'}">미완료</option>
-										</select>
-									</div>									
-								</div>
-							</div>
-							
-							<div class="board_total">검색글수 :
-								<th:block>
-									<span class="colfb7">[[${total}]]건</span>
-								</th:block>
-							</div>
-							<div class="board_search_text">
-								<input type="text" id="judgement_num" name="judgement_num" title="검색어 입력"
-									th:value="${pageVO.cri.judgement_num}" placeholder="활동내역검색">
-								<input type="submit" class="search_btn" value="검색" />
-							</div>
-						</div>
-					</form>
-				</div>
-				<th:block th:if="${#lists.isEmpty(list)}">
-					<table class="board_table topT" style="margin-bottom: 150px;">
-						<colgroup>
-							<col width="12%">
-							<col width="49%">
-							<col width="13%">
-							<col width="13%">
-							<col width="13%">
-						</colgroup>
-						<thead>
-							<tr>
-								<th>번호</th>
-								<th>공고제목</th>
-								<th>신청날짜</th>
-								<th>첨부</th>
-								<th>신청상태</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td></td>
-								<td>
-									<p style="text-align: center; color: gray;">검색 결과가 없습니다.</p>
-								</td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-						</tbody>
-					</table>
-				</th:block>
-				<th:block th:unless="${#lists.isEmpty(list)}">
-					<table class="board_table topT">
-						<colgroup>
-							<col width="12%">
-							<col width="49%">
-							<col width="13%">
-							<col width="13%">
-							<col width="13%">
-						</colgroup>
-						<thead>
-							<tr>
-								<th>번호</th>
-								<th>재판번호</th>
-								<th>선정일</th>
-								<th>출석일자</th>
-								<th>완료여부</th>
-							</tr>
-						</thead>
-						<tbody>
+  <div class="usermypage-activitylist">
+    <div class="usermypage-activitylist-wrap">
+      <!-- 네비게이션바 -->
+      <th:block th:replace="~{./include/layout-usermypage-side :: layout-usermypage-side}">
+      </th:block>
+      <div class="myinfo-activitylist-wrap">
+        <div class="myinfo-activitylist">
+          <h3>활동내역</h3>
+        </div>
+        <div class="myinfo-activitylist-title-wrap">
+          <!--<h3 class="myinfo-activitylist-title">활동내역</h3>-->
+        </div>
+        <p class="titleImg">조력자 활동내역을 확인할 수 있는 게시판입니다.</p>
+        <div class="search-wrap">
+          <form action="usermypage_activitylist" method="get">
+            <input type="hidden" name="page" value="1">
+            <input type="hidden" name="amount" th:value="${pageVO.amount}">
+            <div class="board_search">
+              <div class="board_search_date">
+                <div class="searchzone">
+                  <div style="margin-top: 25px; margin-left: 150px; float: left;">
+                    <span class="date-content" style="margin-right: 16px;">기간별 검색(선정일)</span>
+                    <input type="text" class="datepicker datepicker1" name="chosen_startdate" readonly
+                      placeholder="날짜선택" required pattern="\d{4}-\d{2}-\d{2}" th:value="${pageVO.cri.chosen_startdate}">
+                    <span class="date-content">~</span>
+                    <input type="text" class="datepicker datepicker2" name="chosen_enddate" readonly placeholder="날짜선택"
+                      required pattern="\d{4}-\d{2}-\d{2}" th:value="${pageVO.cri.chosen_enddate}">
+                  </div>
+                  <div style="margin-top: 10px; margin-left: 150px; float: left;">
+                    <span class="date-content">기간별 검색(출석일자)</span>
+                    <input type="text" class="datepicker datepicker3" name="attendance_startdate" readonly
+                      placeholder="날짜선택" required pattern="\d{4}-\d{2}-\d{2}"
+                      th:value="${pageVO.cri.attendance_startdate}">
+                    <span class="date-content">~</span>
+                    <input type="text" class="datepicker datepicker4" name="attendance_enddate" readonly
+                      placeholder="날짜선택" required pattern="\d{4}-\d{2}-\d{2}"
+                      th:value="${pageVO.cri.attendance_enddate}">
+                  </div>
+                  <div class="board_search_sts">
+                    <span class="sts-content">완료여부</span>
+                    <select name="act_complete_yn" class="choiceyn">
+                      <option value="" th:selected="${pageVO.cri.act_complete_yn == ''}">선택</option>
+                      <option value="Y" th:selected="${pageVO.cri.act_complete_yn == 'Y'}">완료</option>
+                      <option value="N" th:selected="${pageVO.cri.act_complete_yn == 'N'}">미완료</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
 
-							<tr th:each="vo, status : ${list}">
-								<td><span th:text="${list.size() - status.count} + 1"></span></td>
-								<td style="text-align:center">
-									<a
-										th:href="@{/usermypage/usermypage_activitydetail (act_proper_num = ${vo.act_proper_num})}">[[${vo.judgement_num}]]</a>
-								</td>
-								<td>
-									<span th:text="${#strings.substring(vo.chosen_date, 0, 10)}"></span>
-								</td>
-								<td>
-									<span th:text="${#strings.substring(vo.attendance_date, 0, 10)}"></span>
-								</td>
-								<td>
-									<th:block th:if="${vo.act_complete_yn == 'Y'}">
-										완료
-									</th:block>
-									<th:block th:if="${vo.act_complete_yn == 'N'}">
-										미완료
-									</th:block>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<th:block th:replace="~{./include/usermypage-activityPage :: pageNation( ${pageVO} )}">
-					</th:block>
-				</th:block>
-				<div class="btnbox btnbox02" style="display: flex; justify-content: right;">
-					<a th:href="@{/usermypage/usermypage_activity_regist}" class="btnfb7">등록</a>
-				</div>
-			</div>
-		</div>
-	</div>
+              <div class="board_total">검색글수 :
+                <th:block>
+                  <span class="colfb7">[[${total}]]건</span>
+                </th:block>
+              </div>
+              <div class="board_search_text">
+                <input type="text" id="judgement_num" name="judgement_num" title="검색어 입력"
+                  th:value="${pageVO.cri.judgement_num}" placeholder="활동내역검색">
+                <input type="submit" class="search_btn" value="검색" />
+              </div>
+            </div>
+          </form>
+        </div>
+        <th:block th:if="${#lists.isEmpty(list)}">
+          <table class="board_table topT" style="margin-bottom: 150px;">
+            <colgroup>
+              <col width="12%">
+              <col width="49%">
+              <col width="13%">
+              <col width="13%">
+              <col width="13%">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>번호</th>
+                <th>공고제목</th>
+                <th>신청날짜</th>
+                <th>첨부</th>
+                <th>신청상태</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td>
+                  <p style="text-align: center; color: gray;">검색 결과가 없습니다.</p>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </th:block>
+        <th:block th:unless="${#lists.isEmpty(list)}">
+          <table class="board_table topT">
+            <colgroup>
+              <col width="12%">
+              <col width="49%">
+              <col width="13%">
+              <col width="13%">
+              <col width="13%">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>번호</th>
+                <th>재판번호</th>
+                <th>선정일</th>
+                <th>출석일자</th>
+                <th>완료여부</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr th:each="vo, status : ${list}">
+                <td><span th:text="${total - ((pageVO.page-1)*8) - status.count+1} "></span></td>
+                <td style="text-align:center">
+                  <a
+                    th:href="@{/usermypage/usermypage_activitydetail (act_proper_num = ${vo.act_proper_num})}">[[${vo.judgement_num}]]</a>
+                </td>
+                <td>
+                  <span th:text="${#strings.substring(vo.chosen_date, 0, 10)}"></span>
+                </td>
+                <td>
+                  <span th:text="${#strings.substring(vo.attendance_date, 0, 10)}"></span>
+                </td>
+                <td>
+                  <th:block th:if="${vo.act_complete_yn == 'Y'}">
+                    완료
+                  </th:block>
+                  <th:block th:if="${vo.act_complete_yn == 'N'}">
+                    미완료
+                  </th:block>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <th:block th:replace="~{./include/usermypage-activityPage :: pageNation( ${pageVO} )}">
+          </th:block>
+        </th:block>
+        <div class="btnbox btnbox02" style="display: flex; justify-content: right;">
+          <a th:href="@{/usermypage/usermypage_activity_regist}" class="btnfb7">등록</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </th:block>
 <!-- jQuery UI (Datepicker가 포함된 전체 jQuery UI 라이브러리) -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script th:inline="javascript">
-	// jQuery UI Datepicker를 활성화
-	$(function () {
-		$(".datepicker").datepicker({
-			dateFormat: 'yy-mm-dd', // 날짜 형식 지정 (yyyy-mm-dd)
-			onSelect: function (dateText) {
-				// 날짜가 선택되면 선택된 날짜를 해당 입력 필드에 삽입
-				$(this).val(dateText);
-			}
-		});
-	});
+  // jQuery UI Datepicker를 활성화
+  $(function () {
+    $(".datepicker").datepicker({
+      dateFormat: 'yy-mm-dd', // 날짜 형식 지정 (yyyy-mm-dd)
+      onSelect: function (dateText) {
+        // 날짜가 선택되면 선택된 날짜를 해당 입력 필드에 삽입
+        $(this).val(dateText);
+      }
+    });
+  });
 </script>
+
 </html>

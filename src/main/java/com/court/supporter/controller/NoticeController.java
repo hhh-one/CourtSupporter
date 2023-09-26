@@ -186,6 +186,7 @@ public class NoticeController {
         return "redirect:/notice/noticeList";
       }
 
+      vo.setAdmin_proper_num(member_proper_num);
     }
 
     list = list.stream().filter(t -> t.isEmpty() == false).collect(Collectors.toList());

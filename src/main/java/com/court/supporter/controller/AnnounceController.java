@@ -302,12 +302,16 @@ public class AnnounceController {
       ArrayList<TB_005VO> list = announceService.getUserInfo2(announce_proper_num, member_proper_num);
 
       // user 해당 공고 신청기록이 없다면
-      if (list.get(0).getAplicn_dtls_sts().equals("01") || userInfo == 0) { // int 라면 == 0일 경우,
+      // user 해당 공고 신청기록이 없다면
+      if (userInfo == 0) { // int 라면 == 0일 경우,
         // String mainCode = "0" + announce_proper_num.substring(0, 1); //대분류코드 넘길 때
-        return "redirect:/application/applicationAgree?announce_proper_num=" + announce_proper_num; // +
-                                                                                                    // "&trial_fcltt_proper_num="
-                                                                                                    // +
-                                                                                                    // trial_fcltt_proper_num
+        return "redirect:/application/applicationAgree?announce_proper_num=" + announce_proper_num;
+      } else if (list.size() != 0) {
+        if (list.get(0).getAplicn_dtls_sts().equals("01")) {
+          return "redirect:/application/applicationAgree?announce_proper_num=" + announce_proper_num;
+        } else {
+          return "redirect:/"; // 에러
+        }
       } else { // 이미 해당 공고를 신청한 경우
         ra.addFlashAttribute("result", userInfo);
         return "redirect:/announce/announceList";

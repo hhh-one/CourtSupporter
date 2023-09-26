@@ -5,182 +5,180 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">-->
 <link rel="stylesheet" th:href="@{/css/usermypage-applicationlist.css}">
 <th:block th:replace="~{./include/layout :: setContent(~{::.usermypage-applicationlist})}">
-	<div class="usermypage-applicationlist">
-		<div class="usermypage-applicationlist-wrap">
-			<!-- 네비게이션바 -->
-			<th:block th:replace="~{./include/layout-usermypage-side :: layout-usermypage-side}">
-			</th:block>
-			<div class="myinfo-applicationlist-wrap">
-				<div class="myinfo-applicationlist">
-					<h3>신청현황</h3>
-				</div>
-				<div class="myinfo-applicatinlist-title-wrap">
-					<!--<h3 class="myinfo-applicationlist-title">신청현황</h3>-->
-				</div>
-				<p class="titleImg">공고 신청 현황을 확인할 수 있는 게시판입니다.</p>
-				<div class="search-wrap">
-					<form action="usermypage_applicationlist" method="get">
-						<input type="hidden" name="page" value="1">
-						<input type="hidden" name="amount" th:value="${pageVO.amount}">
-						
-						<div class="board_search">
-							<div class="searchzonewrap">
-								<div class="searchzone">
-									<div class="board_search_date">
-										<span class="date-content">신청일 검색</span>
-										<input type="text" class="datepicker datepicker1" name="aplicn_dtls_startdate" readonly
-											placeholder="날짜선택" required pattern="\d{4}-\d{2}-\d{2}"
-											th:value="${pageVO.cri.aplicn_dtls_startdate}">
-										<span class="date-content">~</span>
-										<input type="text" class="datepicker datepicker2" name="aplicn_dtls_enddate" readonly
-											placeholder="날짜선택" required pattern="\d{4}-\d{2}-\d{2}"
-											th:value="${pageVO.cri.aplicn_dtls_enddate}">
-									</div>
-									<div class="board_search_sts">
-										<span class="sts-content">신청상태 검색</span>
-										<select name="aplicn_dtls_sts" class="choicests">
-											<option value="" th:selected="${pageVO.cri.aplicn_dtls_sts == ''}">선택</option>
-											<option value="01" th:selected="${pageVO.cri.aplicn_dtls_sts == '01'}">신청중
-											</option>
-											<option value="02"
-												th:selected="${pageVO.cri.aplicn_dtls_sts == '02'}">신청완료</option>
-											<option value="03"
-												th:selected="${pageVO.cri.aplicn_dtls_sts == '03'}">심사중</option>
-											<option value="04" th:selected="${pageVO.cri.aplicn_dtls_sts == '04'}">
-												서류반려</option>
-											<option value="05" th:selected="${pageVO.cri.aplicn_dtls_sts == '05'}">1차통과
-											</option>
-											<option value="06" th:selected="${pageVO.cri.aplicn_dtls_sts == '06'}">최종심사중
-											</option>
-											<option value="07" th:selected="${pageVO.cri.aplicn_dtls_sts == '07'}">불합격
-											</option>
-											<option value="08" th:selected="${pageVO.cri.aplicn_dtls_sts == '08'}">합격
-											</option>
-										</select>
-									</div>
-								</div>
-							</div>
-							<div class="board_total">검색글수 :
-								<th:block>
-									<span class="colfb7">[[${total}]]건</span>
-								</th:block>
-							</div>
-							<div class="board_search_text">
-								<input type="text" id="announce_title" name="announce_title" title="검색어 입력"
-									th:value="${pageVO.cri.announce_title}" placeholder="공고제목검색">
-								<input type="submit" class="search_btn" value="검색"/>
-							</div>
-						</div>
-					</form>
-				</div>
-				<th:block th:if="${#lists.isEmpty(list)}">
-					<table class="board_table topT" style="margin-bottom: 150px;">
-						<colgroup>
-							<col width="10%">
-							<col width="50%">
-							<col width="20%">
-							<col width="20%">
-						</colgroup>
-						<thead>
-							<tr>
-								<th>번호</th>
-								<th>공고제목</th>
-								<th>신청날짜</th>
-								<th>신청상태</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td></td>
-								<td>
-									<p style="text-align: center; color: gray;">검색 결과가 없습니다.</p>
-								</td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-						</tbody>
-					</table>
-				</th:block>
-				<th:block th:unless="${#lists.isEmpty(list)}">
-					<table class="board_table topT">
-						<colgroup>
-							<col width="10%">
-							<col width="50%">
-							<col width="20%">
-							<col width="20%">
-						</colgroup>
-						<thead>
-							<tr>
-								<th>번호</th>
-								<th>공고제목</th>
-								<th>신청날짜</th>
-								<th>신청상태</th>
-							</tr>
-						</thead>
-						<tbody>
+  <div class="usermypage-applicationlist">
+    <div class="usermypage-applicationlist-wrap">
+      <!-- 네비게이션바 -->
+      <th:block th:replace="~{./include/layout-usermypage-side :: layout-usermypage-side}">
+      </th:block>
+      <div class="myinfo-applicationlist-wrap">
+        <div class="myinfo-applicationlist">
+          <h3>신청현황</h3>
+        </div>
+        <div class="myinfo-applicatinlist-title-wrap">
+          <!--<h3 class="myinfo-applicationlist-title">신청현황</h3>-->
+        </div>
+        <p class="titleImg">공고 신청 현황을 확인할 수 있는 게시판입니다.</p>
+        <div class="search-wrap">
+          <form action="usermypage_applicationlist" method="get">
+            <input type="hidden" name="page" value="1">
+            <input type="hidden" name="amount" th:value="${pageVO.amount}">
 
-							<tr th:each="vo, status : ${list}">
-								<td><span th:text="${list.size() - status.count} + 1"></span></td>
-								<td style="text-align:center">
-									<a
-										th:href="@{/usermypage/usermypage_applicationdetail (aplcn_dtls_proper_num = ${vo.aplcn_dtls_proper_num}, announce_proper_num = ${vo.announce_proper_num})}">[[${vo.announce_title}]]</a>
-								</td>
-								<td>
-									<span th:text="${#strings.substring(vo.aplicn_dtls_date, 0, 10)}"></span>
-								</td>
-								<td>
-									<th:block th:if="${vo.aplicn_dtls_sts == '01'}">
-										신청중
-									</th:block>
-									<th:block th:if="${vo.aplicn_dtls_sts == '02'}">
-										신청완료
-									</th:block>
-									<th:block th:if="${vo.aplicn_dtls_sts == '03'}">
-										심사중
-									</th:block>
-									<th:block th:if="${vo.aplicn_dtls_sts == '04'}">
-										서류반려
-									</th:block>
-									<th:block th:if="${vo.aplicn_dtls_sts == '05'}">
-										1차통과
-									</th:block>
-									<th:block th:if="${vo.aplicn_dtls_sts == '06'}">
-										최종심사중
-									</th:block>
-									<th:block th:if="${vo.aplicn_dtls_sts == '07'}">
-										불합격
-									</th:block>
-									<th:block th:if="${vo.aplicn_dtls_sts == '08'}">
-										합격
-									</th:block>
-								</td>
-							</tr>
+            <div class="board_search">
+              <div class="searchzonewrap">
+                <div class="searchzone">
+                  <div class="board_search_date">
+                    <span class="date-content">신청일 검색</span>
+                    <input type="text" class="datepicker datepicker1" name="aplicn_dtls_startdate" readonly
+                      placeholder="날짜선택" required pattern="\d{4}-\d{2}-\d{2}"
+                      th:value="${pageVO.cri.aplicn_dtls_startdate}">
+                    <span class="date-content">~</span>
+                    <input type="text" class="datepicker datepicker2" name="aplicn_dtls_enddate" readonly
+                      placeholder="날짜선택" required pattern="\d{4}-\d{2}-\d{2}"
+                      th:value="${pageVO.cri.aplicn_dtls_enddate}">
+                  </div>
+                  <div class="board_search_sts">
+                    <span class="sts-content">신청상태 검색</span>
+                    <select name="aplicn_dtls_sts" class="choicests">
+                      <option value="" th:selected="${pageVO.cri.aplicn_dtls_sts == ''}">선택</option>
+                      <option value="01" th:selected="${pageVO.cri.aplicn_dtls_sts == '01'}">신청중
+                      </option>
+                      <option value="02" th:selected="${pageVO.cri.aplicn_dtls_sts == '02'}">신청완료</option>
+                      <option value="03" th:selected="${pageVO.cri.aplicn_dtls_sts == '03'}">심사중</option>
+                      <option value="04" th:selected="${pageVO.cri.aplicn_dtls_sts == '04'}">
+                        서류반려</option>
+                      <option value="05" th:selected="${pageVO.cri.aplicn_dtls_sts == '05'}">1차통과
+                      </option>
+                      <option value="06" th:selected="${pageVO.cri.aplicn_dtls_sts == '06'}">최종심사중
+                      </option>
+                      <option value="07" th:selected="${pageVO.cri.aplicn_dtls_sts == '07'}">불합격
+                      </option>
+                      <option value="08" th:selected="${pageVO.cri.aplicn_dtls_sts == '08'}">합격
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="board_total">검색글수 :
+                <th:block>
+                  <span class="colfb7">[[${total}]]건</span>
+                </th:block>
+              </div>
+              <div class="board_search_text">
+                <input type="text" id="announce_title" name="announce_title" title="검색어 입력"
+                  th:value="${pageVO.cri.announce_title}" placeholder="공고제목검색">
+                <input type="submit" class="search_btn" value="검색" />
+              </div>
+            </div>
+          </form>
+        </div>
+        <th:block th:if="${#lists.isEmpty(list)}">
+          <table class="board_table topT" style="margin-bottom: 150px;">
+            <colgroup>
+              <col width="10%">
+              <col width="50%">
+              <col width="20%">
+              <col width="20%">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>번호</th>
+                <th>공고제목</th>
+                <th>신청날짜</th>
+                <th>신청상태</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td>
+                  <p style="text-align: center; color: gray;">검색 결과가 없습니다.</p>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </th:block>
+        <th:block th:unless="${#lists.isEmpty(list)}">
+          <table class="board_table topT">
+            <colgroup>
+              <col width="10%">
+              <col width="50%">
+              <col width="20%">
+              <col width="20%">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>번호</th>
+                <th>공고제목</th>
+                <th>신청날짜</th>
+                <th>신청상태</th>
+              </tr>
+            </thead>
+            <tbody>
 
-						</tbody>
-					</table>
-					<th:block th:replace="~{./include/usermypage-applicationPage :: pageNation( ${pageVO} )}">
-					</th:block>
-				</th:block>
-			</div>
-		</div>
-	</div>
+              <tr th:each="vo, status : ${list}">
+                <td><span th:text="${total - ((pageVO.page-1)*8) - status.count+1} "></span></td>
+                <td style="text-align:center">
+                  <a
+                    th:href="@{/usermypage/usermypage_applicationdetail (aplcn_dtls_proper_num = ${vo.aplcn_dtls_proper_num}, announce_proper_num = ${vo.announce_proper_num})}">[[${vo.announce_title}]]</a>
+                </td>
+                <td>
+                  <span th:text="${#strings.substring(vo.aplicn_dtls_date, 0, 10)}"></span>
+                </td>
+                <td>
+                  <th:block th:if="${vo.aplicn_dtls_sts == '01'}">
+                    신청중
+                  </th:block>
+                  <th:block th:if="${vo.aplicn_dtls_sts == '02'}">
+                    신청완료
+                  </th:block>
+                  <th:block th:if="${vo.aplicn_dtls_sts == '03'}">
+                    심사중
+                  </th:block>
+                  <th:block th:if="${vo.aplicn_dtls_sts == '04'}">
+                    서류반려
+                  </th:block>
+                  <th:block th:if="${vo.aplicn_dtls_sts == '05'}">
+                    1차통과
+                  </th:block>
+                  <th:block th:if="${vo.aplicn_dtls_sts == '06'}">
+                    최종심사중
+                  </th:block>
+                  <th:block th:if="${vo.aplicn_dtls_sts == '07'}">
+                    불합격
+                  </th:block>
+                  <th:block th:if="${vo.aplicn_dtls_sts == '08'}">
+                    합격
+                  </th:block>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+          <th:block th:replace="~{./include/usermypage-applicationPage :: pageNation( ${pageVO} )}">
+          </th:block>
+        </th:block>
+      </div>
+    </div>
+  </div>
 </th:block>
 <!-- jQuery UI (Datepicker가 포함된 전체 jQuery UI 라이브러리) -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script th:inline="javascript">
-	// jQuery UI Datepicker를 활성화
-	$(function () {
-		$(".datepicker").datepicker({
-			dateFormat: 'yy-mm-dd', // 날짜 형식 지정 (yyyy-mm-dd)
-			onSelect: function (dateText) {
-				// 날짜가 선택되면 선택된 날짜를 해당 입력 필드에 삽입
-				$(this).val(dateText);
-			}
-		});
-	});
+  // jQuery UI Datepicker를 활성화
+  $(function () {
+    $(".datepicker").datepicker({
+      dateFormat: 'yy-mm-dd', // 날짜 형식 지정 (yyyy-mm-dd)
+      onSelect: function (dateText) {
+        // 날짜가 선택되면 선택된 날짜를 해당 입력 필드에 삽입
+        $(this).val(dateText);
+      }
+    });
+  });
 </script>
 
 

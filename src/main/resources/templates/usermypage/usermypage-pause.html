@@ -5,124 +5,127 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">-->
 <link rel="stylesheet" th:href="@{/css/usermypage-pause.css}">
 <th:block th:replace="~{./include/layout :: setContent(~{::.usermypage-pause})}">
-	<div class="usermypage-pause">
-		<div class="usermypage-pause-wrap">
-			<!-- 네비게이션바 -->
-			<th:block th:replace="~{./include/layout-usermypage-side :: layout-usermypage-side}">
-			</th:block>
-			<div class="myinfo-pause-wrap">
-				<div class="myinfo-pause">
-					<h3>중지신청</h3>
-				</div>
-				<div class="myinfo-pause-title-wrap">
-					<!--<h3 class="myinfo-pause-title">중지신청</h3>-->
-				</div>
-				<p class="titleImg">조력자 활동 중지신청을 할 수 있는 게시판입니다.</p>
-				<th:block th:if="${#lists.isEmpty(list)}">
-					<table class="board_table topT" style="margin-bottom: 150px;">
-						<colgroup>
-							<col width="12%">
-							<col width="49%">
-							<col width="13%">
-							<col width="13%">
-							<col width="13%">
-						</colgroup>
-						<thead>
-							<tr>
-								<th>번호</th>
-								<th>제목</th>
-								<th>중지날짜</th>
-								<th>중지상태</th>
-								<th>중지신청</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td></td>
-								<td>
-									<p style="text-align: center; color: gray;">중지 신청 내역이 없습니다.</p>
-								</td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-						</tbody>
-					</table>
-				</th:block>
-				<th:block th:unless="${#lists.isEmpty(list)}">
-					<table class="board_table topT">
-						<colgroup>
-							<col width="12%">
-							<col width="49%">
-							<col width="13%">
-							<col width="13%">
-							<col width="13%">
-						</colgroup>
-						<thead>
-							<tr>
-								<th>번호</th>
-								<th>제목</th>
-								<th>선발날짜</th>
-								<th>중지/해제상태</th>
-								<th>중지/해제신청</th>
-							</tr>
-						</thead>
-						<tbody>
+  <div class="usermypage-pause">
+    <div class="usermypage-pause-wrap">
+      <!-- 네비게이션바 -->
+      <th:block th:replace="~{./include/layout-usermypage-side :: layout-usermypage-side}">
+      </th:block>
+      <div class="myinfo-pause-wrap">
+        <div class="myinfo-pause">
+          <h3>중지신청</h3>
+        </div>
+        <div class="myinfo-pause-title-wrap">
+          <!--<h3 class="myinfo-pause-title">중지신청</h3>-->
+        </div>
+        <p class="titleImg">조력자 활동 중지신청을 할 수 있는 게시판입니다.</p>
+        <th:block th:if="${#lists.isEmpty(list)}">
+          <table class="board_table topT" style="margin-bottom: 150px;">
+            <colgroup>
+              <col width="12%">
+              <col width="49%">
+              <col width="13%">
+              <col width="13%">
+              <col width="13%">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>중지날짜</th>
+                <th>중지상태</th>
+                <th>중지신청</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td>
+                  <p style="text-align: center; color: gray;">중지 신청 내역이 없습니다.</p>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </th:block>
+        <th:block th:unless="${#lists.isEmpty(list)}">
+          <table class="board_table topT">
+            <colgroup>
+              <col width="12%">
+              <col width="49%">
+              <col width="13%">
+              <col width="13%">
+              <col width="13%">
+            </colgroup>
+            <thead>
+              <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>선발날짜</th>
+                <th>중지/해제상태</th>
+                <th>중지/해제신청</th>
+              </tr>
+            </thead>
+            <tbody>
 
-							<tr th:each="vo, status : ${list}">
-								<td><span th:text="${list.size() - status.count} + 1"></span></td>
-								<td style="text-align:center">
-									<a
-										th:href="@{/usermypage/usermypage_pausedetail (accept_proper_num = ${vo.accept_proper_num})}">[[${vo.accept_proper_num}]]</a>
-								</td>
-								<td>
-									<span th:text="${#strings.substring(vo.accept_date, 0, 10)}"></span>
-								</td>
-								<td>
-									<th:block th:if="${vo.accept_act_yn == 'Y'}">
-										활동중
-									</th:block>
-									<th:block th:if="${vo.accept_act_yn == 'N'}">
-										중지
-									</th:block>
-								</td>
-								<td>
-									<form action="usermypage_pauseapplication" method="post">
-										<input type="hidden" name="trial_fcltt_proper_num" th:value="${vo.trial_fcltt_proper_num}">
-										<input type="hidden" name="accept_act_yn" th:value="${vo.accept_act_yn}">
-										<th:block th:if="${vo.accept_act_yn == 'Y'}">
-											<button type="submit" class="acceptbtn" name="accept_proper_num" th:value="${vo.accept_proper_num}" onclick="confirmAndSubmit(this)">중지신청</button>
-										</th:block>
-										<th:block th:if="${vo.accept_act_yn == 'N'}">
-											<button type="submit" class="acceptbtn" name="accept_proper_num" th:value="${vo.accept_proper_num}" onclick="confirmAndSubmit(this)">재활동신청</button>
-										</th:block>
-									</form>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<th:block th:replace="~{./include/usermypage-pausePage :: pageNation( ${pageVO} )}">
-					</th:block>
-				</th:block>
-			</div>
-		</div>
-	</div>
+              <tr th:each="vo, status : ${list}">
+                <td><span th:text="${total - ((pageVO.page-1)*8) - status.count+1} "></span></td>
+                <td style="text-align:center">
+                  <a
+                    th:href="@{/usermypage/usermypage_pausedetail (accept_proper_num = ${vo.accept_proper_num})}">[[${vo.accept_proper_num}]]</a>
+                </td>
+                <td>
+                  <span th:text="${#strings.substring(vo.accept_date, 0, 10)}"></span>
+                </td>
+                <td>
+                  <th:block th:if="${vo.accept_act_yn == 'Y'}">
+                    활동중
+                  </th:block>
+                  <th:block th:if="${vo.accept_act_yn == 'N'}">
+                    중지
+                  </th:block>
+                </td>
+                <td>
+                  <form action="usermypage_pauseapplication" method="post">
+                    <input type="hidden" name="trial_fcltt_proper_num" th:value="${vo.trial_fcltt_proper_num}">
+                    <input type="hidden" name="accept_act_yn" th:value="${vo.accept_act_yn}">
+                    <th:block th:if="${vo.accept_act_yn == 'Y'}">
+                      <button type="submit" class="acceptbtn" name="accept_proper_num"
+                        th:value="${vo.accept_proper_num}" onclick="confirmAndSubmit(this)">중지신청</button>
+                    </th:block>
+                    <th:block th:if="${vo.accept_act_yn == 'N'}">
+                      <button type="submit" class="acceptbtn" name="accept_proper_num"
+                        th:value="${vo.accept_proper_num}" onclick="confirmAndSubmit(this)">재활동신청</button>
+                    </th:block>
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <th:block th:replace="~{./include/usermypage-pausePage :: pageNation( ${pageVO} )}">
+          </th:block>
+        </th:block>
+      </div>
+    </div>
+  </div>
 </th:block>
 <script>
-function confirmAndSubmit(button) {
+  function confirmAndSubmit(button) {
     var accept_act_yn = button.previousElementSibling.value;
     var message;
 
     if (accept_act_yn === 'Y') {
-        message = "중지 신청을 하시겠습니까?";
+      message = "중지 신청을 하시겠습니까?";
     } else {
-        message = "재활동 신청을 하시겠습니까?";
+      message = "재활동 신청을 하시겠습니까?";
     }
 
     if (confirm(message)) {
-        // 확인을 누를 경우에만 form을 submit합니다.
-        button.form.submit();
+      // 확인을 누를 경우에만 form을 submit합니다.
+      button.form.submit();
     }
-}
+  }
 </script>
+
 </html>

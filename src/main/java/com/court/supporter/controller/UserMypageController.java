@@ -360,6 +360,9 @@ public class UserMypageController {
       DefaultUserDetails userDetails = (DefaultUserDetails) authentication.getPrincipal();
       String member_proper_num = userDetails.getUsername();
       ArrayList<TB_014VO> list = userMypageService.usermypage_getacceptinfo(member_proper_num);
+      if (list.size() == 0) {
+        return "redirect:/";
+      }
       model.addAttribute("list,", list);
       return "usermypage/usermypage-activity-regist";
     }

@@ -1,73 +1,78 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
-body{ font-family: 'Noto Sans KR', sans-serif;}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
 /******************************************************************/
 /* wrap */
 
 #popup-wrap {
-	width: 80%; /*1860px;*/
-	margin: 0 auto;
+  width: 1860px;
+  margin: 0 auto;
 }
 
 /******************************************************************/
 /* announce title */
 .announce-section {
-	height: 70px;
-	margin-top: 30px;
-	margin-bottom: 30px;
+  height: 70px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+
 }
 
-.announce-table{
-	width: 100%;
-	height: 70px;
-	border-collapse: collapse;
-	border-spacing: 0;
-	text-align: center;
-	font-size: 20px;
-	font-weight: bold;
+.announce-table {
+  width: 100%;
+  height: 70px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .announce-title {
-	width: 200px;
-	background-color: #034273;	
-	text-align: center;
-	vertical-align: middle;
-	color: white;
+  width: 200px;
+  background-color: #034273;
+  text-align: center;
+  vertical-align: middle;
+  color: white;
 }
 
 .announce-content {
-	background-color: rgb(228, 228, 228);
-	text-align: center;
-	vertical-align: middle;	
+  background-color: rgb(228, 228, 228);
+  text-align: center;
+  vertical-align: middle;
 }
 
 /******************************************************************/
 /* evaluation-line1 */
 .evaluation-line1 {
-	overflow: hidden;
-	margin-bottom: 30px;
+  overflow: hidden;
+  margin-bottom: 30px;
 }
 
 /******************************************************************/
 /* evaluation target section */
 .evaluation-target-section {
-	float: left;
+  float: left;
 }
 
 .evaluation-target-section h3 {
-	margin-bottom: 10px;
-	font-weight: bold;
-	font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .evaluation-target-table {
-	width: 900px;
-	height: 200px;
-	border: 1px solid rgb(221, 221, 221);
+  width: 900px;
+  height: 200px;
+  border: 1px solid rgb(221, 221, 221);
 }
 
 .evaluation-target-table td {
-	vertical-align: middle;
-	padding-left: 20px;
+  vertical-align: middle;
+  padding-left: 20px;
 
 }
 
@@ -75,401 +80,404 @@ body{ font-family: 'Noto Sans KR', sans-serif;}
 .evaluation-target-line2,
 .evaluation-target-line3,
 .evaluation-target-line4 {
-	border: 1px solid white;
+  border: 1px solid white;
 }
 
 .evaluation-target-line1 td:nth-child(1),
 .evaluation-target-line2 td:nth-child(1),
 .evaluation-target-line3 td:nth-child(1),
 .evaluation-target-line4 td:nth-child(1) {
-	border-right: 1px solid white;
-	background-color: #034273;
-	color: white;
-	font-weight: bold;
-	width: 180px;
+  border-right: 1px solid white;
+  background-color: #034273;
+  color: white;
+  font-weight: bold;
+  width: 180px;
 }
 
 .evaluation-target-line1 td:nth-child(2),
 .evaluation-target-line2 td:nth-child(2),
 .evaluation-target-line3 td:nth-child(2),
 .evaluation-target-line4 td:nth-child(2) {
-	background-color: rgb(228, 228, 228);
+  background-color: rgb(228, 228, 228);
 
 }
+
 /******************************************************************/
 /* evaluation file section */
 .evaluation-file-section {
-	float: right;
+  float: right;
 }
 
 .evaluation-file-section h3 {
-	margin-bottom: 10px;
-	font-weight: bold;
-	font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .evaluation-file-table1 {
-	width: 900px;
+  width: 900px;
 }
 
 .evaluation-file-line1 td {
-	vertical-align: middle;
-	text-align: center;
-	border-right: 1px solid white;
+  vertical-align: middle;
+  text-align: center;
+  border-right: 1px solid white;
 }
 
 .evaluation-file-line1 {
-	height: 50px;
-	position: sticky;
-	top: 0;
-	background-color: #034273;
-	color: white;
+  height: 50px;
+  position: sticky;
+  top: 0;
+  background-color: #034273;
+  color: white;
 }
 
 .evaluation-file-line2 {
-	height: 38px;
-	background-color: rgb(228, 228, 228);
-	border-bottom: 1px solid white;
+  height: 38px;
+  background-color: rgb(228, 228, 228);
+  border-bottom: 1px solid white;
 }
 
 .evaluation-file-line2 td {
-	vertical-align: middle;
-	text-align: center;
-	border-right: 1px solid white;
+  vertical-align: middle;
+  text-align: center;
+  border-right: 1px solid white;
 }
 
 /******************************************************************/
 /* evaluation section */
 .evaluation-line2 {
-	overflow: hidden;
+  overflow: hidden;
 }
+
 .evaluation-section {
-	float: left;
+  float: left;
 }
 
 .evaluation-section h3 {
-	font-weight: bold;
-	font-size: 18px;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .tg {
-	border-collapse: collapse;
-	border-spacing: 0;
-	width: 900px;
-	height: 760px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 900px;
+  height: 760px;
 }
 
 .tg td {
-	border-color: white;
-	border-style: solid;
-	border-width: 1px;
-	font-family: Arial, sans-serif;
-	font-size: 15px;
-	overflow: hidden;
-	padding: 10px 5px;
-	word-break: normal;
+  border-color: white;
+  border-style: solid;
+  border-width: 1px;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  overflow: hidden;
+  padding: 10px 5px;
+  word-break: normal;
 }
 
 .tg th {
-	border-color: white;
-	border-style: solid;
-	border-width: 1px;
-	font-family: Arial, sans-serif;
-	font-size: 14px;
-	font-weight: normal;
-	overflow: hidden;
-	padding: 10px 5px;
-	word-break: normal;
+  border-color: white;
+  border-style: solid;
+  border-width: 1px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  overflow: hidden;
+  padding: 10px 5px;
+  word-break: normal;
 }
 
 .tg .tg-kftd {
-	background-color: rgb(228, 228, 228);
-	text-align: center;
-	vertical-align: middle;
+  background-color: rgb(228, 228, 228);
+  text-align: center;
+  vertical-align: middle;
 }
 
 .tg .tg-y6fn {
-	font-size: 18px;
-	background-color: #034273;
-	color: white;
-	text-align: center;
-	vertical-align: middle;
+  font-size: 18px;
+  background-color: #034273;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
 }
 
 /******************************************************************/
 /* evaluation section */
 .evaluation-section2 {
-	float: left;
-	margin-left: 60px;
+  float: left;
+  margin-left: 60px;
 }
 
 .evaluation-section2 h3 {
-	font-weight: bold;
-	font-size: 18px;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .tg2 {
-	border-collapse: collapse;
-	border-spacing: 0;
-	width: 900px;
-	height: 350px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 900px;
+  height: 350px;
 }
 
 .tg2 td {
-	border-color: white;
-	border-style: solid;
-	border-width: 1px;
-	font-family: Arial, sans-serif;
-	font-size: 15px;
-	overflow: hidden;
-	padding: 10px 5px;
-	word-break: normal;
+  border-color: white;
+  border-style: solid;
+  border-width: 1px;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  overflow: hidden;
+  padding: 10px 5px;
+  word-break: normal;
 }
 
 .tg2 th {
-	border-color: white;
-	border-style: solid;
-	border-width: 1px;
-	font-family: Arial, sans-serif;
-	font-size: 14px;
-	font-weight: normal;
-	overflow: hidden;
-	padding: 10px 5px;
-	word-break: normal;
+  border-color: white;
+  border-style: solid;
+  border-width: 1px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  overflow: hidden;
+  padding: 10px 5px;
+  word-break: normal;
 }
 
 .tg2 .tg-y6fn {
-	font-size: 18px;
-	color: white;
-	background-color: #034273;
-	text-align: center;
-	vertical-align: middle;
+  font-size: 18px;
+  color: white;
+  background-color: #034273;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .tg2 .tg-zqu1 {
-	background-color: rgb(228, 228, 228);
-	text-align: center;
-	vertical-align: middle;
+  background-color: rgb(228, 228, 228);
+  text-align: center;
+  vertical-align: middle;
 }
 
 .tg2 .check {
-	text-align: left;
+  text-align: left;
 }
+
 /******************************************************************/
 /* evaluation section */
 .evaluation-section3 {
-	float: left;
-	margin-top: 30px;
-	margin-left: 60px;
+  float: left;
+  margin-top: 30px;
+  margin-left: 60px;
 }
 
 .evaluation-section3 h3 {
-	font-weight: bold;
-	font-size: 18px;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .tg3 {
-	border-collapse: collapse;
-	border-spacing: 0;
-	width: 900px;
-	height: 350px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 900px;
+  height: 350px;
 }
 
 .tg3 td {
-	border-color: white;
-	border-style: solid;
-	border-width: 1px;
-	font-family: Arial, sans-serif;
-	font-size: 15px;
-	overflow: hidden;
-	padding: 10px 5px;
-	word-break: normal;
+  border-color: white;
+  border-style: solid;
+  border-width: 1px;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  overflow: hidden;
+  padding: 10px 5px;
+  word-break: normal;
 }
 
 .tg3 th {
-	border-color: white;
-	border-style: solid;
-	border-width: 1px;
-	font-family: Arial, sans-serif;
-	font-size: 14px;
-	font-weight: normal;
-	overflow: hidden;
-	padding: 10px 5px;
-	word-break: normal;
+  border-color: white;
+  border-style: solid;
+  border-width: 1px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  overflow: hidden;
+  padding: 10px 5px;
+  word-break: normal;
 }
 
 .tg3 .tg-y6fn {
-	font-size: 18px;
-	color: white;
-	background-color: #034273;
-	text-align: center;
-	vertical-align: middle;
+  font-size: 18px;
+  color: white;
+  background-color: #034273;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .tg3 .tg-zqu1 {
-	background-color: rgb(228, 228, 228);
-	text-align: center;
-	vertical-align: middle;
+  background-color: rgb(228, 228, 228);
+  text-align: center;
+  vertical-align: middle;
 }
 
 /******************************************************************/
 /* input */
 .tg .rad {
-	text-align: left;
+  text-align: left;
 }
 
 input[type="number"] {
-	font-size: 15px;
+  font-size: 15px;
 }
 
 #carrerScore {
-	height: 23px;
-	width: 140px;
+  height: 23px;
+  width: 140px;
 }
 
 #locationScore {
-	height: 23px;
-	width: 140px;
+  height: 23px;
+  width: 140px;
 }
 
 #surveyorScore {
-	height: 23px;
-	width: 140px;
+  height: 23px;
+  width: 140px;
 }
 
 #jurorScore {
-	height: 23px;
-	width: 140px;
+  height: 23px;
+  width: 140px;
 }
 
 #carrerSum {
-	height: 23px;
-	width: 140px;
+  height: 23px;
+  width: 140px;
 }
 
 #surveyorSum {
-	height: 23px;
-	width: 140px;
+  height: 23px;
+  width: 140px;
 }
 
 #jurorSum {
-	height: 23px;
-	width: 140px;
+  height: 23px;
+  width: 140px;
 }
 
 label {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 /******************************************************************/
 /* result */
 .result-line1 {
-	margin-top: 30px;
-	overflow: hidden;
+  margin-top: 30px;
+  overflow: hidden;
 }
 
 .result-section1 {
-	float: right;
+  float: right;
 }
 
 .total-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-	width: 360px;
-	height: 70px;
-	font-size: 25px;
-	font-weight: bold;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 360px;
+  height: 70px;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .total-title {
-	width: 50%;
-	background-color: #034273;	
-	text-align: center;
-	vertical-align: middle;
-	color: white;
+  width: 50%;
+  background-color: #034273;
+  text-align: center;
+  vertical-align: middle;
+  color: white;
 }
 
 #total-td {
-	background-color: rgb(228, 228, 228);
-	text-align: center;
-	vertical-align: middle;	
+  background-color: rgb(228, 228, 228);
+  text-align: center;
+  vertical-align: middle;
 }
 
 
 /******************************************************************/
 /* review */
 .result-line2 {
-	margin-top: 30px;
+  margin-top: 30px;
 }
 
 .result-section2 h3 {
-	font-weight: bold;
-	font-size: 18px;	
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .review-title {
-	border: white;
-	color: white;
-	font-size: 18px;
-	font-weight: bold;
-	text-align: center;
-	line-height: 70px;
-	height: 70px;
-	width: 100%;
-	background-color: #034273;
+  border: white;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 70px;
+  height: 70px;
+  width: 100%;
+  background-color: #034273;
 }
 
 .review-wrap {
-	background-color: rgb(228, 228, 228);
-	width: 100%;
-	padding: 25px;
-	box-sizing: border-box;
-	text-align: center;
+  background-color: rgb(228, 228, 228);
+  width: 100%;
+  padding: 25px;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 #review_etc {
-	width: 1800px;
-	font-size: 18px;
-	font-weight: bold;
-	height: 200px;
-	resize: none;
-	border-color: #034273;
-	border-width: 3px;
+  width: 1800px;
+  font-size: 18px;
+  font-weight: bold;
+  height: 200px;
+  resize: none;
+  border-color: #034273;
+  border-width: 3px;
 }
+
 /******************************************************************/
 /* button */
 .btnbox {
-	text-align: center;
-	margin-top: 40px;
-	margin-bottom: 40px;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .btnbox .btnfb7 {
-	background-color: rgb(11, 38, 110);
-	font-size: 20px;
-	color: #FFF;
-	height: 50px;
-	line-height: 50px;
-	display: inline-block;
-	padding: 0 25px;
-	vertical-align: middle;
-	font-family: "ngB" !important;
+  background-color: rgb(11, 38, 110);
+  font-size: 20px;
+  color: #FFF;
+  height: 50px;
+  line-height: 50px;
+  display: inline-block;
+  padding: 0 25px;
+  vertical-align: middle;
+  font-family: "ngB" !important;
 }
 
 .btnbox .btn4d5 {
-	background-color: #4d515b;
-	font-size: 20px;
-	color: #FFF;
-	height: 50px;
-	line-height: 50px;
-	display: inline-block;
-	padding: 0 25px;
-	vertical-align: middle;
-	font-family: "ngB" !important;
+  background-color: #4d515b;
+  font-size: 20px;
+  color: #FFF;
+  height: 50px;
+  line-height: 50px;
+  display: inline-block;
+  padding: 0 25px;
+  vertical-align: middle;
+  font-family: "ngB" !important;
 }
 
 .btnbox02 input {
-	width: 129px;
-	box-sizing: border-box;
+  width: 129px;
+  box-sizing: border-box;
 }
-

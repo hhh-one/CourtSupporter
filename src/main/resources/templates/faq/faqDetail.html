@@ -7,116 +7,119 @@
 <th:block th:replace="~{./include/layout :: setContent(~{::.faqDetailWrap})}">
 
 
-	<!--contents-->
-	<div class="faqDetailWrap mainWrap">
+  <!--contents-->
+  <div class="faqDetailWrap mainWrap">
 
-		<div class="contentsbox" id="content">
-			<div> <!--sidebar-->
-				<th:block th:replace="~{./include/layout-announceList-side}"></th:block>
-			</div>
-			<div id="contentsIn">
-				<div id="contentstitle">
-					<span class="FAQtitle">자주묻는질문(FAQ)</span>
-				</div>
-				<div id="contents">
-					<form id="viewForm" action="#" method="post">
-						<input type="hidden" id="pageIndex" name="pageIndex">
-						<input type="hidden" id="faqSer" name="faqSer">
-						<input type="hidden" name="faq_proper_num" th:value="${faq_proper_num}">
-						<div class="tablebox">
-							<table>
-								<colgroup>
-									<col style="width: 20%;">
-									<col style="width: 80%;">
-								</colgroup>
-								<tbody>
+    <div class="contentsbox" id="content">
+      <div> <!--sidebar-->
+        <th:block th:replace="~{./include/layout-announceList-side}"></th:block>
+      </div>
+      <div id="contentsIn">
+        <div id="contentstitle">
+          <span class="FAQtitle">자주묻는질문(FAQ)</span>
+        </div>
+        <div id="contents">
+          <form id="viewForm" action="#" method="post">
+            <input type="hidden" id="pageIndex" name="pageIndex">
+            <input type="hidden" id="faqSer" name="faqSer">
+            <input type="hidden" name="faq_proper_num" th:value="${faq_proper_num}">
+            <div class="tablebox">
+              <table>
+                <colgroup>
+                  <col style="width: 20%;">
+                  <col style="width: 80%;">
+                </colgroup>
+                <tbody>
 
-									<tr class="firstTh tablethline">
-										<th class scope="row">질문</th>
-										<td class="left" colspan="5">[[${vo.faq_ask_content}]]</td>
-									</tr>
-									<tr>
-										<td colspan="4" class="contents left" style="text-align: left; height: 200px;">
-											<p class="textArea">[[${vo.faq_ask_comment}]]</p>
-										</td>
-									</tr>
+                  <tr class="firstTh tablethline">
+                    <th class scope="row">질문</th>
+                    <td class="left" colspan="5">[[${vo.faq_ask_content}]]</td>
+                  </tr>
+                  <tr>
+                    <td colspan="4" class="contents left" style="text-align: left; height: 200px;">
+                      <pre th:utext="${vo.faq_ask_comment}"></pre>
+                    </td>
+                  </tr>
 
-								</tbody>
-							</table>
+                </tbody>
+              </table>
 
-							<div th:if="${nextPost != null}">
-								<table class="nextTable">
-									<tbody>
-										<tr class="nexttrline">
-											<td class="nextContent">다음글</td>
-											<td colspan="3">
-												<a id="nextLink" class="nextTitle"
-													th:href="@{/faq/faqDetail/(faq_proper_num=${nextPost.faq_proper_num})}"
-													th:text="${nextPost.faq_ask_content}"></a>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
+              <div th:if="${nextPost != null}">
+                <table class="nextTable">
+                  <tbody>
+                    <tr class="nexttrline">
+                      <th class="nextTitle">다음글</td>
+                      <td colspan="3">
+                        <a id="nextLink" class="nextTitle"
+                          th:href="@{/faq/faqDetail/(faq_proper_num=${nextPost.faq_proper_num})}"
+                          th:text="${nextPost.faq_ask_content}"></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
 
-							<div th:unless="${nextPost != null}"> <!-- 다음 글 없을 때 -->
-								<table class="nextInfo">
-									<tbody>
-										<tr class="nexttrline">
-											<td colspan="4" class="nextTxt">다음 글이 없습니다.</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
+              <div th:unless="${nextPost != null}"> <!-- 다음 글 없을 때 -->
+                <table class="nextInfo">
+                  <tbody>
+                    <tr class="nexttrline">
+                      <th class="nextTitle">다음글</th>
+                      <td colspan="3" class="nextTxt">다음 글이 없습니다.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
 
-							<div th:if="${previousPost != null}">
-								<table class="prevTable">
-									<tbody>
-										<tr class="prevtrline">
-											<td class="prevContent">이전글</td>
-											<td colspan="3">
-												<a id="prevLink" class="prevTitle"
-													th:href="@{/faq/faqDetail/(faq_proper_num=${previousPost.faq_proper_num})}"
-													th:text="${previousPost.faq_ask_content}"></a>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-
-
-							<div th:unless="${previousPost != null}"> <!-- 이전 글 없을 때 -->
-								<table class="prevInfo">
-									<tbody>
-										<tr class="prevtrline">
-											<td colspan="4" class="prevTxt">이전 글이 없습니다.</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-						<div class="btnbox btnbox02" style="margin-bottom: 40px;">
-							<a th:href="@{/faq/faqList}" class="btnfb7" onclick="javascript:goRegist();">목록</a>
-							<th:block th:if="${member_role == 'ROLE_ADMIN'}">
-								<span class="adminmenu">
-									<a th:href="@{faqModify(faq_proper_num=${vo.faq_proper_num})}" class="btn4d5"
-										onclick="javascript:window.close();">수정</a>
-									<a th:href="@{faqDelete(faq_proper_num=${vo.faq_proper_num})}" class="btn4d5"
-										onclick="javascript:window.close();">삭제</a>
-								</span>
-
-							</th:block>
-						</div>
+              <div th:if="${previousPost != null}">
+                <table class="prevTable">
+                  <tbody>
+                    <tr class="prevtrline">
+                      <th class="prevTitle">이전글</th>
+                      <td colspan="3">
+                        <a id="prevLink" class="prevTitle"
+                          th:href="@{/faq/faqDetail/(faq_proper_num=${previousPost.faq_proper_num})}"
+                          th:text="${previousPost.faq_ask_content}"></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
 
 
-					</form>
-				</div>
-			</div>
-		</div>
+              <div th:unless="${previousPost != null}"> <!-- 이전 글 없을 때 -->
+                <table class="prevInfo">
+                  <tbody>
+                    <tr class="prevtrline">
+                      <th class="prevTitle">이전글</td>
+                      <td colspan="3" class="prevTxt">이전 글이 없습니다.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
 
-	</div>
+            </div>
+            <div class="btnbox btnbox02" style="margin-bottom: 40px;">
+              <a th:href="@{/faq/faqList}" class="btnfb7" onclick="javascript:goRegist();">목록</a>
+              <th:block th:if="${member_role == 'ROLE_ADMIN'}">
+                <span class="adminmenu">
+                  <a th:href="@{faqModify(faq_proper_num=${vo.faq_proper_num})}" class="btn4d5"
+                    onclick="javascript:window.close();">수정</a>
+                  <a th:href="@{faqDelete(faq_proper_num=${vo.faq_proper_num})}" class="btn4d5"
+                    onclick="javascript:window.close();">삭제</a>
+                </span>
 
-	</div>
+              </th:block>
+            </div>
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  </div>
 
 
 </th:block>

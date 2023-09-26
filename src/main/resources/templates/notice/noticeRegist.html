@@ -21,125 +21,126 @@
 <link rel="stylesheet" href="/css/summernote/summernote-lite.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap">
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap">
 
 <th:block th:replace="~{./include/layout :: setContent(~{::.noticeRegistWrap})}">
 
 
-	<!--contents-->
-	<div class="noticeRegistWrap  mainWrap">
+  <!--contents-->
+  <div class="noticeRegistWrap  mainWrap">
 
-		<div class="contentsbox" id="content">
-			<div> <!--sidebar-->
-				<th:block th:replace="~{./include/layout-announceList-side}"></th:block>
-			</div>
-			<div id="contentsIn">
-				<div id="contentstitle">
-					<span class="noticetitle">공지사항</span>
-					<span style="float: right; vertical-align: text-bottom; padding-top: 5px;">홈 > 공지사항 > 공지사항</span>
-				</div>
-				<div id="contents">
-					<form id="noticeRegistForm" action="noticeRegistForm" method="post" enctype="multipart/form-data">
-						<input type="hidden" id="pageIndex" name="pageIndex">
-						<input type="hidden" id="noticeSer" name="noticeSer">
-						<input type="hidden" id="srchbub" name="admin_proper_num" value="1">
-						<div class="tablebox">
-							<table>
-								<colgroup>
-									<col style="width: 20%;">
-									<col style="width: 80%;">
-								</colgroup>
-								<tbody>
+    <div class="contentsbox" id="content">
+      <div> <!--sidebar-->
+        <th:block th:replace="~{./include/layout-announceList-side}"></th:block>
+      </div>
+      <div id="contentsIn">
+        <div id="contentstitle">
+          <span class="noticetitle">공지사항</span>
+          <span style="float: right; vertical-align: text-bottom; padding-top: 5px;">홈 > 공지사항 > 공지사항</span>
+        </div>
+        <div id="contents">
+          <form id="noticeRegistForm" action="noticeRegistForm" method="post" enctype="multipart/form-data">
+            <input type="hidden" id="pageIndex" name="pageIndex">
+            <input type="hidden" id="noticeSer" name="noticeSer">
+            <div class="tablebox">
+              <table>
+                <colgroup>
+                  <col style="width: 20%;">
+                  <col style="width: 80%;">
+                </colgroup>
+                <tbody>
 
-									<tr class="firstTh">
-										<th scope="row">제목</th>
-										<td class="left" colspan="5"><input type="text" style="width: 100%;" name="notice_title" required></td>
-									</tr>
+                  <tr class="firstTh">
+                    <th scope="row">제목</th>
+                    <td class="left" colspan="5"><input type="text" style="width: 100%;" name="notice_title" required>
+                    </td>
+                  </tr>
 
-									<tr class="firstTh">
-										<th scope="row">등록일</th>
-										<td scope="left">등록되는 시간을 기준으로 합니다</td>
-									</tr>
+                  <tr class="firstTh">
+                    <th scope="row">등록일</th>
+                    <td scope="left">등록되는 시간을 기준으로 합니다</td>
+                  </tr>
 
-									<!-- 파일 첨부 -->
-									<tr class="firstTh">
-										<th class scope="row">첨부파일</th>
-										<td class="left" colspan="5" style="text-align: left;">
-											<input type="file" name="file" id="files" multiple>
-											<!-- 파일 이름을 나타낼 영역 -->
-											<div id="fileNames"></div>
+                  <!-- 파일 첨부 -->
+                  <tr class="firstTh">
+                    <th class scope="row">첨부파일</th>
+                    <td class="left" colspan="5" style="text-align: left;">
+                      <input type="file" name="file" id="files" multiple>
+                      <!-- 파일 이름을 나타낼 영역 -->
+                      <div id="fileNames"></div>
 
-											<!-- JavaScript -->
-											<script>
-												// 파일 입력 필드
-												const fileInput = document.getElementById('files');
+                      <!-- JavaScript -->
+                      <script>
+                        // 파일 입력 필드
+                        const fileInput = document.getElementById('files');
 
-												// 파일 이름을 나타낼 영역
-												const fileNamesDisplay = document.getElementById('fileNames');
+                        // 파일 이름을 나타낼 영역
+                        const fileNamesDisplay = document.getElementById('fileNames');
 
-												// 파일 입력 필드의 변경 이벤트 리스너 추가
-												fileInput.addEventListener('change', () => {
-													// 선택된 파일 목록 가져오기
-													const selectedFiles = fileInput.files;
+                        // 파일 입력 필드의 변경 이벤트 리스너 추가
+                        fileInput.addEventListener('change', () => {
+                          // 선택된 파일 목록 가져오기
+                          const selectedFiles = fileInput.files;
 
-													// 파일 이름을 나타내는 문자열 초기화
-													let fileNames = '';
+                          // 파일 이름을 나타내는 문자열 초기화
+                          let fileNames = '';
 
-													// 선택된 각 파일의 이름을 문자열에 추가
-													for (let i = 0; i < selectedFiles.length; i++) {
-														fileNames += selectedFiles[i].name + '<br>';
-													}
+                          // 선택된 각 파일의 이름을 문자열에 추가
+                          for (let i = 0; i < selectedFiles.length; i++) {
+                            fileNames += selectedFiles[i].name + '<br>';
+                          }
 
-													// 파일 이름을 나타낼 영역 업데이트
-													fileNamesDisplay.innerHTML = fileNames;
-												});
-											</script>
-										</td>
-									</tr>
+                          // 파일 이름을 나타낼 영역 업데이트
+                          fileNamesDisplay.innerHTML = fileNames;
+                        });
+                      </script>
+                    </td>
+                  </tr>
 
-									<tr>
-										<td colspan="4" class="contents left" style="text-align: left;">
-											<p class="textArea"> <!-- textarea  id="noticeRegist" -->
-												<textarea name="notice_content" id="summernote" cols="30" rows="10"
-													style="width: 99%; height: 200px;"></textarea>
-											</p>
-										</td>
-									</tr>
+                  <tr>
+                    <td colspan="4" class="contents left" style="text-align: left;">
+                      <p class="textArea"> <!-- textarea  id="noticeRegist" -->
+                        <textarea name="notice_content" id="summernote" cols="30" rows="10"
+                          style="width: 99%; height: 200px;"></textarea>
+                      </p>
+                    </td>
+                  </tr>
 
-								</tbody>
-							</table>
-
-
-						</div>
-
-						<div class="btnbox btnbox02">
-							<input type="submit" class="btnfb7" value="등록">
-							<a href="noticeList" class="btn4d5" onclick="">취소</a>
-
-						</div>
+                </tbody>
+              </table>
 
 
-					</form>
-				</div>
-			</div>
-		</div>
+            </div>
 
-	</div>
+            <div class="btnbox btnbox02">
+              <input type="submit" class="btnfb7" value="등록">
+              <a href="noticeList" class="btn4d5" onclick="">취소</a>
 
-	</div>
+            </div>
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  </div>
 
 
 </th:block>
 
 <script th:inline="javascript">
-//summernote
-$(document).ready(function() {
-  $('#summernote').summernote({
-  styleWithSpan: true,
-  codeviewFilter: false, // 코드 보기 필터 비활성화
+  //summernote
+  $(document).ready(function () {
+    $('#summernote').summernote({
+      styleWithSpan: true,
+      codeviewFilter: false, // 코드 보기 필터 비활성화
       codeviewIframeFilter: false, // 코드 보기 iframe 필터 비활성화
 
-  //width: 500,
+      //width: 500,
       height: 500, // 에디터 높이	      
       minHeight: 500, // 최소 높이
       maxHeight: null, // 최대 높이
@@ -147,75 +148,75 @@ $(document).ready(function() {
       lang: "ko-KR", // 한글 설정
       placeholder: '최대 2000자까지 쓸 수 있습니다', // placeholder 설정
       styleTags: [
-          'p',  // 일반 문단 스타일 옵션
-          {
-              title: 'Blockquote',
-              tag: 'blockquote',
-              className: 'blockquote',
-              value: 'blockquote',
-          },  // 인용구 스타일 옵션
-          'pre',  // 코드 단락 스타일 옵션
-          {
-              title: 'code_light',
-              tag: 'pre',
-              className: 'code_light',
-              value: 'pre',
-          },  // 밝은 코드 스타일 옵션
-          {
-              title: 'code_dark',
-              tag: 'pre',
-              className: 'code_dark',
-              value: 'pre',
-          },  // 어두운 코드 스타일 옵션
-          'h1', 'h2', 'h3', 'h4', 'h5', 'h6',  // 제목 스타일 옵션
+        'p',  // 일반 문단 스타일 옵션
+        {
+          title: 'Blockquote',
+          tag: 'blockquote',
+          className: 'blockquote',
+          value: 'blockquote',
+        },  // 인용구 스타일 옵션
+        'pre',  // 코드 단락 스타일 옵션
+        {
+          title: 'code_light',
+          tag: 'pre',
+          className: 'code_light',
+          value: 'pre',
+        },  // 밝은 코드 스타일 옵션
+        {
+          title: 'code_dark',
+          tag: 'pre',
+          className: 'code_dark',
+          value: 'pre',
+        },  // 어두운 코드 스타일 옵션
+        'h1', 'h2', 'h3', 'h4', 'h5', 'h6',  // 제목 스타일 옵션
       ],
 
       toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['fontsize', ['fontsize']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ['insert', ['link', 'picture', 'video']],
-            ['view', ['fullscreen', 'codeview', 'help']]
+        ['style', ['style']],
+        ['font', ['bold', 'underline', 'clear']],
+        ['fontsize', ['fontsize']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['table', ['table']],
+        ['insert', ['link', 'picture', 'video']],
+        ['view', ['fullscreen', 'codeview', 'help']]
       ],
-      fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
-	  fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
-	 
-  });
-});
-	
-$('.summernote').summernote('destroy');
-var markupStr = $('.summernote').summernote('code');
+      fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', '맑은 고딕', '궁서', '굴림체', '굴림', '돋움체', '바탕체'],
+      fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '20', '22', '24', '28', '30', '36', '50', '72']
 
-// 에디터 내용을 텍스트로 가져오기
-var editorText = $('.summernote').summernote('getText');
+    });
+  });
+
+  $('.summernote').summernote('destroy');
+  var markupStr = $('.summernote').summernote('code');
+
+  // 에디터 내용을 텍스트로 가져오기
+  var editorText = $('.summernote').summernote('getText');
 </script>
 <script th:inline="javascript">
-    document.querySelector('form').addEventListener('submit', function (e) {
-        e.preventDefault();
-        
-        // TextArea에서 텍스트를 가져옵니다.
-        const textarea = document.getElementById('noticeRegist');
-        const text = textarea.value;
-        
-        // 줄 바꿈 문자를 br 태그로 변환합니다.
-        const textWithHtmlLineBreaks = text.replace(/\n/g, '<br>');
-        
-        // 변환된 텍스트를 hidden input에 저장하거나 서버로 직접 전송할 수 있습니다.
-        // 이 예제에서는 hidden input에 저장합니다.
-        const hiddenInput = document.createElement('input');
-        hiddenInput.type = 'hidden';
-        hiddenInput.name = 'notice_content';
-        hiddenInput.value = textWithHtmlLineBreaks;
-        
-        // Form에 hidden input을 추가합니다.
-        this.appendChild(hiddenInput);
-        
-        // Form을 서버로 제출합니다.
-        this.submit();
-    });
+  document.querySelector('form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // TextArea에서 텍스트를 가져옵니다.
+    const textarea = document.getElementById('noticeRegist');
+    const text = textarea.value;
+
+    // 줄 바꿈 문자를 br 태그로 변환합니다.
+    const textWithHtmlLineBreaks = text.replace(/\n/g, '<br>');
+
+    // 변환된 텍스트를 hidden input에 저장하거나 서버로 직접 전송할 수 있습니다.
+    // 이 예제에서는 hidden input에 저장합니다.
+    const hiddenInput = document.createElement('input');
+    hiddenInput.type = 'hidden';
+    hiddenInput.name = 'notice_content';
+    hiddenInput.value = textWithHtmlLineBreaks;
+
+    // Form에 hidden input을 추가합니다.
+    this.appendChild(hiddenInput);
+
+    // Form을 서버로 제출합니다.
+    this.submit();
+  });
 </script>
 
 
