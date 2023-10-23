@@ -11,9 +11,7 @@ CourtSupporter
 
 &nbsp;  
 
-### 📄 **Description**
-
----
+## 📄 **Description**
 
 **CourtSupporter가 어떤 애플리케이션인지.** 
 간단한 설명
@@ -22,7 +20,7 @@ CourtSupporter
 &nbsp;
 
 ## 🛠 Skills
----
+
 ### Frontend
 <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/></a>
 <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>
@@ -89,8 +87,6 @@ CourtSupporter
 &nbsp;    
 
 ## 🧑‍🤝‍🧑 팀원 소개
-
----
 
 <table>
       <tr align=center>
